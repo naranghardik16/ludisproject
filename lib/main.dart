@@ -13,10 +13,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: LandingPage(),
-
     );
-
   }
 }
 
@@ -30,7 +29,7 @@ class LandingPage extends StatelessWidget {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot) {
-        if(snapshot.hasError) {
+        if (snapshot.hasError) {
           return Scaffold(
             body: Center(
               child: Text("Error: ${snapshot.error}"),
@@ -38,14 +37,14 @@ class LandingPage extends StatelessWidget {
           );
         }
 
-        if(snapshot.connectionState == ConnectionState.done) {
+        if (snapshot.connectionState == ConnectionState.done) {
           return StreamBuilder(
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
-              if(snapshot.connectionState == ConnectionState.active) {
+              if (snapshot.connectionState == ConnectionState.active) {
                 Object? user = snapshot.data;
 
-                if(user == null) {
+                if (user == null) {
                   return Loginpage();
                 } else {
                   return Homepage();
@@ -55,17 +54,19 @@ class LandingPage extends StatelessWidget {
               return Scaffold(
                 body: Center(
                   child: Text("Checking Authentication...."),
+                  // child: Image.asset('assets/images/abc.png'),
                 ),
               );
             },
           );
         }
 
-          return Scaffold(
-            body: Center(
-              child: Text("Connecting to the app...."),
-            ),
-          );
+        return Scaffold(
+          body: Center(
+            child: Text("Connecting to the app...."),
+            // child: Image.asset('assets/images/abc.png'),
+          ),
+        );
       },
     );
   }
