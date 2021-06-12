@@ -22,10 +22,10 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Colors.orangeAccent,
       body: _pages[_index],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.purple,
+        selectedItemColor: Colors.black,
+        unselectedItemColor: Colors.white,
         showUnselectedLabels: true,
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.blue,
         elevation: 0,
         type: BottomNavigationBarType.shifting,
         currentIndex: _index,
@@ -34,48 +34,48 @@ class _HomepageState extends State<Homepage> {
             backgroundColor: Colors.orangeAccent,
             icon: Icon(
               Icons.verified_user,
-              color: Colors.yellow,
+              color: Colors.white,
             ),
             label: "Profile",
             activeIcon: Icon(
               Icons.verified_user,
-              color: Colors.purple,
+              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orangeAccent,
             icon: Icon(
               Icons.reviews,
-              color: Colors.yellow,
+              color: Colors.white,
             ),
             label: "Review",
             activeIcon: Icon(
               Icons.reviews,
-              color: Colors.purple,
+              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orangeAccent,
             icon: Icon(
               Icons.folder,
-              color: Colors.yellow,
+              color: Colors.white,
             ),
             label: "Facilities Directory",
             activeIcon: Icon(
               Icons.folder,
-              color: Colors.purple,
+              color: Colors.black,
             ),
           ),
           BottomNavigationBarItem(
             backgroundColor: Colors.orangeAccent,
             icon: Icon(
               Icons.book,
-              color: Colors.yellow,
+              color: Colors.white,
             ),
             label: "Bookings",
             activeIcon: Icon(
               Icons.book,
-              color: Colors.purple,
+              color: Colors.black,
             ),
           ),
         ],
