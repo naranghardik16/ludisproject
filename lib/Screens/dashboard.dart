@@ -24,11 +24,10 @@ class _DashboardState extends State<Dashboard> {
                     )
                 )
             ),
-            onPressed: () {},
-            // onPressed: () async {
-            //   await FirebaseAuth.instance.signOut();
-            // },
-            child: Text("Sign Out"),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: Text("Profile"),
           )
         // child: Text("Profile"),
       ),
