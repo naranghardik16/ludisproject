@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/booking.dart';
+import 'package:flutter_firebase_login/Screens/dashboard.dart';
 import 'package:flutter_firebase_login/Screens/facilities_directory.dart';
-import 'package:flutter_firebase_login/Screens/profile.dart';
+import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
 import 'package:flutter_firebase_login/Screens/review.dart';
 
 class Homepage extends StatefulWidget {
@@ -15,7 +16,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   int _index = 0;
-  List _pages = [Profile(), Review(), FacilitiesDirectory(), Bookings()];
+  List _pages = [Dashboard(), Review(), FacilitiesDirectory(), Bookings(), ProfileScreen()];
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +34,12 @@ class _HomepageState extends State<Homepage> {
           BottomNavigationBarItem(
             backgroundColor: Colors.orangeAccent,
             icon: Icon(
-              Icons.verified_user,
+              Icons.dashboard,
               color: Colors.white,
             ),
-            label: "Profile",
+            label: "Dashboard",
             activeIcon: Icon(
-              Icons.verified_user,
+              Icons.dashboard,
               color: Colors.black,
             ),
           ),
@@ -75,6 +76,18 @@ class _HomepageState extends State<Homepage> {
             label: "Bookings",
             activeIcon: Icon(
               Icons.book,
+              color: Colors.black,
+            ),
+          ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.orangeAccent,
+            icon: Icon(
+              Icons.verified_user,
+              color: Colors.white,
+            ),
+            label: "Profile",
+            activeIcon: Icon(
+              Icons.verified_user,
               color: Colors.black,
             ),
           ),
