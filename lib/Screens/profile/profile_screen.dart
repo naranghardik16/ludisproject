@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_firebase_login/Screens/booking.dart';
+import 'package:flutter_firebase_login/Screens/dashboard.dart';
 import 'package:flutter_firebase_login/Screens/facilities_directory.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
 import 'package:flutter_firebase_login/Screens/review.dart';
@@ -24,14 +24,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       backgroundColor: Colors.orangeAccent,
       body: Body(),
     );
-
-
-
-    // return Container(
-    //   child: Center(
-    //     child: Text("Profile"),
-    //   ),
-    // );
   }
 }
 
