@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/homepage.dart';
+import 'package:flutter_firebase_login/Screens/login_success/login_success_screen.dart';
 import 'package:flutter_firebase_login/Screens/loginpage.dart';
 
 void main() {
@@ -53,7 +54,8 @@ class LandingPage extends StatelessWidget {
 
               return Scaffold(
                 body: Center(
-                  child: Text("Checking Authentication...."),
+                  child: Text("Loading...."),
+                  // child: Text("Checking Authentication...."),
                   // child: Image.asset('assets/images/abc.png'),
                 ),
               );
