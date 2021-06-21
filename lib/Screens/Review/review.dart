@@ -8,9 +8,15 @@ class Review extends StatefulWidget {
 class _ReviewState extends State<Review> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Text("Review"),
+    return Scaffold(
+      backgroundColor: Colors.orangeAccent,
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+        title: Text(
+          "Review",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

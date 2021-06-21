@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/components/default_button.dart';
-import 'package:flutter_firebase_login/Screens/homepage.dart';
+import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 import 'package:flutter_firebase_login/size_config.dart';
 
 class Body extends StatelessWidget {

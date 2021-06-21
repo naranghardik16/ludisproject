@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_firebase_login/Screens/dashboard.dart';
-import 'package:flutter_firebase_login/Screens/facilities_directory.dart';
+import 'package:flutter_firebase_login/Screens/Dashboard/dashboard.dart';
+import 'package:flutter_firebase_login/Screens/FacilitiesDirectory/facilities_directory.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
-import 'package:flutter_firebase_login/Screens/review.dart';
+import 'package:flutter_firebase_login/Screens/Review/review.dart';
 
 import 'components/body.dart';
 
@@ -19,6 +19,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Profile"),
+        centerTitle: true,
         backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.orangeAccent,

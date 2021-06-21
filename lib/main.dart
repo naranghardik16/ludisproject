@@ -1,11 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/homepage.dart';
-import 'package:flutter_firebase_login/Screens/login_success/login_success_screen.dart';
-import 'package:flutter_firebase_login/Screens/loginpage.dart';
+import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
+// import 'package:flutter_firebase_login/Screens/Login_success/login_success_screen.dart';
+import 'package:flutter_firebase_login/Screens/Login/loginpage.dart';
+import 'package:flutter_firebase_login/src/providers/entry_provider.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -13,9 +17,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LandingPage(),
+    return ChangeNotifierProvider(
+      create: (context) => EntryProvider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: LandingPage(),
+      ),
     );
   }
 }

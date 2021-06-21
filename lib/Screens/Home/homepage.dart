@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/dashboard.dart';
-import 'package:flutter_firebase_login/Screens/dashboard2.dart';
-import 'package:flutter_firebase_login/Screens/facilities_directory.dart';
+import 'package:flutter_firebase_login/Screens/Dashboard/dashboard.dart';
+import 'package:flutter_firebase_login/Screens/FacilitiesDirectory/facilities_directory.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
-import 'package:flutter_firebase_login/Screens/review.dart';
+import 'package:flutter_firebase_login/Screens/Review/review.dart';
 
 class Homepage extends StatefulWidget {
   static String routeName = "/home";
@@ -16,7 +15,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
   @override
   int _index = 0;
   List _pages = [Dashboard(), Review(), FacilitiesDirectory(), ProfileScreen()];
@@ -70,18 +68,6 @@ class _HomepageState extends State<Homepage> {
               color: Colors.black,
             ),
           ),
-          // BottomNavigationBarItem(
-          //   backgroundColor: Colors.blue,
-          //   icon: Icon(
-          //     Icons.book,
-          //     color: Colors.white,
-          //   ),
-          //   label: "Bookings",
-          //   activeIcon: Icon(
-          //     Icons.book,
-          //     color: Colors.black,
-          //   ),
-          // ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
             icon: Icon(
