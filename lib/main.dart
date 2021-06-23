@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 // import 'package:flutter_firebase_login/Screens/Login_success/login_success_screen.dart';
 import 'package:flutter_firebase_login/Screens/Login/loginpage.dart';
+import 'package:flutter_firebase_login/providers/booking_provider.dart';
 import 'package:flutter_firebase_login/src/providers/entry_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -17,13 +18,22 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => EntryProvider(),
-      child: MaterialApp(
+    // return ChangeNotifierProvider(
+    //   create: (context) => BookingProvider(),
+    //   child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     home: LandingPage(),
+    //   ),
+    // );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => BookingProvider()),
+          ChangeNotifierProvider(create: (context) => EntryProvider())
+        ],
+        child: MaterialApp(
         debugShowCheckedModeBanner: false,
         home: LandingPage(),
-      ),
-    );
+    ),);
   }
 }
 

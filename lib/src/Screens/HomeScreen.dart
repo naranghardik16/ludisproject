@@ -12,6 +12,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final entryProvider = Provider.of<EntryProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.orangeAccent,
       appBar: AppBar(
         title: Text("My Journal"),
         centerTitle: true,
@@ -28,7 +29,8 @@ class HomeScreen extends StatelessWidget {
                       color: Colors.pinkAccent,
                     ),
                     title: Text(
-                      formatDate(DateTime.parse(snapshot.data[index].date), [MM, ' ', d, ', ', yyyy])
+                      formatDate(DateTime.parse(snapshot.data[index].date), [MM, ' ', d, ', ', yyyy]),
+                      style: TextStyle(fontWeight: FontWeight.bold),
                     ),
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(

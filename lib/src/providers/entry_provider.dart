@@ -1,7 +1,7 @@
 // @dart=2.9
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter_firebase_login/src/models/entry.dart';
-// import 'package:flutter_firebase_login/src/services/firestore_service.dart';
+// import 'package:flutter_firebase_login/src/services/firestore_entry_service.dart';
 // import 'package:uuid/uuid.dart';
 // import 'package:provider/provider.dart';
 //
@@ -65,7 +65,7 @@
 // }
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/src/models/entry.dart';
-import 'package:flutter_firebase_login/src/services/firestore_service.dart';
+import 'package:flutter_firebase_login/src/services/firestore_entry_service.dart';
 import 'package:uuid/uuid.dart';
 
 class EntryProvider with ChangeNotifier {

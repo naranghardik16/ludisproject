@@ -154,6 +154,7 @@ class _EntryScreenState extends State<EntryScreen> {
   Widget build(BuildContext context) {
     final entryProvider = Provider.of<EntryProvider>(context);
     return Scaffold(
+      backgroundColor: Colors.orangeAccent,
       appBar: AppBar(title: Text(formatDate(entryProvider.date, [MM, ' ', d, ', ', yyyy]))
           ,actions: [
             IconButton(

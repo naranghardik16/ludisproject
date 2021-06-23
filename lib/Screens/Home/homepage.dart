@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/Bookings/BookingScreen.dart';
 import 'package:flutter_firebase_login/Screens/Dashboard/dashboard.dart';
 import 'package:flutter_firebase_login/Screens/FacilitiesDirectory/facilities_directory.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
@@ -44,6 +45,18 @@ class _HomepageState extends State<Homepage> {
               color: Colors.black,
             ),
           ),
+          // BottomNavigationBarItem(
+          //   backgroundColor: Colors.blue,
+          //   icon: Icon(
+          //     Icons.reviews,
+          //     color: Colors.white,
+          //   ),
+          //   label: "Bookings",
+          //   activeIcon: Icon(
+          //     Icons.book,
+          //     color: Colors.black,
+          //   ),
+          // ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
             icon: Icon(
