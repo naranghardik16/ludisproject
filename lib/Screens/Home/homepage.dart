@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/Bookings/BookingScreen.dart';
+import 'package:flutter_firebase_login/src/Screens/BookingScreen.dart';
 import 'package:flutter_firebase_login/Screens/Dashboard/dashboard.dart';
 import 'package:flutter_firebase_login/Screens/FacilitiesDirectory/facilities_directory.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
-import 'package:flutter_firebase_login/Screens/Review/review.dart';
+import 'package:flutter_firebase_login/src/Screens/review.dart';
+import 'package:flutter_firebase_login/Screens/Review/ReviewBookingsScreen.dart';
 
 class Homepage extends StatefulWidget {
   static String routeName = "/home";
@@ -18,7 +19,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   int _index = 0;
-  List _pages = [Dashboard(), Review(), FacilitiesDirectory(), ProfileScreen()];
+  List _pages = [Dashboard(), ReviewBookingsScreen(), FacilitiesDirectory(), ProfileScreen()];
 
   Widget build(BuildContext context) {
     return Scaffold(

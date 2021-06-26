@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_login/Screens/Dashboard/dashboard.dart';
 import 'package:flutter_firebase_login/Screens/FacilitiesDirectory/facilities_directory.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
-import 'package:flutter_firebase_login/Screens/Review/review.dart';
+import 'package:flutter_firebase_login/src/Screens/review.dart';
 
 import 'components/body.dart';
 

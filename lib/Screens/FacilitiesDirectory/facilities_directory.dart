@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/Bookings/BookingScreen.dart';
-import 'package:flutter_firebase_login/Screens/Review/review.dart';
+import 'package:flutter_firebase_login/src/Screens/BookingScreen.dart';
+import 'package:flutter_firebase_login/src/Screens/review.dart';
 
 class FacilitiesDirectory extends StatefulWidget {
   @override

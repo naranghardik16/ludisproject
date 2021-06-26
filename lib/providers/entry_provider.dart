@@ -64,8 +64,8 @@
 //   }
 // }
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/src/models/entry.dart';
-import 'package:flutter_firebase_login/src/services/firestore_entry_service.dart';
+import 'package:flutter_firebase_login/models/entry.dart';
+import 'package:flutter_firebase_login/services/firestore_entry_service.dart';
 import 'package:uuid/uuid.dart';
 
 class EntryProvider with ChangeNotifier {

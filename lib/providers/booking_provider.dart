@@ -1,7 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/models/bookings.dart';
-import 'package:flutter_firebase_login/services/firestore_booking_service.dart';
+import 'package:flutter_firebase_login/src/services/firestore_booking_service.dart';
 import 'package:uuid/uuid.dart';
 class BookingProvider with ChangeNotifier {
   final firestoreBookingService = FirestoreBookingService();

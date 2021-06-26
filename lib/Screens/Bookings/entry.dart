@@ -61,7 +61,7 @@
 //             children: [
 //               TextField(
 //                 decoration: InputDecoration(
-//                   labelText: 'Daily Entry',
+//                   labelText: 'ly Entry',
 //                   border: InputBorder.none,
 //                 ),
 //                 maxLines: 12,
@@ -110,9 +110,10 @@
 //   }
 // }
 import 'package:date_format/date_format.dart';
+import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/src/models/entry.dart';
-import 'package:flutter_firebase_login/src/providers/entry_provider.dart';
+import 'package:flutter_firebase_login/models/entry.dart';
+import 'package:flutter_firebase_login/providers/entry_provider.dart';
 import 'package:provider/provider.dart';
 
 class EntryScreen extends StatefulWidget {
@@ -153,6 +154,7 @@ class _EntryScreenState extends State<EntryScreen> {
   @override
   Widget build(BuildContext context) {
     final entryProvider = Provider.of<EntryProvider>(context);
+    // String dropDownValue = "Badminton";
     return Scaffold(
       backgroundColor: Colors.orangeAccent,
       appBar: AppBar(title: Text(formatDate(entryProvider.date, [MM, ' ', d, ', ', yyyy]))
@@ -172,15 +174,47 @@ class _EntryScreenState extends State<EntryScreen> {
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Daily Entry', border: InputBorder.none,
-              ),
-              maxLines: 12,
-              minLines: 10,
+            // TextField(
+            //   decoration: InputDecoration(
+            //     labelText: 'Enter facility', border: InputBorder.none,
+            //   ),
+            //   maxLines: 1,
+            //   minLines: 1,
+            //   onChanged: (String value) => entryProvider.changeEntry = value,
+            //   controller: entryController,
+            // ),
+            DropdownSearch<String>(
+              popupBackgroundColor: Colors.white,
+              mode: Mode.MENU,
+              showSelectedItem: true,
+              items: ['Badminton', 'Tennis', 'Table Tennis', 'Music Room'],
+              selectedItem: 'Badminton',
               onChanged: (String value) => entryProvider.changeEntry = value,
-              controller: entryController,
+              searchBoxController: entryController,
+              hint: "Enter facility",
+              label: "Facilities",
             ),
+
+
+            // DropdownButton<String>(
+            //     items: <String>['Badminton', 'Tennis', 'Table Tennis', 'Music Room']
+            //         .map<DropdownMenuItem<String>>((String value) {
+            //           return DropdownMenuItem<String>(
+            //               child: Text(value),
+            //               value: value,
+            //           );
+            //     }).toList(),
+            //     value: dropDownValue,
+            //     icon: const Icon(Icons.arrow_downward),
+            //     iconSize: 24,
+            //     elevation: 16,
+            //     style: const TextStyle(color: Colors.black),
+            //     underline: Container(
+            //       height: 2,
+            //       color: Colors.black,
+            //     ),
+            //     onChanged: (String value) => entryProvider.changeEntry = value,
+            // ),
             RaisedButton(
               color: Theme.of(context).accentColor,
               child: Text('Save',style: TextStyle(color: Colors.white)),
@@ -205,7 +239,7 @@ class _EntryScreenState extends State<EntryScreen> {
 
   Future<DateTime> _pickDate(BuildContext context, EntryProvider entryProvider) async {
     final DateTime picked = await showDatePicker(
-        context: context, initialDate: entryProvider.date, firstDate: DateTime(2019),
+        context: context, initialDate: entryProvider.date, firstDate: DateTime.now(),
         lastDate: DateTime(2050));
 
     if (picked != null) return picked;
