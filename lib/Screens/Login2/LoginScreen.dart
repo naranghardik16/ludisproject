@@ -31,7 +31,7 @@ class _LoginViewState extends State<Login> {
             return CustomAlertDialog(
               content: Container(
                 width: MediaQuery.of(context).size.width / 1.2,
-                height: MediaQuery.of(context).size.height / 4.5,
+                height: MediaQuery.of(context).size.height / 4.0,
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
@@ -262,7 +262,7 @@ class _LoginViewState extends State<Login> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: EdgeInsets.all(20),
           child: Container(
             height: mq.size.height,
             child: Column(
@@ -271,7 +271,7 @@ class _LoginViewState extends State<Login> {
                 logo,
                 fields,
                 Padding(
-                  padding: EdgeInsets.only(bottom: 150),
+                  padding: EdgeInsets.only(bottom: 30),
                   child: bottom,
                 ),
               ],

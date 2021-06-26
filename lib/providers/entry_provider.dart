@@ -120,5 +120,4 @@ class EntryProvider with ChangeNotifier {
   removeEntry(String entryId){
     firestoreService.removeEntry(entryId);
   }
-
 }

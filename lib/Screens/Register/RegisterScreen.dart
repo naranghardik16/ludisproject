@@ -243,7 +243,7 @@ class _RegisterViewState extends State<Register> {
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
+          padding: EdgeInsets.all(20),
           child: Container(
             height: mq.size.height,
             child: Column(
@@ -253,7 +253,7 @@ class _RegisterViewState extends State<Register> {
                 fields,
                 const SizedBox(height: 8.0),
                 Padding(
-                  padding: EdgeInsets.only(bottom: 150),
+                  padding: EdgeInsets.only(bottom: 30),
                   child: bottom,
                 ),
               ],

@@ -240,7 +240,7 @@ class _EntryScreenState extends State<EntryScreen> {
   Future<DateTime> _pickDate(BuildContext context, EntryProvider entryProvider) async {
     final DateTime picked = await showDatePicker(
         context: context, initialDate: entryProvider.date, firstDate: DateTime.now(),
-        lastDate: DateTime(2050));
+        lastDate: DateTime.now().add(const Duration(days: 7)));
 
     if (picked != null) return picked;
   }
