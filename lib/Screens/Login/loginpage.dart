@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/net/firebase.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class Loginpage extends StatefulWidget {
@@ -11,6 +12,7 @@ class Loginpage extends StatefulWidget {
 
 class _LoginpageState extends State<Loginpage> {
   bool hidePassword = true;
+  TextEditingController _usernameController = TextEditingController();
 
   final Shader linearGradient = LinearGradient(
     colors: <Color>[Color(0xFFF44336), Color(0xFF4CAF50)],
@@ -27,6 +29,7 @@ class _LoginpageState extends State<Loginpage> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: _email, password: _password);
+      // userSetup(_usernameController.text);
     } on FirebaseAuthException catch (e) {
       var message = 'An error occurred, please check your credentials!';
       if(e.message != null) {
@@ -62,6 +65,7 @@ class _LoginpageState extends State<Loginpage> {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: _email, password: _password);
+      // userSetup(_usernameController.text);
     } on FirebaseAuthException catch (e) {
       var message = 'An error occurred, please check your credentials!';
       if(e.message != null) {
@@ -109,6 +113,7 @@ class _LoginpageState extends State<Loginpage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              controller: _usernameController,
                 onChanged: (value) {
                   _email = value;
                 },
@@ -178,3 +183,4 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 }
+

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/src/Screens/BookingScreen.dart';
+import 'package:flutter_firebase_login/src/Screens/review.dart';
 
 class FacilitiesDirectory extends StatefulWidget {
   @override
@@ -175,7 +177,11 @@ class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
                         splashColor: Colors.red,
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context, MaterialPageRoute(builder: (context) => Review())
+                          );
+                        },
                         mini: true,
                       )
                     ),

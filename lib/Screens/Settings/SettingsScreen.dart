@@ -14,19 +14,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
       backgroundColor: Colors.orangeAccent,
       appBar: AppBar(
         backgroundColor: Colors.blue,
+        centerTitle: true,
         title: Text(
           "Settings",
           style: TextStyle(color: Colors.white),
         ),
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-          ),
-        ),
+        // leading: IconButton(
+        //   onPressed: () {
+        //     Navigator.pop(context);
+        //   },
+        //   icon: Icon(
+        //     Icons.arrow_back,
+        //     color: Colors.white,
+        //   ),
+        // ),
       ),
       body: Stack(
         fit: StackFit.expand,
@@ -36,32 +37,32 @@ class _SettingsScreenState extends State<SettingsScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Card(
-                  elevation: 8.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)
-                  ),
-                  color: Colors.white,
-                  child: ListTile(
-                    onTap: () {
-                      //open edit profile
-                    },
-                    title: Text(
-                      "Siddharth Srivastava",
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage("assets/images/profile_image.jpeg"),
-                    ),
-                    trailing: Icon(
-                      Icons.edit,
-                      color: Colors.black,
-                    ),
-                  ),
-                ),
+                // Card(
+                //   elevation: 8.0,
+                //   shape: RoundedRectangleBorder(
+                //     borderRadius: BorderRadius.circular(10.0)
+                //   ),
+                //   color: Colors.white,
+                //   child: ListTile(
+                //     onTap: () {
+                //       //open edit profile
+                //     },
+                //     title: Text(
+                //       "Siddharth Srivastava",
+                //       style: TextStyle(
+                //         color: Colors.black,
+                //         fontWeight: FontWeight.w500,
+                //       ),
+                //     ),
+                //     leading: CircleAvatar(
+                //       backgroundImage: AssetImage("assets/images/profile_image.jpeg"),
+                //     ),
+                //     trailing: Icon(
+                //       Icons.edit,
+                //       color: Colors.black,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(height: 20.0),
                 Card(
                   elevation: 4.0,
@@ -76,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Icons.lock_outline,
                           color: Colors.black,
                         ),
-                        title: Text("Change Password"),
+                        title: Text("Change Password", style: TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
                           //open change password
@@ -88,7 +89,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Icons.language,
                           color: Colors.black,
                         ),
-                        title: Text("Change Language"),
+                        title: Text("Change Language", style: TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
                           //open change language
@@ -100,7 +101,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Icons.location_on,
                           color: Colors.black,
                         ),
-                        title: Text("Change Location"),
+                        title: Text("Change Location", style: TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
                           //open change location
@@ -131,7 +132,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         activeColor: Colors.blue,
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: true,
-                        title: Text("Receive Notifications"),
+                        title: Text("Receive Notifications", style: TextStyle(fontWeight: FontWeight.bold),),
                         onChanged: (val) {},
                       ),
                       _buildDivider(),
@@ -139,7 +140,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         activeColor: Colors.blue,
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: false,
-                        title: Text("Receive Newsletter"),
+                        title: Text("Receive Newsletter", style: TextStyle(fontWeight: FontWeight.bold),),
                         onChanged: null,
                       ),
                       _buildDivider(),
@@ -147,7 +148,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         activeColor: Colors.blue,
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: true,
-                        title: Text("Receive Offers"),
+                        title: Text("Receive Offers", style: TextStyle(fontWeight: FontWeight.bold),),
                         onChanged: (val) {},
                       ),
                       _buildDivider(),
@@ -155,7 +156,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         activeColor: Colors.blue,
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: false,
-                        title: Text("Receive App Updates"),
+                        title: Text("Receive App Updates", style: TextStyle(fontWeight: FontWeight.bold),),
                         onChanged: null,
                       ),
                     ],

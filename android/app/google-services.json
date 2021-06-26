@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "514225671161",
-    "project_id": "fir-flutterlogin-4d9bb",
-    "storage_bucket": "fir-flutterlogin-4d9bb.appspot.com"
+    "project_number": "929257854145",
+    "project_id": "ludis-242c9",
+    "storage_bucket": "ludis-242c9.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:514225671161:android:9ed39329a12347025f0b28",
+        "mobilesdk_app_id": "1:929257854145:android:b8e0a2b729eb75d24ff040",
         "android_client_info": {
           "package_name": "com.example.flutter_firebase_login"
         }
       },
       "oauth_client": [
         {
-          "client_id": "514225671161-ttd08fhe5po8c45dl6bir87cmt1550bt.apps.googleusercontent.com",
+          "client_id": "929257854145-815910p4uq7melcth84lrhvlos9uhouf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAVqRg16A-3lqAi6oZZXWw-RRkrENZ4kKQ"
+          "current_key": "AIzaSyCUjmiGkUN8PeTcxONHMbFH_4GSDjM2N-s"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "514225671161-ttd08fhe5po8c45dl6bir87cmt1550bt.apps.googleusercontent.com",
+              "client_id": "929257854145-815910p4uq7melcth84lrhvlos9uhouf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
