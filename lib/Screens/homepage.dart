@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/bookingpage.dart';
 import 'package:flutter_firebase_login/Screens/dashboard.dart';
 import 'package:flutter_firebase_login/Screens/dashboard2.dart';
 import 'package:flutter_firebase_login/Screens/facilities_directory.dart';
@@ -19,7 +20,7 @@ class _HomepageState extends State<Homepage> {
 
   @override
   int _index = 0;
-  List _pages = [Dashboard(), Review(), FacilitiesDirectory(), ProfileScreen()];
+  List _pages = [Dashboard(), Review(), FacilitiesDirectory(), BookingPage(), ProfileScreen()];
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,18 +71,18 @@ class _HomepageState extends State<Homepage> {
               color: Colors.black,
             ),
           ),
-          // BottomNavigationBarItem(
-          //   backgroundColor: Colors.blue,
-          //   icon: Icon(
-          //     Icons.book,
-          //     color: Colors.white,
-          //   ),
-          //   label: "Bookings",
-          //   activeIcon: Icon(
-          //     Icons.book,
-          //     color: Colors.black,
-          //   ),
-          // ),
+          BottomNavigationBarItem(
+            backgroundColor: Colors.blue,
+            icon: Icon(
+              Icons.book,
+              color: Colors.white,
+            ),
+            label: "Bookings",
+            activeIcon: Icon(
+              Icons.book,
+              color: Colors.black,
+            ),
+          ),
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
             icon: Icon(
