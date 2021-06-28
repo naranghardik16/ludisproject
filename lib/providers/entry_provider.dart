@@ -70,10 +70,15 @@ import 'package:uuid/uuid.dart';
 
 class EntryProvider with ChangeNotifier {
   final firestoreService = FirestoreService();
+
+
   DateTime _date;
   String _entry;
   String _entryId;
+  // String _timeSlot;
+
   var uuid = Uuid();
+
 
   //Getters
   DateTime get date => _date;
@@ -91,16 +96,23 @@ class EntryProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  // set changeTime(String time) {
+  //   _timeSlot = time;
+  //   notifyListeners();
+  // }
+
   //Functions
   loadAll(Entry entry){
     if (entry != null){
       _date = DateTime.parse(entry.date);
       _entry =entry.entry;
       _entryId = entry.entryId;
+      // _timeSlot = entry.timeSlot;
     } else {
       _date = DateTime.now();
       _entry = null;
       _entryId = null;
+      // _timeSlot = null;
     }
   }
 

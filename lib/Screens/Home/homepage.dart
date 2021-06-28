@@ -50,7 +50,7 @@ class _HomepageState extends State<Homepage> {
           BottomNavigationBarItem(
             backgroundColor: Colors.blue,
             icon: Icon(
-              Icons.reviews,
+              Icons.book,
               color: Colors.white,
             ),
             label: "Bookings",

@@ -59,7 +59,8 @@ class _LoginViewState extends State<Login> {
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(25.0),
-                        color: Color(0xff8c52ff),
+                        color: Colors.red,
+                        // color: Color(0xff8c52ff),
                         child: MaterialButton(
                           minWidth: mq.size.width / 2,
                           padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
@@ -79,7 +80,7 @@ class _LoginViewState extends State<Login> {
                               Navigator.of(context).pop();
                             } catch (e) {
                               print(e);
-                              // TODO: Add snackbar reporting error
+                              // Add snackbar reporting error
                             }
                           },
                         ),

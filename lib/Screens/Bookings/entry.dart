@@ -112,6 +112,7 @@
 import 'package:date_format/date_format.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 import 'package:flutter_firebase_login/models/entry.dart';
 import 'package:flutter_firebase_login/providers/entry_provider.dart';
 import 'package:provider/provider.dart';
@@ -187,7 +188,7 @@ class _EntryScreenState extends State<EntryScreen> {
               popupBackgroundColor: Colors.white,
               mode: Mode.MENU,
               showSelectedItem: true,
-              items: ['Badminton', 'Tennis', 'Table Tennis', 'Music Room'],
+              items: ['Auditorium', 'Badminton Court', 'Basketball Court', 'Music Room', 'Reading Room', 'Table Tennis', 'Lawn Tennis', 'TV Room', 'Student Lounge'],
               selectedItem: 'Badminton',
               onChanged: (String value) => entryProvider.changeEntry = value,
               searchBoxController: entryController,
@@ -228,7 +229,14 @@ class _EntryScreenState extends State<EntryScreen> {
               child: Text('Delete',style: TextStyle(color: Colors.white)),
               onPressed: () {
                 entryProvider.removeEntry(widget.entry.entryId);
-                Navigator.of(context).pop();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Homepage(),
+                  ),
+                      (route) => false,
+                );
+                // Navigator.of(context).pop();
               },
             ): Container(),
           ],

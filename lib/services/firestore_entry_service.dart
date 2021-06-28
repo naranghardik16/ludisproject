@@ -31,6 +31,7 @@
 //   }
 // }
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_firebase_login/Screens/BookingPage/bookingpage.dart';
 import 'package:flutter_firebase_login/models/entry.dart';
 
 class FirestoreService {
@@ -41,10 +42,21 @@ class FirestoreService {
     return _db
         .collection('entries')
         .snapshots()
-        .map((snapshot) => snapshot.docs
-        .map((doc) => Entry.fromJson(doc.data()))
+        .map((snapshot) => snapshot.docs.map((doc) => Entry.fromJson(doc.data()))
         .toList());
   }
+
+  // List<String> getAvailableTimes(String pdate) {
+  //   var bookedTimeSlot = _db
+  //       .collection('entries')
+  //       .snapshots()
+  //       .expand((event) => event.docs.map((doc) => Entry.fromJson(doc.data())))
+  //       .where((entry) => entry.date == pdate)
+  //       .map((entry) => entry.timeSlot).toList().then((value) =>
+  //           BookingPageState.plausibleTimeSlots.where((element) => !value.contains(element))
+  //       );
+  //   return List.empty();
+  // }
 
   //Upsert
   Future<void> setEntry(Entry entry){

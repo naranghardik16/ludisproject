@@ -16,45 +16,55 @@ class ReviewBookingsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Review Bookings"),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: StreamBuilder<List<Entry>>(
           stream: entryProvider.entries,
           builder: (context, snapshot) {
             return ListView.separated(
                 itemCount: snapshot.data.length,
+                padding: EdgeInsets.all(16.0),
                 itemBuilder: (context, index) {
-                  return ListTile(
-                    trailing: Icon(
-                      Icons.edit,
-                      color: Colors.black,
+                  return Container(
+                    padding: EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(color: Colors.grey, width: 1),
+                        borderRadius: BorderRadius.circular(15)
                     ),
-                    // title: Text(
-                    //   formatDate(DateTime.parse(snapshot.data[index].date), [MM, ' ', d, ', ', yyyy]),
-                    //   style: TextStyle(fontWeight: FontWeight.bold),
-                    // ),
-                    title: RichText(
-                      text: TextSpan(text: snapshot.data[index].entry,
-                          style: TextStyle(fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                          children: [
-                            TextSpan(
-                              text: ": ",
-                            ),
-                            TextSpan(
-                              text: formatDate(
-                                  DateTime.parse(snapshot.data[index].date),
-                                  [MM, ' ', d, ', ', yyyy]),
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                          ]),
+                    child: ListTile(
+                      trailing: Icon(
+                        Icons.edit,
+                        color: Colors.black,
+                      ),
+                      // title: Text(
+                      //   formatDate(DateTime.parse(snapshot.data[index].date), [MM, ' ', d, ', ', yyyy]),
+                      //   style: TextStyle(fontWeight: FontWeight.bold),
+                      // ),
+                      title: RichText(
+                        text: TextSpan(text: snapshot.data[index].entry,
+                            style: TextStyle(fontWeight: FontWeight.bold,
+                            color: Colors.black),
+                            children: [
+                              TextSpan(
+                                text: ": ",
+                              ),
+                              TextSpan(
+                                text: formatDate(
+                                    DateTime.parse(snapshot.data[index].date),
+                                    [MM, ' ', d, ', ', yyyy]),
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ]),
+                      ),
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => EntryScreen(entry: snapshot.data[index])));
+                      },
                     ),
-                    onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => EntryScreen(entry: snapshot.data[index])));
-                    },
                   );
                 }, separatorBuilder: (BuildContext context, int index) {
-                  return Divider(height: 1, thickness: 2, color: Colors.black,);
+                  return Divider(height: 20, thickness: 1, color: Colors.orangeAccent,);
             },);
           }),
       floatingActionButton: FloatingActionButton(

@@ -20,6 +20,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       appBar: AppBar(
         title: Text("Profile"),
         centerTitle: true,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.blue,
       ),
       backgroundColor: Colors.orangeAccent,

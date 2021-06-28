@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/Help/AboutLudis.dart';
+import 'package:flutter_firebase_login/Screens/Help/ContactSupport.dart';
 
 class HelpScreen extends StatefulWidget {
   static String routeName = "/settings";
@@ -41,6 +43,7 @@ class _HelpScreenState extends State<HelpScreen> {
                         title: Text("About Ludis", style: TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => AboutLudis()));
                           //open about Ludis
                         },
                       ),
@@ -57,6 +60,7 @@ class _HelpScreenState extends State<HelpScreen> {
                         title: Text("Contact Support", style: TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => ContactSupport()));
                           //open Contact Support
                         },
                       ),

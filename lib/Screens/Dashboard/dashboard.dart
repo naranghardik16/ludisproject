@@ -37,6 +37,7 @@ class _DashboardState extends State<Dashboard> {
         appBar: AppBar(
           backgroundColor: Colors.blue,
           centerTitle: true,
+          automaticallyImplyLeading: false,
           // leading: GestureDetector(
           //   child: Icon(Icons.arrow_back),
           //   onTap: () {

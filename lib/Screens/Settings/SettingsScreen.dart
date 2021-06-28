@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/widgets/custom_alert_dialog.dart';
 
 class SettingsScreen extends StatefulWidget {
   static String routeName = "/settings";
@@ -8,6 +10,77 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  void showAlertDialog(BuildContext context) {
+    final mq = MediaQuery.of(context);
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          TextEditingController _emailControllerField =
+          TextEditingController();
+          return CustomAlertDialog(
+            content: Container(
+              width: MediaQuery.of(context).size.width / 1.2,
+              height: MediaQuery.of(context).size.height / 4.0,
+              color: Colors.white,
+              child: Column(
+                children: <Widget>[
+                  Text("Insert Reset Email:"),
+                  TextField(
+                    controller: _emailControllerField,
+                    decoration: InputDecoration(
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.black,
+                        ),
+                      ),
+                      hintText: "something@example.com",
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                      ),
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Material(
+                      elevation: 5.0,
+                      borderRadius: BorderRadius.circular(25.0),
+                      color: Colors.red,
+                      // color: Color(0xff8c52ff),
+                      child: MaterialButton(
+                        minWidth: mq.size.width / 2,
+                        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+                        child: Text(
+                          "Send Reset Email",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        onPressed: () async {
+                          try {
+                            FirebaseAuth.instance.sendPasswordResetEmail(
+                                email: _emailControllerField.text);
+                            Navigator.of(context).pop();
+                          } catch (e) {
+                            print(e);
+                            // TODO: Add snackbar reporting error
+                          }
+                        },
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,6 +153,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         title: Text("Change Password", style: TextStyle(fontWeight: FontWeight.bold),),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
+                          showAlertDialog(context);
                           //open change password
                         },
                       ),
