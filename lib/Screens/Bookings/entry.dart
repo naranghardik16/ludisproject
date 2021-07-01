@@ -189,7 +189,7 @@ class _EntryScreenState extends State<EntryScreen> {
               mode: Mode.MENU,
               showSelectedItem: true,
               items: ['Auditorium', 'Badminton Court', 'Basketball Court', 'Music Room', 'Reading Room', 'Table Tennis', 'Lawn Tennis', 'TV Room', 'Student Lounge'],
-              selectedItem: 'Badminton',
+              selectedItem: 'Auditorium',
               onChanged: (String value) => entryProvider.changeEntry = value,
               searchBoxController: entryController,
               hint: "Enter facility",

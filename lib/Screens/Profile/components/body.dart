@@ -28,7 +28,7 @@ class Body extends StatelessWidget {
             // },
           ),
           ProfileMenu(
-            text: "Entry",
+            text: "Notifications",
             icon: "assets/images/bell.png",
             press: () {
               // Navigator.push(

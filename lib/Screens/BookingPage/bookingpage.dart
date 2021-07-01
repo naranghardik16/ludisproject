@@ -28,7 +28,7 @@ class BookingPageState extends State<BookingPage> {
   late String selectedTime;
 
   BookingPageState() {
-    selectedFacility = 'Auditorium';
+    selectedFacility = 'Select A Facility';
     selectedDate = 'Select A Date';
     validSearch = false;
     renderTimeGrid = false;
@@ -166,7 +166,7 @@ class BookingPageState extends State<BookingPage> {
         appBar: AppBar(
           title: Text("Booking Page"),
           backgroundColor: Colors.blue,
-          // automaticallyImplyLeading: false,
+          automaticallyImplyLeading: false,
           centerTitle: true,
         ),
         backgroundColor: Colors.orangeAccent,
