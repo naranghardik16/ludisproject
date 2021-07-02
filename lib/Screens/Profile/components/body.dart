@@ -10,6 +10,60 @@ import 'profile_menu.dart';
 import 'profile_pic.dart';
 import 'package:flutter_firebase_login/theme/routes.dart';
 
+Future<void> _showMyDialog(BuildContext context) async {
+  return showDialog<void>(
+    context: context,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Log out?'),
+        content: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Text('Are you sure you want to log out?'),
+              // Text('We hate to see you leave...'),
+            ],
+          ),
+        ),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+            child: TextButton(
+              child: Text('Log out'),
+              style: TextButton.styleFrom(
+                primary: Colors.white,
+                backgroundColor: Colors.teal,
+                side: BorderSide(color: Colors.black)
+              ),
+              onPressed: () async {
+                print('Confirmed');
+                await FirebaseAuth.instance.signOut();
+                Navigator.push(context, new MaterialPageRoute(builder: (context) => OpeningView()));
+                // Navigator.of(context).pop();
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+            // padding: const EdgeInsets.all(40.0),
+            child: TextButton(
+              child: Text('Cancel'),
+              style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.teal,
+                  side: BorderSide(color: Colors.black)
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -56,11 +110,14 @@ class Body extends StatelessWidget {
             },
           ),
           ProfileMenu(
-            text: "Log Out",
+            text: "Log out",
             icon: "assets/images/power-button-off.png",
-            press: () async {
-              await FirebaseAuth.instance.signOut();
-              Navigator.push(context, new MaterialPageRoute(builder: (context) => OpeningView()));
+            press: () {
+              _showMyDialog(context);
+
+            // press: () async {
+            //   await FirebaseAuth.instance.signOut();
+            //   Navigator.push(context, new MaterialPageRoute(builder: (context) => OpeningView()));
               // Navigator.pushReplacementNamed(context, AppRoutes.authLogin);
             },
           ),

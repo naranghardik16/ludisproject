@@ -106,7 +106,7 @@ class OpeningViewState extends State<OpeningView> {
         );
       else
         return Text(
-          "Welcome!",
+          "Welcome to Ludis!",
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,

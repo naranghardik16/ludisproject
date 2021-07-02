@@ -17,8 +17,20 @@ class _RegisterViewState extends State<Register> {
   TextEditingController _usernameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
-  TextEditingController _repasswordController = TextEditingController();
+  TextEditingController _rePasswordController = TextEditingController();
   TextEditingController _nusnetIdController = TextEditingController();
+
+  // This function is triggered when the user press the "Sign Up" button
+  void _trySubmitForm() {
+    final isValid = _formKey.currentState.validate();
+    if (isValid) {
+      print('Everything looks good!');
+      print(_emailController);
+      print(_usernameController);
+      print(_passwordController);
+      print(_rePasswordController);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +53,7 @@ class _RegisterViewState extends State<Register> {
             color: Colors.white,
           ),
         ),
-        hintText: "John Doe",
+        // hintText: "Hardik Narang",
         labelText: "Username",
         labelStyle: TextStyle(
           color: Colors.white,
@@ -50,6 +62,16 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (value) {
+        if (value.trim().isEmpty) {
+          return 'This field is required';
+        }
+        if (value.trim().length < 4) {
+          return 'Username must be at least 4 characters in length';
+        }
+        // Return null if the entered username is valid
+        return null;
+      },
     );
 
     final emailField = TextFormField(
@@ -74,6 +96,17 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (value) {
+        if (value.trim().isEmpty) {
+          return 'Please enter your email address';
+        }
+        // Check if the entered email has the right format
+        if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+          return 'Please enter a valid email address';
+        }
+        // Return null if the entered email is valid
+        return null;
+      },
     );
 
     final passwordField = TextFormField(
@@ -98,11 +131,21 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (value) {
+        if (value.trim().isEmpty) {
+          return 'This field is required';
+        }
+        if (value.trim().length < 8) {
+          return 'Password must be at least 8 characters in length';
+        }
+        // Return null if the entered password is valid
+        return null;
+      },
     );
 
     final repasswordField = TextFormField(
       obscureText: true,
-      controller: _repasswordController,
+      controller: _rePasswordController,
       style: TextStyle(
         color: Colors.white,
       ),
@@ -122,6 +165,16 @@ class _RegisterViewState extends State<Register> {
           color: Colors.white,
         ),
       ),
+      validator: (value) {
+        if(value.isEmpty){
+          return 'This field is required';
+        }
+
+        if (value != _passwordController.text) {
+          return 'Confirmation password does not match the entered password';
+        }
+        return null;
+      },
     );
     final nusnetIdField = TextFormField(
       controller: _nusnetIdController,
@@ -177,27 +230,52 @@ class _RegisterViewState extends State<Register> {
           ),
         ),
         onPressed: () async {
-          try {
-            await Firebase.initializeApp();
-            UserCredential user =
-            await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              email: _emailController.text,
-              password: _passwordController.text,
-            );
-            User updateUser = FirebaseAuth.instance.currentUser;
-            // updateUser.updateProfile(displayName: _usernameController.text);
-            userSetup(_usernameController.text, _nusnetIdController.text);
-            // Navigator.of(context).pushNamed(AppRoutes.home);
-            Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'weak-password') {
-              print('The password provided is too weak.');
-            } else if (e.code == 'email-already-in-use') {
-              print('The account already exists for that email.');
+          if(_formKey.currentState.validate()) {
+            try {
+              await Firebase.initializeApp();
+              UserCredential user =
+              await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text,
+              );
+              User updateUser = FirebaseAuth.instance.currentUser;
+              // updateUser.updateDisplayName(_usernameController.text);
+              userSetup(_usernameController.text, _nusnetIdController.text);
+              // Navigator.of(context).pushNamed(AppRoutes.home);
+              Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
+            } on FirebaseAuthException catch (e) {
+              if (e.code == 'weak-password') {
+                print('The password provided is too weak.');
+              } else if (e.code == 'email-already-in-use') {
+                print('The account already exists for that email.');
+              }
+            } catch (e) {
+              print(e.toString());
             }
-          } catch (e) {
-            print(e.toString());
+
           }
+          // _trySubmitForm();
+          // try {
+          //   await Firebase.initializeApp();
+          //   UserCredential user =
+          //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          //     email: _emailController.text,
+          //     password: _passwordController.text,
+          //   );
+          //   User updateUser = FirebaseAuth.instance.currentUser;
+          //   // updateUser.updateDisplayName(_usernameController.text);
+          //   userSetup(_usernameController.text, _nusnetIdController.text);
+          //   // Navigator.of(context).pushNamed(AppRoutes.home);
+          //   Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
+          // } on FirebaseAuthException catch (e) {
+          //   if (e.code == 'weak-password') {
+          //     print('The password provided is too weak.');
+          //   } else if (e.code == 'email-already-in-use') {
+          //     print('The account already exists for that email.');
+          //   }
+          // } catch (e) {
+          //   print(e.toString());
+          // }
         },
       ),
     );
