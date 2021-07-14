@@ -116,7 +116,8 @@ class OpeningViewState extends State<OpeningView> {
 
     return Scaffold(
       // backgroundColor: Color(0xff8c52ff),
-      backgroundColor: Colors.orangeAccent,
+      // backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(36),
         child: Column(

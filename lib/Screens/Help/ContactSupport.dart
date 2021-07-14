@@ -12,9 +12,9 @@ class _ContactSupportState extends State<ContactSupport> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
         centerTitle: true,
         title: Text(
           "Contact Support",

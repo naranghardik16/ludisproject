@@ -21,9 +21,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: Text("Profile"),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
       ),
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       body: Body(),
     );
   }

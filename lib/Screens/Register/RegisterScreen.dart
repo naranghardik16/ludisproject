@@ -1,11 +1,15 @@
 // @dart=2.9
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 import 'package:flutter_firebase_login/Screens/Login2/LoginScreen.dart';
+import 'package:flutter_firebase_login/model/user_model.dart';
 import 'package:flutter_firebase_login/net/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/state/state_management.dart';
 import 'package:flutter_firebase_login/theme/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -215,8 +219,8 @@ class _RegisterViewState extends State<Register> {
 
     final registerButton = Material(
       elevation: 5.0,
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(22.0) ),
+      color: Color.fromRGBO(237, 148, 99, 1),
       child: MaterialButton(
         minWidth: mq.size.width / 1.2,
         padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
@@ -225,7 +229,7 @@ class _RegisterViewState extends State<Register> {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20.0,
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -239,8 +243,12 @@ class _RegisterViewState extends State<Register> {
                 password: _passwordController.text,
               );
               User updateUser = FirebaseAuth.instance.currentUser;
+              // CollectionReference userRef = FirebaseFirestore.instance.collection('Users');
+              // DocumentSnapshot snapshot = await userRef.doc(updateUser.uid).get();
+              // var userModel = UserModel.fromJson(snapshot.data());
+              // context.read<userInformation>().state = userModel;
               // updateUser.updateDisplayName(_usernameController.text);
-              userSetup(_usernameController.text, _nusnetIdController.text);
+              userSetup(context, _usernameController.text, _nusnetIdController.text, _emailController.text);
               // Navigator.of(context).pushNamed(AppRoutes.home);
               Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
             } on FirebaseAuthException catch (e) {
@@ -317,7 +325,8 @@ class _RegisterViewState extends State<Register> {
 
     return Scaffold(
       // backgroundColor: Color(0xff8c52ff),
-      backgroundColor: Colors.orangeAccent,
+      // backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       body: Form(
         key: _formKey,
         child: SingleChildScrollView(

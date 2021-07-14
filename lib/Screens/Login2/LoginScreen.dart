@@ -185,6 +185,8 @@ class _LoginViewState extends State<Login> {
       borderRadius: BorderRadius.circular(25.0),
       color: Colors.white,
       child: MaterialButton(
+        shape: RoundedRectangleBorder(borderRadius:BorderRadius.circular(22.0) ),
+        color: Color.fromRGBO(237, 148, 99, 1),
         minWidth: mq.size.width / 1.2,
         padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
         child: Text(
@@ -192,7 +194,7 @@ class _LoginViewState extends State<Login> {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 20.0,
-            color: Colors.black,
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -258,7 +260,8 @@ class _LoginViewState extends State<Login> {
 
     return Scaffold(
       // backgroundColor: Color(0xff8c52ff),
-      backgroundColor: Colors.orangeAccent,
+      // backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
 
       body: Form(
         key: _formKey,

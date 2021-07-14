@@ -12,9 +12,9 @@ class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
         centerTitle: true,
           automaticallyImplyLeading: false,
           title: Text(
@@ -178,7 +178,7 @@ class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
                         child: FloatingActionButton(
                       child: Icon(Icons.add),
                       splashColor: Colors.red,
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
                       foregroundColor: Colors.white,
                       onPressed: () {
                         Navigator.push(context,
@@ -190,7 +190,7 @@ class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
                     Container(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                            backgroundColor: Colors.teal,
+                            backgroundColor: Color.fromRGBO(237, 148, 99, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         // color: Colors.teal,

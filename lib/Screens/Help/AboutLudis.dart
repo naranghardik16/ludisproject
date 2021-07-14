@@ -12,9 +12,9 @@ class _AboutLudisState extends State<AboutLudis> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
         centerTitle: true,
         title: Text(
           "About Ludis",
@@ -35,7 +35,7 @@ class _AboutLudisState extends State<AboutLudis> {
               "students are often unable to use these facilities due to the delay in processing the booking requests. "
               "Furthermore, time conflict resolution is also another pressing concern as time conflicts cannot be "
               "indicated till the processing of the request. Such problems can be easily solved by an application to book common facilities.",
-          style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20, color: Colors.white),
           overflow: TextOverflow.ellipsis,
           maxLines: 25,),
         ),

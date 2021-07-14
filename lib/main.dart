@@ -7,6 +7,7 @@ import 'package:flutter_firebase_login/Screens/Login/loginpage.dart';
 import 'package:flutter_firebase_login/Screens/Opening/OpeningScreen.dart';
 import 'package:flutter_firebase_login/providers/booking_provider.dart';
 import 'package:flutter_firebase_login/providers/entry_provider.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:provider/provider.dart';
 
 import 'Screens/Landing/landingScreen.dart';
@@ -14,23 +15,28 @@ import 'Screens/Landing/landingScreen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(ProviderScope(child: MyApp()));
+  // runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (context) => BookingProvider()),
-          ChangeNotifierProvider(create: (context) => EntryProvider())
-        ],
-        child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: OpeningView(),
-        // home: LandingScreen(),
-    ),);
+    // return MultiProvider(
+    //     providers: [
+    //       ChangeNotifierProvider(create: (context) => BookingProvider()),
+    //       ChangeNotifierProvider(create: (context) => EntryProvider())
+    //     ],
+    //     child: MaterialApp(
+    //     debugShowCheckedModeBanner: false,
+    //     home: OpeningView(),
+    //     // home: LandingScreen(),
+    // ),);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OpeningView(),
+    );
   }
 }
 

@@ -48,7 +48,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     child: Material(
                       elevation: 5.0,
                       borderRadius: BorderRadius.circular(25.0),
-                      color: Colors.red,
+                      color: Color.fromRGBO(237, 148, 99, 1),
                       // color: Color(0xff8c52ff),
                       child: MaterialButton(
                         minWidth: mq.size.width / 2,
@@ -84,9 +84,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
         centerTitle: true,
         title: Text(
           "Settings",
@@ -203,7 +203,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: Column(
                     children: <Widget>[
                       SwitchListTile(
-                        activeColor: Colors.blue,
+                        activeColor: Color.fromRGBO(237, 148, 99, 1),
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: true,
                         title: Text("Receive Notifications", style: TextStyle(fontWeight: FontWeight.bold),),
@@ -211,7 +211,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       _buildDivider(),
                       SwitchListTile(
-                        activeColor: Colors.blue,
+                        activeColor: Color.fromRGBO(237, 148, 99, 1),
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: false,
                         title: Text("Receive Newsletter", style: TextStyle(fontWeight: FontWeight.bold),),
@@ -219,7 +219,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       _buildDivider(),
                       SwitchListTile(
-                        activeColor: Colors.blue,
+                        activeColor: Color.fromRGBO(237, 148, 99, 1),
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: true,
                         title: Text("Receive Offers", style: TextStyle(fontWeight: FontWeight.bold),),
@@ -227,7 +227,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       ),
                       _buildDivider(),
                       SwitchListTile(
-                        activeColor: Colors.blue,
+                        activeColor: Color.fromRGBO(237, 148, 99, 1),
                         contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: false,
                         title: Text("Receive App Updates", style: TextStyle(fontWeight: FontWeight.bold),),

@@ -33,9 +33,11 @@ class _DashboardState extends State<Dashboard> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.orangeAccent,
+        // backgroundColor: Colors.orangeAccent,
+        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          // backgroundColor: Colors.blue,
+          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
           centerTitle: true,
           automaticallyImplyLeading: false,
           // leading: GestureDetector(
@@ -178,7 +180,7 @@ Widget itemCard(String title, String imgPath, bool isFavorite, String address,
                       child: FloatingActionButton(
                         child: Icon(Icons.edit),
                         splashColor: Colors.yellow,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
                         foregroundColor: Colors.white,
                         onPressed: () {},
                         mini: true,

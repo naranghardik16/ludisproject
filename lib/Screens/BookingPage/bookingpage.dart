@@ -165,11 +165,14 @@ class BookingPageState extends State<BookingPage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("Booking Page"),
-          backgroundColor: Colors.blue,
+          // backgroundColor: Colors.blue,
+          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+
           automaticallyImplyLeading: false,
           centerTitle: true,
         ),
-        backgroundColor: Colors.orangeAccent,
+        // backgroundColor: Colors.orangeAccent,
+        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
         body: ListView(
           children: [
             Padding(
@@ -253,7 +256,7 @@ class BookingPageState extends State<BookingPage> {
                         children: [
                           if (!renderTimeGrid)
                             MaterialButton(
-                              color: validSearch ? Colors.green : Colors.red,
+                              color: validSearch ? Color.fromRGBO(237, 148, 99, 1) : Colors.redAccent,
                               onPressed: () =>
                               validSearch
                                   ? searchTime(context)
@@ -367,7 +370,7 @@ class BookingPageState extends State<BookingPage> {
                       Padding(padding: EdgeInsets.only(top: 10.0, bottom: 10.0)),
                       if (renderTimeGrid)
                         MaterialButton(
-                          color: rowTimeIndex1 != -1 && colTimeIndex1 != -1 ? Colors.green : Colors.red,
+                          color: rowTimeIndex1 != -1 && colTimeIndex1 != -1 ? Colors.redAccent : Color.fromRGBO(237, 148, 99, 1),
                           onPressed: () =>
                           rowTimeIndex1 != -1 && colTimeIndex1 != -1
                               ? Navigator.push(context, MaterialPageRoute(builder: (context) => ReviewBookingsScreen()))

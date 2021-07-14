@@ -157,9 +157,10 @@ class _EntryScreenState extends State<EntryScreen> {
     final entryProvider = Provider.of<EntryProvider>(context);
     // String dropDownValue = "Badminton";
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
-      appBar: AppBar(title: Text(formatDate(entryProvider.date, [MM, ' ', d, ', ', yyyy]))
-          ,actions: [
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+      appBar: AppBar(title: Text(formatDate(entryProvider.date, [MM, ' ', d, ', ', yyyy])),
+          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+          actions: [
             IconButton(
               icon: Icon(Icons.calendar_today),
               onPressed: (){
@@ -217,7 +218,7 @@ class _EntryScreenState extends State<EntryScreen> {
             //     onChanged: (String value) => entryProvider.changeEntry = value,
             // ),
             RaisedButton(
-              color: Theme.of(context).accentColor,
+              color: Color.fromRGBO(237, 148, 99, 1),
               child: Text('Save',style: TextStyle(color: Colors.white)),
               onPressed: () {
                 entryProvider.saveEntry();
@@ -225,7 +226,7 @@ class _EntryScreenState extends State<EntryScreen> {
               },
             ),
             (widget.entry != null) ? RaisedButton(
-              color: Colors.red,
+              color: Colors.redAccent,
               child: Text('Delete',style: TextStyle(color: Colors.white)),
               onPressed: () {
                 entryProvider.removeEntry(widget.entry.entryId);

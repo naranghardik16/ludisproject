@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_firebase_login/Screens/MyAccount/MyAccountScreen.dart';
 import 'package:flutter_firebase_login/Screens/Opening/OpeningScreen.dart';
 import 'package:flutter_firebase_login/Screens/Settings/SettingsScreen.dart';
 import 'package:flutter_firebase_login/Screens/Dashboard/dashboard2.dart';
@@ -32,7 +33,7 @@ Future<void> _showMyDialog(BuildContext context) async {
               child: Text('Log out'),
               style: TextButton.styleFrom(
                 primary: Colors.white,
-                backgroundColor: Colors.teal,
+                backgroundColor: Color.fromRGBO(237, 148, 99, 1),
                 side: BorderSide(color: Colors.black)
               ),
               onPressed: () async {
@@ -50,7 +51,7 @@ Future<void> _showMyDialog(BuildContext context) async {
               child: Text('Cancel'),
               style: TextButton.styleFrom(
                   primary: Colors.white,
-                  backgroundColor: Colors.teal,
+                  backgroundColor: Color.fromRGBO(237, 148, 99, 1),
                   side: BorderSide(color: Colors.black)
               ),
               onPressed: () {
@@ -71,12 +72,16 @@ class Body extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          ProfilePic(),
-          SizedBox(height: 20),
+          // ProfilePic(),
+          // SizedBox(height: 20),
           ProfileMenu(
             text: "My Account",
             icon: "assets/images/user.png",
-            press: () {},
+            press: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => MyAccountScreen())
+              );
+            },
             // press: () => {
             //   Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard())),
             // },

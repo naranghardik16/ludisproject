@@ -12,8 +12,9 @@ class ReviewBookingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final entryProvider = Provider.of<EntryProvider>(context);
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
       appBar: AppBar(
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
         title: Text("Review Bookings"),
         centerTitle: true,
         automaticallyImplyLeading: false,
@@ -68,6 +69,7 @@ class ReviewBookingsScreen extends StatelessWidget {
             },);
           }),
       floatingActionButton: FloatingActionButton(
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
         child: Icon(Icons.add),
         onPressed: () {
           Navigator.push(
