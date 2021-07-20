@@ -44,7 +44,7 @@ Future<List<int>> getTimeSlotOfCourt(CourtModel courtModel, String date) async {
   List<int> result = new List<int>.empty(growable: true);
   // var ref = CourtModel().refer;
   // var bookingRef = ref.collection(date);
-  var bookingRef = CourtModel().reference.collection(date);
+  var bookingRef = courtModel.reference.collection(date);
   QuerySnapshot snapshot = await bookingRef.get();
   snapshot.docs.forEach((element) {
     result.add(int.parse(element.id));

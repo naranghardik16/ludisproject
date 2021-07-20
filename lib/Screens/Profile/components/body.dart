@@ -32,8 +32,9 @@ Future<void> _showMyDialog(BuildContext context) async {
             child: TextButton(
               child: Text('Log out'),
               style: TextButton.styleFrom(
-                primary: Colors.white,
-                backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+                primary: Colors.black,
+                backgroundColor: Color.fromRGBO(
+                    254, 241, 170, 1),
                 side: BorderSide(color: Colors.black)
               ),
               onPressed: () async {
@@ -50,8 +51,9 @@ Future<void> _showMyDialog(BuildContext context) async {
             child: TextButton(
               child: Text('Cancel'),
               style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+                  primary: Colors.black,
+                  backgroundColor: Color.fromRGBO(
+                      254, 241, 170, 1),
                   side: BorderSide(color: Colors.black)
               ),
               onPressed: () {

@@ -19,6 +19,4 @@ class CourtModel{
     return data;
   }
 
-
-
 }

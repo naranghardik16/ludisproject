@@ -15,12 +15,12 @@ class MyAccountScreen extends ConsumerWidget {
     return SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: Color.fromRGBO(237, 148, 99, 1),
-            title: Text("My Account"),
+            backgroundColor: Color.fromRGBO(223, 228, 254, 1),
+            title: Text("My Account", style: TextStyle(color: Colors.black),),
             centerTitle: true,
           ),
           resizeToAvoidBottomInset: true,
-          backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+          backgroundColor: Color.fromRGBO(202, 246, 251, 1),
           body: SingleChildScrollView(
             child: Column(
               children: [
@@ -43,7 +43,7 @@ class MyAccountScreen extends ConsumerWidget {
                                 "Email: ${userModel.email}",
                                 style: TextStyle(
                                   fontSize: 20,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                 ),
                                 textAlign: TextAlign.center,
                               ),
@@ -53,7 +53,7 @@ class MyAccountScreen extends ConsumerWidget {
                               child: Text(
                                 "Username: ${userModel.userName}",
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
+                                    fontSize: 20, color: Colors.black),
                               ),
                             ),
                             Padding(
@@ -61,7 +61,7 @@ class MyAccountScreen extends ConsumerWidget {
                               child: Text(
                                 "NUSNET ID: ${userModel.nusnetId}",
                                 style: TextStyle(
-                                    fontSize: 20, color: Colors.white),
+                                    fontSize: 20, color: Colors.black),
                               ),
                             ),
                             Padding(
@@ -72,8 +72,9 @@ class MyAccountScreen extends ConsumerWidget {
                                       context, MaterialPageRoute(builder: (context) => EditProfileScreen())
                                   );
                                 },
-                                child: Text("Edit Profile"),
-                                style: ElevatedButton.styleFrom(primary: Color.fromRGBO(237, 148, 99, 1)),
+                                child: Text("Edit Profile", style: TextStyle(color: Colors.black),),
+                                style: ElevatedButton.styleFrom(primary: Color.fromRGBO(
+                                    254, 241, 170, 1)),
 
                               ),
                             )

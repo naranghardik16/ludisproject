@@ -1,4 +1,5 @@
 // @dart=2.9
+import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_firebase_login/cloud_firestore/all_facility_ref.dart';
+import 'package:flutter_firebase_login/model/booking_model.dart';
 import 'package:flutter_firebase_login/model/court_model.dart';
 import 'package:flutter_firebase_login/model/facility_model.dart';
 import 'package:flutter_firebase_login/model/hall_model.dart';
@@ -31,22 +33,27 @@ class FacilityBookingScreen extends ConsumerWidget {
         child: Scaffold(
             key: scaffoldKey,
             appBar: AppBar(
-              backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+              title: Text("Booking", style: TextStyle(color: Colors.black),),
+              centerTitle: true,
+              backgroundColor: Color.fromRGBO(223, 228, 254, 1),
               automaticallyImplyLeading: false,
             ),
             resizeToAvoidBottomInset: true,
-            backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+            backgroundColor: Color.fromRGBO(255, 255, 255, 1),
+            // backgroundColor: Color.fromRGBO(254, 241, 170, 1),
+
             body: Column(
               children: [
                 //Step
                 NumberStepper(
+                  lineColor: Colors.black,
                   activeStep: step - 1,
                   direction: Axis.horizontal,
                   enableNextPreviousButtons: false,
                   numbers: [1, 2, 3, 4, 5],
-                  stepColor: Colors.black,
-                  activeStepColor: Colors.grey,
-                  numberStyle: TextStyle(color: Colors.white),
+                  stepColor: Color.fromRGBO(254, 241, 170, 1),
+                  activeStepColor: Color.fromRGBO(202, 246, 251, 1),
+                  numberStyle: TextStyle(color: Colors.black),
                 ),
                 //Screen
                 Expanded(
@@ -78,8 +85,8 @@ class FacilityBookingScreen extends ConsumerWidget {
                               ? null
                               : () => context.read(currentStep).state--,
                           style: ElevatedButton.styleFrom(
-                              primary: Color.fromRGBO(237, 148, 99, 1)),
-                          child: Text('Previous'),
+                              primary: Color.fromRGBO(0, 214, 236, 1)),
+                          child: Text('Previous', style: TextStyle(color: Colors.black),),
                         )),
                         SizedBox(
                           width: 30,
@@ -109,8 +116,8 @@ class FacilityBookingScreen extends ConsumerWidget {
                                     ? null
                                     : () => context.read(currentStep).state++,
                             style: ElevatedButton.styleFrom(
-                                primary: Color.fromRGBO(237, 148, 99, 1)),
-                            child: Text('Next'),
+                                primary: Color.fromRGBO(0, 214, 236, 1)),
+                            child: Text('Next', style: TextStyle(color: Colors.black),),
                           ),
                         )
                       ],
@@ -143,6 +150,7 @@ class FacilityBookingScreen extends ConsumerWidget {
                       onTap: () =>
                           context.read(selectedHall).state = halls[index],
                       child: Card(
+                        color: Color.fromRGBO(253, 204, 213, 1),
                         child: ListTile(
                           leading: Icon(
                             Icons.home_work,
@@ -185,6 +193,7 @@ class FacilityBookingScreen extends ConsumerWidget {
                       onTap: () => context.read(selectedFacility).state =
                           facilities[index],
                       child: Card(
+                        color: Color.fromRGBO(253, 204, 213, 1),
                         child: ListTile(
                           leading: Icon(
                             Icons.sports_baseball,
@@ -233,6 +242,7 @@ class FacilityBookingScreen extends ConsumerWidget {
                       onTap: () =>
                           context.read(selectedCourt).state = courts[index],
                       child: Card(
+                        color: Color.fromRGBO(253, 204, 213, 1),
                         child: ListTile(
                           leading: Icon(
                             Icons.sports_tennis_outlined,
@@ -260,7 +270,7 @@ class FacilityBookingScreen extends ConsumerWidget {
     return Column(
       children: [
         Container(
-          color: Colors.deepOrangeAccent,
+          color: Color.fromRGBO(224, 250, 252, 1),
           // color: Color(0xFF008577),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -273,18 +283,18 @@ class FacilityBookingScreen extends ConsumerWidget {
                     children: [
                       Text(
                         '${DateFormat.MMMM().format(now)}',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                       Text(
                         '${now.day}',
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 22,
-                            color: Colors.white),
+                            color: Colors.black),
                       ),
                       Text(
                         '${DateFormat.EEEE().format(now)}',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ],
                   ),
@@ -294,7 +304,7 @@ class FacilityBookingScreen extends ConsumerWidget {
                 onTap: () {
                   DatePicker.showDatePicker(context,
                       showTitleActions: true,
-                      minTime: now,
+                      minTime: DateTime.now(),
                       maxTime: now.add(Duration(days: 7)),
                       onConfirm: (date) =>
                           context.read(selectedDate).state = date);
@@ -305,98 +315,87 @@ class FacilityBookingScreen extends ConsumerWidget {
                       alignment: Alignment.centerRight,
                       child: Icon(
                         Icons.calendar_today,
-                        color: Colors.white,
+                        color: Colors.black,
                       )),
                 ),
               )
             ],
           ),
         ),
-        // Expanded(child: GridView.builder(
-        //     itemCount: TIME_SLOT.length,
-        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //         crossAxisCount: 3),
-        //     itemBuilder: (context, index) => GestureDetector(
-        //       onTap: () {
-        //         context.read(selectedTime).state =
-        //             TIME_SLOT.elementAt(index);
-        //         context.read(selectedTimeSlot).state = index;
-        //       },
-        //       child: Card(
-        //         color: context.read(selectedTime).state ==
-        //             TIME_SLOT.elementAt(index)
-        //             ? Colors.white54
-        //             : Colors.white,
-        //         child: GridTile(
-        //           child: Center(
-        //             child: Column(
-        //               crossAxisAlignment: CrossAxisAlignment.center,
-        //               mainAxisAlignment: MainAxisAlignment.center,
-        //               children: [
-        //                 Text('${TIME_SLOT.elementAt(index)}'),
-        //                 Text('Available')
-        //               ],
-        //             ),
-        //           ),
-        //           header: context.read(selectedTime).state ==
-        //               TIME_SLOT.elementAt(index)
-        //               ? Icon(Icons.check)
-        //               : null,
-        //         ),
-        //       ),
-        //     ))),
         Expanded(
           child: FutureBuilder(
-            future: getTimeSlotOfCourt(
-              courtModel,
-              DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state),
-            ),
-            builder: (context, AsyncSnapshot snapshot) {
-              if (!snapshot.hasData) {
+            future: getMaxAvailableTimeSlot(context.read(selectedDate).state),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting)
                 return Center(
                   child: CircularProgressIndicator(),
                 );
-              } else {
-                var listTimeSlot = snapshot.data as List<int>;
-                return GridView.builder(
-                    itemCount: TIME_SLOT.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
-                    itemBuilder: (context, index) => GestureDetector(
-                          onTap: listTimeSlot.contains(index)
-                              ? null
-                              : () {
-                                  context.read(selectedTime).state =
-                                      TIME_SLOT.elementAt(index);
-                                  context.read(selectedTimeSlot).state = index;
-                                },
-                          child: Card(
-                            color: listTimeSlot.contains(index)
-                                ? Colors.white10
-                                : context.read(selectedTime).state ==
-                                        TIME_SLOT.elementAt(index)
-                                    ? Colors.white54
-                                    : Colors.white,
-                            child: GridTile(
-                              child: Center(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('${TIME_SLOT.elementAt(index)}'),
-                                    Text(listTimeSlot.contains(index)
-                                        ? 'Full'
-                                        : 'Available')
-                                  ],
+              else {
+                var maxTimeSlot = snapshot.data as int;
+                return FutureBuilder(
+                  future: getTimeSlotOfCourt(
+                    courtModel,
+                    DateFormat('dd_MM_yyyy')
+                        .format(context.read(selectedDate).state),
+                  ),
+                  builder: (context, AsyncSnapshot snapshot) {
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    } else {
+                      var listTimeSlot = snapshot.data as List<int>;
+                      return GridView.builder(
+                          itemCount: TIME_SLOT.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3),
+                          itemBuilder: (context, index) => GestureDetector(
+                                onTap: maxTimeSlot > index ||
+                                        listTimeSlot.contains(index)
+                                    ? null
+                                    : () {
+                                        context.read(selectedTime).state =
+                                            TIME_SLOT.elementAt(index);
+                                        context.read(selectedTimeSlot).state =
+                                            index;
+                                      },
+                                child: Card(
+                                  color: listTimeSlot.contains(index)
+                                      ? Color.fromRGBO(254, 241, 170, 1)
+                                      : maxTimeSlot > index
+                                          ? Color.fromRGBO(167, 123, 180, 1)
+                                          : context.read(selectedTime).state ==
+                                                  TIME_SLOT.elementAt(index)
+                                              ? Color.fromRGBO(202, 246, 251, 1)
+                                              : Color.fromRGBO(253, 204, 213, 1),
+                                  child: GridTile(
+                                    child: Center(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text('${TIME_SLOT.elementAt(index)}'),
+                                          Text(listTimeSlot.contains(index)
+                                              ? 'Full'
+                                              : maxTimeSlot > index
+                                                  ? 'Not Available'
+                                                  : 'Available')
+                                        ],
+                                      ),
+                                    ),
+                                    header: context.read(selectedTime).state ==
+                                            TIME_SLOT.elementAt(index)
+                                        ? Icon(Icons.check)
+                                        : null,
+                                  ),
                                 ),
-                              ),
-                              header: context.read(selectedTime).state ==
-                                      TIME_SLOT.elementAt(index)
-                                  ? Icon(Icons.check)
-                                  : null,
-                            ),
-                          ),
-                        ));
+                              ));
+                    }
+                  },
+                );
               }
             },
           ),
@@ -424,36 +423,41 @@ class FacilityBookingScreen extends ConsumerWidget {
       context.read(selectedDate).state.day,
       hour,
       minutes,
-    ).millisecond;
+    ).millisecondsSinceEpoch;
+    //Creating Booking Model
+    var bookingModel = BookingModel(
+        courtId: context.read(selectedCourt).state.docId,
+        courtName: context.read(selectedCourt).state.name,
+        hallBook: context.read(selectedHall).state.name,
+        email: FirebaseAuth.instance.currentUser.email,
+        uid: FirebaseAuth.instance.currentUser.uid,
+        nusnetId: context.read(userInformation).state.nusnetId,
+        done: false,
+        facilityAddress: context.read(selectedFacility).state.address,
+        facilityId: context.read(selectedFacility).state.docId,
+        facilityName: context.read(selectedFacility).state.name,
+        slot: context.read(selectedTimeSlot).state,
+        timeStamp: timeStamp,
+        time:
+            '${context.read(selectedTime).state} - ${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}');
 
-    var submitData = {
-      'courtId': context.read(selectedCourt).state.docId,
-      'courtName': context.read(selectedCourt).state.name,
-      'hallBook': context.read(selectedHall).state.name,
-      'email': FirebaseAuth.instance.currentUser.email,
-      'uid': FirebaseAuth.instance.currentUser.uid,
-      'nusnetId': context.read(userInformation).state.nusnetId,
-      'done': false,
-      'facilityAddress': context.read(selectedFacility).state.address,
-      'facilityId': context.read(selectedFacility).state.docId,
-      'facilityName': context.read(selectedFacility).state.name,
-      'slot': context.read(selectedTimeSlot).state,
-      'timeStamp': timeStamp,
-      'time':
-          '${context.read(selectedTime).state} - ${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}'
-      // 'customerName': context.read(userInformation).state.docId,
-    };
-    // Submit on Firestore
-    context
+    var batch = FirebaseFirestore.instance.batch();
+
+    DocumentReference courtBooking = context
         .read(selectedCourt)
         .state
         .reference
         .collection(
-            '${DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state)}')
-        .doc(context.read(selectedTimeSlot).state.toString())
-        .set(submitData)
-        .then((value) {
-      // Navigator.of(context).pop();
+        '${DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state)}')
+        .doc(context.read(selectedTimeSlot).state.toString());
+
+    DocumentReference userBooking = FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser.uid).collection('Booking_${FirebaseAuth.instance.currentUser.uid}')
+        .doc();
+
+    // Set for batch
+    batch.set(courtBooking, bookingModel.toJson());
+    batch.set(userBooking, bookingModel.toJson());
+    batch.commit().then((value) {
       ScaffoldMessenger.of(scaffoldKey.currentContext).showSnackBar(SnackBar(
         content: Text('Booking Successful'),
       ));
@@ -465,7 +469,34 @@ class FacilityBookingScreen extends ConsumerWidget {
       context.read(currentStep).state = 1;
       context.read(selectedTime).state = '';
       context.read(selectedTimeSlot).state = -1;
+
+      //Create Event
+
+      final event = Event(
+          title: 'Facility Booking',
+          description: 'Facility Booking ${context.read(selectedTime).state} - '
+              '${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}',
+          location: '${context.read(selectedFacility).state.address}',
+          startDate: DateTime(
+              context.read(selectedDate).state.year,
+              context.read(selectedDate).state.month,
+              context.read(selectedDate).state.day,
+              hour,
+              minutes),
+          endDate: DateTime(
+              context.read(selectedDate).state.year,
+              context.read(selectedDate).state.month,
+              context.read(selectedDate).state.day,
+              hour,
+              minutes + 60),
+          iosParams: IOSParams(reminder: Duration(minutes: 60)),
+          androidParams: AndroidParams(emailInvites: []));
+
+      Add2Calendar.addEvent2Cal(event).then((value) {});
+
     });
+
+      // Navigator.of(context).pop();
   }
 
   displayConfirm(BuildContext context) {
@@ -476,14 +507,14 @@ class FacilityBookingScreen extends ConsumerWidget {
         Expanded(
           child: Padding(
             padding: const EdgeInsets.all(24),
-            child: Image.asset('assets/images/abc.png'),
+            child: Image.asset('assets/images/ludisLogo.png'),
           ),
         ),
         Expanded(
           child: Container(
             width: MediaQuery.of(context).size.width,
             child: Card(
-              color: Color.fromRGBO(95, 106, 228, 1),
+              color: Color.fromRGBO(254, 241, 170, 1),
               child: Padding(
                 padding: const EdgeInsets.all(16),
                 child: Column(
@@ -544,10 +575,10 @@ class FacilityBookingScreen extends ConsumerWidget {
                     ),
                     ElevatedButton(
                       onPressed: () => confirmBooking(context),
-                      child: Text('Confirm'),
+                      child: Text('Confirm', style: TextStyle(color: Colors.black),),
                       style: ButtonStyle(
                           backgroundColor:
-                              MaterialStateProperty.all(Colors.black26)),
+                              MaterialStateProperty.all(Color.fromRGBO(253, 204, 213, 1))),
                     )
                   ],
                 ),
