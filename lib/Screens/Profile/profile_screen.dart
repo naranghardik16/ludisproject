@@ -18,11 +18,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: Text("Profile", style: TextStyle(color: Colors.black),),
         centerTitle: true,
-        backgroundColor: Colors.blue,
+        automaticallyImplyLeading: false,
+        backgroundColor: Color.fromRGBO(223, 228, 254, 1),
       ),
-      backgroundColor: Colors.orangeAccent,
+      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
       body: Body(),
     );
   }

@@ -33,10 +33,13 @@ class _DashboardState extends State<Dashboard> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        backgroundColor: Colors.orangeAccent,
+        // backgroundColor: Colors.orangeAccent,
+        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          // backgroundColor: Colors.blue,
+          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
           centerTitle: true,
+          automaticallyImplyLeading: false,
           // leading: GestureDetector(
           //   child: Icon(Icons.arrow_back),
           //   onTap: () {
@@ -66,10 +69,12 @@ class _DashboardState extends State<Dashboard> {
   Widget current() {
     return ListView(
       children: <Widget>[
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
+        // itemCard('Auditorium', 'assets/images/auditorium.jpeg', false,
+        //     "27 Prince George's Park", '8AM-9AM'),
+        // itemCard('Badminton', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '2PM-3PM'),
+        // itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
       ],
     );
   }
@@ -77,16 +82,25 @@ class _DashboardState extends State<Dashboard> {
   Widget cancelled() {
     return ListView(
       children: <Widget>[
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
-            "27 Prince George's Park", '8AM-10PM'),
+        itemCard('Auditorium', 'assets/images/auditorium.jpeg', false,
+            "27 Prince George's Park", '8AM-9AM'),
+        // itemCard('Table Tennis', 'assets/images/table_tennis.jpeg', false,
+        //     "27 Prince George's Park", '9AM-10AM'),
+        // itemCard('Music Room', 'assets/images/music_room.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
+
+        // itemCard('Auditorium', 'assets/images/auditorium.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
+        // itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
+        // itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
+        // itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
+        // itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
+        // itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        //     "27 Prince George's Park", '8AM-10PM'),
       ],
     );
   }
@@ -166,7 +180,7 @@ Widget itemCard(String title, String imgPath, bool isFavorite, String address,
                       child: FloatingActionButton(
                         child: Icon(Icons.edit),
                         splashColor: Colors.yellow,
-                        backgroundColor: Colors.blue,
+                        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
                         foregroundColor: Colors.white,
                         onPressed: () {},
                         mini: true,

@@ -13,7 +13,7 @@ class Bookings {
       date: json['date'],
       // time: json['time'],
       booking: json['booking'],
-      bookingId: json['entryId']
+      bookingId: json['bookingId']
     );
   }
 

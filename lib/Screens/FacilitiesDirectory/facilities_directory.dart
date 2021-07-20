@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/BookingPage/bookingpage.dart';
 import 'package:flutter_firebase_login/src/Screens/BookingScreen.dart';
 import 'package:flutter_firebase_login/src/Screens/review.dart';
 
@@ -10,61 +11,58 @@ class FacilitiesDirectory extends StatefulWidget {
 class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: Scaffold(
-            backgroundColor: Colors.orangeAccent,
-            appBar: AppBar(
-              backgroundColor: Colors.blue,
-              centerTitle: true,
-              bottom: new TabBar(
-                indicatorColor: Colors.orangeAccent,
-                tabs: <Widget>[
-                  new Tab(text: "PGP Residences"),
-                  new Tab(text: "PGP House"),
-                ],
-              ),
-              title: Text(
-                'Facilities Directory',
-                style: TextStyle(
-                    fontFamily: 'poppins-regular', fontWeight: FontWeight.w500),
-              ),
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+      appBar: AppBar(
+        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+        centerTitle: true,
+          automaticallyImplyLeading: false,
+          title: Text(
+            'Facilities Directory',
+            style: TextStyle(
+              fontFamily: 'poppins-regular', fontWeight: FontWeight.w500
             ),
-            body: TabBarView(
-              children: <Widget>[pgpr(), pgph()],
-            )));
-    // return Scaffold(
-    //   backgroundColor: Colors.orangeAccent,
-    //   appBar: AppBar(
-    //     backgroundColor: Colors.blue,
-    //     centerTitle: true,
-    //     title: Text('Facilities directory',style: TextStyle(fontFamily: 'poppins-regular',fontWeight: FontWeight.w500),),
-    //
-    //
-    //   ),
-    //   body: Row(
-    //     children: <Widget>[
-    //       current()
-    //     ],
-    //   )
-    //
-    // );
+          ),
 
-    // return Container(
-    //   child: Center(
-    //     child: Text("Facilities Directory"),
-    //   ),
-    // );
+      ),
+      body: pgpr(),
+    );
   }
+  // Widget build(BuildContext context) {
+  //   return DefaultTabController(
+  //       length: 2,
+  //       child: Scaffold(
+  //           backgroundColor: Colors.orangeAccent,
+  //           appBar: AppBar(
+  //             backgroundColor: Colors.blue,
+  //             centerTitle: true,
+  //             automaticallyImplyLeading: false,
+  //             bottom: new TabBar(
+  //               indicatorColor: Colors.orangeAccent,
+  //               tabs: <Widget>[
+  //                 new Tab(text: "PGP Residences"),
+  //                 new Tab(text: "PGP House"),
+  //               ],
+  //             ),
+  //             title: Text(
+  //               'Facilities Directory',
+  //               style: TextStyle(
+  //                   fontFamily: 'poppins-regular', fontWeight: FontWeight.w500),
+  //             ),
+  //           ),
+  //           body: TabBarView(
+  //             children: <Widget>[pgpr(), pgph()],
+  //           )));
+  // }
 
   Widget pgpr() {
     return ListView(
       children: <Widget>[
         itemCard('Auditorium', 'assets/images/auditorium.jpeg', false,
             "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Badminton court', 'assets/images/badminton_court.jpeg', false,
+        itemCard('Badminton', 'assets/images/badminton_court.jpeg', false,
             "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Basketball court', 'assets/images/basketball_court.jpeg',
+        itemCard('Basketball', 'assets/images/basketball_court.jpeg',
             false, "27 Prince George's Park", '8AM-10PM'),
         itemCard('Music Room', 'assets/images/music_room.jpeg', false,
             "27 Prince George's Park", '8AM-10PM'),
@@ -72,8 +70,13 @@ class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
             "27 Prince George's Park", '8AM-10PM'),
         itemCard('Table Tennis', 'assets/images/table_tennis.jpeg', false,
             "27 Prince George's Park", '8AM-10PM'),
-        itemCard('Lawn Tennis', 'assets/images/tennis_court.jpeg', false,
+        itemCard('Tennis', 'assets/images/tennis_court.jpeg', false,
             "27 Prince George's Park", '8AM-10PM'),
+        itemCard('TV Room', 'assets/images/tv_room.jpeg', false,
+            "27 Prince George's Park", '8AM-10PM'),
+        itemCard('Student Lounge', 'assets/images/student_lounge.jpeg', false,
+            "27 Prince George's Park", '8AM-10PM'),
+
       ],
     );
   }
@@ -172,24 +175,22 @@ class _FacilitiesDirectoryState extends State<FacilitiesDirectory> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Container(
-                      child: FloatingActionButton(
-                        child: Icon(Icons.add),
-                        splashColor: Colors.red,
-                        backgroundColor: Colors.blue,
-                        foregroundColor: Colors.white,
-                        onPressed: () {
-                          Navigator.push(
-                              context, MaterialPageRoute(builder: (context) => Review())
-                          );
-                        },
-                        mini: true,
-                      )
-                    ),
+                        child: FloatingActionButton(
+                      child: Icon(Icons.add),
+                      splashColor: Colors.red,
+                      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+                      foregroundColor: Colors.white,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => BookingPage()));
+                      },
+                      mini: true,
+                    )),
                     SizedBox(width: 35.0),
                     Container(
                       child: TextButton(
                         style: TextButton.styleFrom(
-                            backgroundColor: Colors.teal,
+                            backgroundColor: Color.fromRGBO(237, 148, 99, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(30.0))),
                         // color: Colors.teal,

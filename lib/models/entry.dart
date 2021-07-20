@@ -5,6 +5,7 @@ class Entry {
   final String entryId;
   final String date;
   final String entry;
+  // final String timeSlot;
 
   Entry({ this.date, this.entry, this.entryId});
 
@@ -12,7 +13,8 @@ class Entry {
     return Entry(
       date: json['date'],
       entry: json['entry'],
-      entryId: json['entryId']
+      entryId: json['entryId'],
+      // timeSlot: json['timeSlot']
     );
   }
 
@@ -21,6 +23,7 @@ class Entry {
       'date': date,
       'entry': entry,
       'entryId': entryId,
+      // 'timeSlot': timeSlot
     };
   }
 }

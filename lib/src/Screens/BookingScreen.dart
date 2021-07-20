@@ -85,7 +85,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 bookingProvider.removeBooking(widget.booking.bookingId);
                 Navigator.of(context).pop();
               },
-            ): Container(), 
+            ): Container(),
           ],
         )
       )
@@ -96,7 +96,7 @@ class _BookingScreenState extends State<BookingScreen> {
     final DateTime picked = await showDatePicker(
       context: context, initialDate: bookingProvider.date,
        firstDate: DateTime(2021), lastDate: DateTime(2022));
-    
+
     if (picked != null) return picked;
   }
 }

@@ -14,6 +14,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginViewState extends State<Login> {
+  bool hidePassword = true;
   final _formKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -27,11 +28,11 @@ class _LoginViewState extends State<Login> {
           context: context,
           builder: (BuildContext context) {
             TextEditingController _emailControllerField =
-            TextEditingController();
+                TextEditingController();
             return CustomAlertDialog(
               content: Container(
                 width: MediaQuery.of(context).size.width / 1.2,
-                height: MediaQuery.of(context).size.height / 4.5,
+                height: MediaQuery.of(context).size.height / 4.0,
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
@@ -59,7 +60,8 @@ class _LoginViewState extends State<Login> {
                       child: Material(
                         elevation: 5.0,
                         borderRadius: BorderRadius.circular(25.0),
-                        color: Color(0xff8c52ff),
+                        color: Colors.red,
+                        // color: Color(0xff8c52ff),
                         child: MaterialButton(
                           minWidth: mq.size.width / 2,
                           padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
@@ -79,7 +81,7 @@ class _LoginViewState extends State<Login> {
                               Navigator.of(context).pop();
                             } catch (e) {
                               print(e);
-                              // TODO: Add snackbar reporting error
+                              // Add snackbar reporting error
                             }
                           },
                         ),
@@ -101,22 +103,25 @@ class _LoginViewState extends State<Login> {
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(
-        color: Colors.white,
+        color: Colors.black,
       ),
-      cursorColor: Colors.white,
+      cursorColor: Colors.black,
       decoration: InputDecoration(
         focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
-        hintText: "something@example.com",
+        hintText: "example@domain.com",
         labelText: "Email",
+        prefixIcon: Icon(Icons.mail),
+        filled: true,
+        fillColor: Color.fromRGBO(223, 248, 250, 1),
         labelStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
         ),
       ),
     );
@@ -124,25 +129,38 @@ class _LoginViewState extends State<Login> {
     final passwordField = Column(
       children: <Widget>[
         TextFormField(
-          obscureText: true,
+          obscureText: hidePassword,
           controller: _passwordController,
           style: TextStyle(
-            color: Colors.white,
+            color: Colors.black,
           ),
-          cursorColor: Colors.white,
+          cursorColor: Colors.black,
           decoration: InputDecoration(
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             hintText: "password",
+            filled: true,
+            prefixIcon: Icon(Icons.vpn_key),
+            suffixIcon: IconButton(
+              icon:
+                  Icon(hidePassword ? Icons.visibility_off : Icons.visibility),
+              onPressed: () {
+                setState(() {
+                  hidePassword = !hidePassword;
+                });
+              },
+            ),
+            fillColor: Color.fromRGBO(223, 248, 250, 1),
+            // Make changes to color here
             labelText: "Password",
             labelStyle: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
             hintStyle: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         ),
@@ -158,7 +176,7 @@ class _LoginViewState extends State<Login> {
                   style: Theme.of(context)
                       .textTheme
                       .caption
-                      .copyWith(color: Colors.white),
+                      .copyWith(color: Colors.black),
                 ),
                 onPressed: () {
                   showAlertDialog(context);
@@ -174,51 +192,76 @@ class _LoginViewState extends State<Login> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           emailField,
+          SizedBox(
+            height: 10,
+          ),
           passwordField,
         ],
       ),
     );
 
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
-      child: MaterialButton(
-        minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
-          "Login",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
+    final loginButton = Container(
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(25.0),
+            gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                stops: [
+                  0.2,
+                  0.4,
+                  0.6,
+                  0.8
+                ],
+                colors: [
+                  Color.fromRGBO(251, 236, 159, 1),
+                  Color.fromRGBO(251, 229, 119, 1),
+                  Color.fromRGBO(245, 214, 82, 1),
+                  Color.fromRGBO(235, 196, 48, 1),
+                ])),
+        child: Material(
+          elevation: 5.0,
+          borderRadius: BorderRadius.circular(25.0),
+          color: Colors.transparent,
+          shadowColor: Colors.transparent,
+          child: MaterialButton(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(25.0)),
+            minWidth: mq.size.width / 1.2,
+            padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
+            child: Text(
+              "Login",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onPressed: () async {
+              try {
+                await Firebase.initializeApp();
+                UserCredential user =
+                    await FirebaseAuth.instance.signInWithEmailAndPassword(
+                  email: _emailController.text,
+                  password: _passwordController.text,
+                );
+                // SharedPreferences prefs = await SharedPreferences.getInstance();
+                // prefs.setString('displayName', user.user.displayName);
+                // Navigator.of(context).pushNamed(AppRoutes.home);
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => Homepage()));
+              } on FirebaseAuthException catch (e) {
+                if (e.code == 'weak-password') {
+                  print('The password provided is too weak.');
+                } else if (e.code == 'email-already-in-use') {
+                  print('The account already exists for that email.');
+                }
+              } catch (e) {
+                print(e.toString());
+              }
+            },
           ),
-        ),
-        onPressed: () async {
-          try {
-            await Firebase.initializeApp();
-            UserCredential user =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: _emailController.text,
-              password: _passwordController.text,
-            );
-            // SharedPreferences prefs = await SharedPreferences.getInstance();
-            // prefs.setString('displayName', user.user.displayName);
-            // Navigator.of(context).pushNamed(AppRoutes.home);
-            Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'weak-password') {
-              print('The password provided is too weak.');
-            } else if (e.code == 'email-already-in-use') {
-              print('The account already exists for that email.');
-            }
-          } catch (e) {
-            print(e.toString());
-          }
-        },
-      ),
-    );
+        ));
 
     final bottom = Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -234,20 +277,21 @@ class _LoginViewState extends State<Login> {
             Text(
               "Not a member?",
               style: Theme.of(context).textTheme.subtitle1.copyWith(
-                color: Colors.white,
-              ),
+                    color: Colors.black,
+                  ),
             ),
             MaterialButton(
               onPressed: () {
                 // Navigator.of(context).pushNamed(AppRoutes.authRegister);
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => Register()));
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => Register()));
               },
               child: Text(
                 "Sign Up",
                 style: Theme.of(context).textTheme.subtitle1.copyWith(
-                  color: Colors.white,
-                  decoration: TextDecoration.underline,
-                ),
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                    ),
               ),
             ),
           ],
@@ -255,26 +299,45 @@ class _LoginViewState extends State<Login> {
       ],
     );
 
-    return Scaffold(
-      // backgroundColor: Color(0xff8c52ff),
-      backgroundColor: Colors.orangeAccent,
-
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          padding: EdgeInsets.all(36),
-          child: Container(
-            height: mq.size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                logo,
-                fields,
-                Padding(
-                  padding: EdgeInsets.only(bottom: 150),
-                  child: bottom,
-                ),
-              ],
+    return Container(
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              stops: [
+            0.15,
+            0.30,
+            0.40,
+            0.7
+          ],
+              colors: [
+            // Color.fromRGBO(100, 189, 231, 1),
+            Color.fromRGBO(49, 124, 230, 1),
+            Color.fromRGBO(105, 209, 233, 1),
+            Color.fromRGBO(109, 216, 234, 1),
+            Colors.white,
+          ])),
+      child: Scaffold(
+        // backgroundColor: Color(0xff8c52ff),
+        // backgroundColor: Colors.orangeAccent,
+        backgroundColor: Colors.transparent,
+        body: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            padding: EdgeInsets.all(20),
+            child: Container(
+              height: mq.size.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  logo,
+                  fields,
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 30),
+                    child: bottom,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

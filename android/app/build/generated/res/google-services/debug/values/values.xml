@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">929257854145-815910p4uq7melcth84lrhvlos9uhouf.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">929257854145</string>
+    <string name="google_api_key" translatable="false">AIzaSyCUjmiGkUN8PeTcxONHMbFH_4GSDjM2N-s</string>
+    <string name="google_app_id" translatable="false">1:929257854145:android:b8e0a2b729eb75d24ff040</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCUjmiGkUN8PeTcxONHMbFH_4GSDjM2N-s</string>
+    <string name="google_storage_bucket" translatable="false">ludis-242c9.appspot.com</string>
+    <string name="project_id" translatable="false">ludis-242c9</string>
+</resources>

@@ -112,6 +112,7 @@
 import 'package:date_format/date_format.dart';
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 import 'package:flutter_firebase_login/models/entry.dart';
 import 'package:flutter_firebase_login/providers/entry_provider.dart';
 import 'package:provider/provider.dart';
@@ -156,9 +157,10 @@ class _EntryScreenState extends State<EntryScreen> {
     final entryProvider = Provider.of<EntryProvider>(context);
     // String dropDownValue = "Badminton";
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
-      appBar: AppBar(title: Text(formatDate(entryProvider.date, [MM, ' ', d, ', ', yyyy]))
-          ,actions: [
+      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+      appBar: AppBar(title: Text(formatDate(entryProvider.date, [MM, ' ', d, ', ', yyyy])),
+          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+          actions: [
             IconButton(
               icon: Icon(Icons.calendar_today),
               onPressed: (){
@@ -187,8 +189,8 @@ class _EntryScreenState extends State<EntryScreen> {
               popupBackgroundColor: Colors.white,
               mode: Mode.MENU,
               showSelectedItem: true,
-              items: ['Badminton', 'Tennis', 'Table Tennis', 'Music Room'],
-              selectedItem: 'Badminton',
+              items: ['Auditorium', 'Badminton Court', 'Basketball Court', 'Music Room', 'Reading Room', 'Table Tennis', 'Lawn Tennis', 'TV Room', 'Student Lounge'],
+              selectedItem: 'Auditorium',
               onChanged: (String value) => entryProvider.changeEntry = value,
               searchBoxController: entryController,
               hint: "Enter facility",
@@ -216,7 +218,7 @@ class _EntryScreenState extends State<EntryScreen> {
             //     onChanged: (String value) => entryProvider.changeEntry = value,
             // ),
             RaisedButton(
-              color: Theme.of(context).accentColor,
+              color: Color.fromRGBO(237, 148, 99, 1),
               child: Text('Save',style: TextStyle(color: Colors.white)),
               onPressed: () {
                 entryProvider.saveEntry();
@@ -224,11 +226,18 @@ class _EntryScreenState extends State<EntryScreen> {
               },
             ),
             (widget.entry != null) ? RaisedButton(
-              color: Colors.red,
+              color: Colors.redAccent,
               child: Text('Delete',style: TextStyle(color: Colors.white)),
               onPressed: () {
                 entryProvider.removeEntry(widget.entry.entryId);
-                Navigator.of(context).pop();
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) => Homepage(),
+                  ),
+                      (route) => false,
+                );
+                // Navigator.of(context).pop();
               },
             ): Container(),
           ],
@@ -240,7 +249,7 @@ class _EntryScreenState extends State<EntryScreen> {
   Future<DateTime> _pickDate(BuildContext context, EntryProvider entryProvider) async {
     final DateTime picked = await showDatePicker(
         context: context, initialDate: entryProvider.date, firstDate: DateTime.now(),
-        lastDate: DateTime(2050));
+        lastDate: DateTime.now().add(const Duration(days: 7)));
 
     if (picked != null) return picked;
   }
