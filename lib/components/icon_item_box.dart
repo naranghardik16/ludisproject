@@ -1,13 +1,8 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-
-// import '../../../constants.dart';
 typedef VoidCallback = void Function();
 
-class ProfileMenu extends StatelessWidget {
-  const ProfileMenu({
+class IconItemBox extends StatelessWidget {
+  const IconItemBox({
     Key? key,
     required this.text,
     required this.icon,
@@ -24,7 +19,6 @@ class ProfileMenu extends StatelessWidget {
       child: TextButton(
         style: TextButton.styleFrom(
           padding: EdgeInsets.all(20),
-          // primary: Color(0xFFF5F6F9),
           primary: Colors.black,
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
@@ -37,7 +31,6 @@ class ProfileMenu extends StatelessWidget {
           children: [
             Image.asset(
               icon,
-              // color: kPrimaryColor,
               width: 22,
             ),
             SizedBox(width: 20),

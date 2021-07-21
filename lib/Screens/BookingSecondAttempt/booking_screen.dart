@@ -312,39 +312,6 @@ class FacilityBookingScreen extends ConsumerWidget {
             ],
           ),
         ),
-        // Expanded(child: GridView.builder(
-        //     itemCount: TIME_SLOT.length,
-        //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        //         crossAxisCount: 3),
-        //     itemBuilder: (context, index) => GestureDetector(
-        //       onTap: () {
-        //         context.read(selectedTime).state =
-        //             TIME_SLOT.elementAt(index);
-        //         context.read(selectedTimeSlot).state = index;
-        //       },
-        //       child: Card(
-        //         color: context.read(selectedTime).state ==
-        //             TIME_SLOT.elementAt(index)
-        //             ? Colors.white54
-        //             : Colors.white,
-        //         child: GridTile(
-        //           child: Center(
-        //             child: Column(
-        //               crossAxisAlignment: CrossAxisAlignment.center,
-        //               mainAxisAlignment: MainAxisAlignment.center,
-        //               children: [
-        //                 Text('${TIME_SLOT.elementAt(index)}'),
-        //                 Text('Available')
-        //               ],
-        //             ),
-        //           ),
-        //           header: context.read(selectedTime).state ==
-        //               TIME_SLOT.elementAt(index)
-        //               ? Icon(Icons.check)
-        //               : null,
-        //         ),
-        //       ),
-        //     ))),
         Expanded(
           child: FutureBuilder(
             future: getTimeSlotOfCourt(
@@ -360,8 +327,7 @@ class FacilityBookingScreen extends ConsumerWidget {
                 var listTimeSlot = snapshot.data as List<int>;
                 return GridView.builder(
                     itemCount: TIME_SLOT.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 3),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
                     itemBuilder: (context, index) => GestureDetector(
                           onTap: listTimeSlot.contains(index)
                               ? null
