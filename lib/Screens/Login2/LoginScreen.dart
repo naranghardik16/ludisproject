@@ -18,6 +18,15 @@ class _LoginViewState extends State<Login> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
+  void _trySubmitForm() {
+    final isValid = _formKey.currentState.validate();
+    if (isValid) {
+      print('Everything looks good!');
+      print(_emailController);
+      print(_passwordController);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
@@ -120,6 +129,17 @@ class _LoginViewState extends State<Login> {
           color: Colors.white,
         ),
       ),
+      validator: (value) {
+        if (value.trim().isEmpty) {
+          return 'Please enter your email address';
+        }
+        // Check if the entered email has the right format
+        if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+          return 'Please enter a valid email address';
+        }
+        // Return null if the entered email is valid
+        return null;
+      },
     );
 
     final passwordField = Column(
@@ -146,6 +166,16 @@ class _LoginViewState extends State<Login> {
               color: Colors.white,
             ),
           ),
+          validator: (value) {
+            if (value.trim().isEmpty) {
+              return 'This field is required';
+            }
+            if (value.trim().length < 8) {
+              return 'Password must be at least 8 characters in length';
+            }
+            // Return null if the entered password is valid
+            return null;
+          },
         ),
         Padding(
           padding: EdgeInsets.all(2.0),
@@ -199,25 +229,28 @@ class _LoginViewState extends State<Login> {
           ),
         ),
         onPressed: () async {
-          try {
-            await Firebase.initializeApp();
-            UserCredential user =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: _emailController.text,
-              password: _passwordController.text,
-            );
-            // SharedPreferences prefs = await SharedPreferences.getInstance();
-            // prefs.setString('displayName', user.user.displayName);
-            // Navigator.of(context).pushNamed(AppRoutes.home);
-            Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
-          } on FirebaseAuthException catch (e) {
-            if (e.code == 'weak-password') {
-              print('The password provided is too weak.');
-            } else if (e.code == 'email-already-in-use') {
-              print('The account already exists for that email.');
+          if(_formKey.currentState.validate()) {
+            try {
+              await Firebase.initializeApp();
+              UserCredential user =
+              await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text,
+              );
+              // SharedPreferences prefs = await SharedPreferences.getInstance();
+              // prefs.setString('displayName', user.user.displayName);
+              // Navigator.of(context).pushNamed(AppRoutes.home);
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Homepage()));
+            } on FirebaseAuthException catch (e) {
+              if (e.code == 'weak-password') {
+                print('The password provided is too weak.');
+              } else if (e.code == 'email-already-in-use') {
+                print('The account already exists for that email.');
+              }
+            } catch (e) {
+              print(e.toString());
             }
-          } catch (e) {
-            print(e.toString());
           }
         },
       ),

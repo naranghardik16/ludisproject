@@ -180,6 +180,7 @@ class _RegisterViewState extends State<Register> {
         return null;
       },
     );
+
     final nusnetIdField = TextFormField(
       controller: _nusnetIdController,
       style: TextStyle(
