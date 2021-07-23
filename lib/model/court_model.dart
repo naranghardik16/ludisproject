@@ -1,7 +1,7 @@
 // @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class CourtModel{
+class CourtModel {
   String userName, name, docId;
   DocumentReference reference;
 
@@ -18,5 +18,4 @@ class CourtModel{
     data['name'] = this.name;
     return data;
   }
-
 }

@@ -6,7 +6,7 @@ import 'package:flutter_firebase_login/model/user_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final userLogged = StateProvider((ref) => FirebaseAuth.instance.currentUser);
-final userToken  = StateProvider((ref) => '');
+final userToken = StateProvider((ref) => '');
 final forceReload = StateProvider((ref) => false);
 
 final userInformation = StateProvider((ref) => UserModel());
@@ -22,5 +22,3 @@ final selectedTime = StateProvider((ref) => '');
 
 //Delete Booking
 final deleteFlagRefresh = StateProvider((ref) => false);
-
-

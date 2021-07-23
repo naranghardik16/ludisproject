@@ -1,7 +1,7 @@
 // @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class FacilityModel{
+class FacilityModel {
   String name;
   String address;
   String docId;
@@ -20,5 +20,4 @@ class FacilityModel{
     data['name'] = this.name;
     return data;
   }
-
 }

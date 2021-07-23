@@ -1,12 +1,10 @@
 // @dart=2.9
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 import 'package:flutter_firebase_login/Screens/Register/RegisterScreen.dart';
-import 'package:flutter_firebase_login/theme/routes.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_login/widgets/custom_alert_dialog.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override

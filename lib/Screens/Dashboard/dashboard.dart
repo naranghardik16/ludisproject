@@ -19,8 +19,6 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:flutter_firebase_login/models/tabs.dart';
 
 class Dashboard extends StatefulWidget {
   @override
@@ -178,12 +176,12 @@ Widget itemCard(String title, String imgPath, bool isFavorite, String address,
                 children: <Widget>[
                   Container(
                       child: FloatingActionButton(
-                        child: Icon(Icons.edit),
-                        splashColor: Colors.yellow,
-                        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
-                        foregroundColor: Colors.white,
-                        onPressed: () {},
-                        mini: true,
+                    child: Icon(Icons.edit),
+                    splashColor: Colors.yellow,
+                    backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+                    foregroundColor: Colors.white,
+                    onPressed: () {},
+                    mini: true,
                   )),
                   SizedBox(width: 35.0),
                   Container(

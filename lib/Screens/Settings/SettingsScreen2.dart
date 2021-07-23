@@ -40,15 +40,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
           leading: IconButton(
               onPressed: () {
-                Navigator.pop(
-                    context
-                );
+                Navigator.pop(context);
               },
               icon: Icon(
                 Icons.arrow_back,
                 color: Colors.white,
-              )
-          ),
+              )),
           actions: <Widget>[
             IconButton(
               icon: Icon(Icons.hearing),
@@ -86,7 +83,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         ),
                       ),
                       leading: CircleAvatar(
-                        backgroundImage: AssetImage("assets/images/profile_image.jpeg"),
+                        backgroundImage:
+                            AssetImage("assets/images/profile_image.jpeg"),
                       ),
                       trailing: Icon(
                         Icons.edit,
@@ -182,7 +180,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ],
               ),
             ),
-
           ],
         ),
       ),

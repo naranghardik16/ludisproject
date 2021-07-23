@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/Login2/LoginScreen.dart';
 import 'package:flutter_firebase_login/Screens/Register/RegisterScreen.dart';
-import 'package:flutter_firebase_login/theme/routes.dart';
-
 // import 'package:bleyl_dev/theme/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,19 +38,22 @@ class OpeningViewState extends State<OpeningView> {
 
     final loginButtonNew = Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
-        gradient: LinearGradient(
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-          stops: [0.2, 0.4, 0.6, 0.8],
-          colors: [
-            Color.fromRGBO(109, 216, 234, 1),
-            Color.fromRGBO(105, 209, 233, 1),
-            Color.fromRGBO(100, 189, 231, 1),
-            Color.fromRGBO(98, 168, 231, 1),
-          ]
-        )
-      ),
+          borderRadius: BorderRadius.circular(25.0),
+          gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              stops: [
+                0.2,
+                0.4,
+                0.6,
+                0.8
+              ],
+              colors: [
+                Color.fromRGBO(109, 216, 234, 1),
+                Color.fromRGBO(105, 209, 233, 1),
+                Color.fromRGBO(100, 189, 231, 1),
+                Color.fromRGBO(98, 168, 231, 1),
+              ])),
       child: Material(
         shadowColor: Colors.transparent,
         elevation: 5.0,
@@ -78,7 +79,6 @@ class OpeningViewState extends State<OpeningView> {
           },
         ),
       ),
-
     );
 
     final registerButtonNew = Container(
@@ -87,15 +87,18 @@ class OpeningViewState extends State<OpeningView> {
           gradient: LinearGradient(
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
-              stops: [0.2, 0.4, 0.6, 0.8],
+              stops: [
+                0.2,
+                0.4,
+                0.6,
+                0.8
+              ],
               colors: [
                 Color.fromRGBO(251, 236, 159, 1),
                 Color.fromRGBO(251, 229, 119, 1),
                 Color.fromRGBO(245, 214, 82, 1),
                 Color.fromRGBO(235, 196, 48, 1),
-              ]
-          )
-      ),
+              ])),
       child: Material(
         shadowColor: Colors.transparent,
         elevation: 5.0,
@@ -116,12 +119,11 @@ class OpeningViewState extends State<OpeningView> {
           ),
           onPressed: () {
             // Navigator.of(context).pushNamed(AppRoutes.authLogin);
-            Navigator.push(
-                context, new MaterialPageRoute(builder: (context) => Register()));
+            Navigator.push(context,
+                new MaterialPageRoute(builder: (context) => Register()));
           },
         ),
       ),
-
     );
 
     final loginButton = Material(
@@ -210,14 +212,19 @@ class OpeningViewState extends State<OpeningView> {
           gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              stops: [0.15, 0.30, 0.40, 0.7],
+              stops: [
+            0.15,
+            0.30,
+            0.40,
+            0.7
+          ],
               colors: [
-                // Color.fromRGBO(100, 189, 231, 1),
-                Color.fromRGBO(49, 124, 230, 1),
-                Color.fromRGBO(105, 209, 233, 1),
-                Color.fromRGBO(109, 216, 234, 1),
-                Colors.white,
-              ])),
+            // Color.fromRGBO(100, 189, 231, 1),
+            Color.fromRGBO(49, 124, 230, 1),
+            Color.fromRGBO(105, 209, 233, 1),
+            Color.fromRGBO(109, 216, 234, 1),
+            Colors.white,
+          ])),
       child: Scaffold(
         // backgroundColor: Color(0xff8c52ff),
         // backgroundColor: Colors.orangeAccent,

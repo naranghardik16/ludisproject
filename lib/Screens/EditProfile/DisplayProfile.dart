@@ -42,7 +42,8 @@ class _DisplayProfileState extends State<DisplayProfile> {
     }
   }
 
-  updateData(String userName, String email, String nusnetId, String userID) async {
+  updateData(
+      String userName, String email, String nusnetId, String userID) async {
     await updateUserList(userName, email, nusnetId, userID);
     fetchDatabaseList();
   }
@@ -58,8 +59,8 @@ class _DisplayProfileState extends State<DisplayProfile> {
         ),
         body: Center(
             child: FutureBuilder(
-                future: getUserProfiles(context,
-                    FirebaseAuth.instance.currentUser.uid),
+                future: getUserProfiles(
+                    context, FirebaseAuth.instance.currentUser.uid),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return Center(
@@ -70,9 +71,14 @@ class _DisplayProfileState extends State<DisplayProfile> {
                     return SingleChildScrollView(
                       child: Column(
                         children: <Widget>[
-                          ItemBox(text: "Email: ${userModel.email}", press: null),
-                          ItemBox(text: "Username: ${userModel.userName}", press: null),
-                          ItemBox(text: "NUSNET ID: ${userModel.nusnetId}", press: null),
+                          ItemBox(
+                              text: "Email: ${userModel.email}", press: null),
+                          ItemBox(
+                              text: "Username: ${userModel.userName}",
+                              press: null),
+                          ItemBox(
+                              text: "NUSNET ID: ${userModel.nusnetId}",
+                              press: null),
                           Padding(
                             padding: EdgeInsets.all(16.0),
                             child: ElevatedButton(
@@ -80,17 +86,15 @@ class _DisplayProfileState extends State<DisplayProfile> {
                                 openDialogueBox(context);
                               },
                               child: Text("Edit Profile"),
-                              style: ElevatedButton.styleFrom(primary: Color.fromRGBO(237, 148, 99, 1)),
+                              style: ElevatedButton.styleFrom(
+                                  primary: Color.fromRGBO(237, 148, 99, 1)),
                             ),
                           )
                         ],
                       ),
                     );
                   }
-                }
-            )
-        )
-    );
+                })));
   }
 
   openDialogueBox(BuildContext context) {
@@ -139,12 +143,12 @@ class _DisplayProfileState extends State<DisplayProfile> {
               )
             ],
           );
-        }
-    );
+        });
   }
 
   submitAction(BuildContext context) {
-    updateData(_userNameController.text, _emailController.text, _nusnetIdController.text, userID);
+    updateData(_userNameController.text, _emailController.text,
+        _nusnetIdController.text, userID);
     _userNameController.clear();
     _emailController.clear();
     _nusnetIdController.clear();

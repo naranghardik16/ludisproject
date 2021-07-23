@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 typedef VoidCallback = void Function();
 
 class ItemBox extends StatelessWidget {
@@ -23,13 +24,17 @@ class ItemBox extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
               side: BorderSide(color: Colors.black),
-            )
-        ),
+            )),
         onPressed: press,
         child: Row(
           children: [
             SizedBox(width: 20),
-            Expanded(child: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15), textAlign: TextAlign.center,)),
+            Expanded(
+                child: Text(
+              text,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+              textAlign: TextAlign.center,
+            )),
           ],
         ),
       ),

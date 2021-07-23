@@ -1,23 +1,21 @@
 // @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-class UserModel {
 
+class UserModel {
   // String userId;
   String userName;
   String email;
   String password;
   String nusnetId;
 
-  UserModel({ this.email, this.password, this.nusnetId, this.userName});
+  UserModel({this.email, this.password, this.nusnetId, this.userName});
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
         email: json['email'],
         password: json['password'],
         nusnetId: json['nusnetId'],
-        userName: json['userName']
-    );
+        userName: json['userName']);
   }
 
   factory UserModel.fromDocument(DocumentSnapshot doc) {
@@ -25,9 +23,9 @@ class UserModel {
         email: doc['email'],
         password: doc['password'],
         nusnetId: doc['nusnetId'],
-        userName: doc['userName']
-    );
+        userName: doc['userName']);
   }
+
   // UserModel.fromJson(Map<String, dynamic> json) {
   //   email: json['email'];
   //   password: json['password'];

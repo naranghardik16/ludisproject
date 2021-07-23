@@ -1,16 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
-// import 'package:flutter_firebase_login/Screens/Login_success/login_success_screen.dart';
-import 'package:flutter_firebase_login/Screens/Login/loginpage.dart';
 import 'package:flutter_firebase_login/Screens/Opening/OpeningScreen.dart';
-import 'package:flutter_firebase_login/providers/booking_provider.dart';
-import 'package:flutter_firebase_login/providers/entry_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:provider/provider.dart';
-
-import 'Screens/Landing/landingScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

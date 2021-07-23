@@ -1,11 +1,12 @@
 // @dart=2.9
-import 'package:flutter/material.dart';
-class timeslot {
 
+
+class timeslot {
   int startTime;
+
   // int endTime;
 
-  timeslot({ this.startTime});
+  timeslot({this.startTime});
 
   // timeslot(int startTime, int endTime) {
   //

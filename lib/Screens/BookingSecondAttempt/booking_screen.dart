@@ -1,5 +1,4 @@
 // @dart=2.9
-import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,7 +32,10 @@ class FacilityBookingScreen extends ConsumerWidget {
         child: Scaffold(
             key: scaffoldKey,
             appBar: AppBar(
-              title: Text("Booking", style: TextStyle(color: Colors.black),),
+              title: Text(
+                "Booking",
+                style: TextStyle(color: Colors.black),
+              ),
               centerTitle: true,
               backgroundColor: Color.fromRGBO(223, 228, 254, 1),
               automaticallyImplyLeading: false,
@@ -86,7 +88,10 @@ class FacilityBookingScreen extends ConsumerWidget {
                               : () => context.read(currentStep).state--,
                           style: ElevatedButton.styleFrom(
                               primary: Color.fromRGBO(0, 214, 236, 1)),
-                          child: Text('Previous', style: TextStyle(color: Colors.black),),
+                          child: Text(
+                            'Previous',
+                            style: TextStyle(color: Colors.black),
+                          ),
                         )),
                         SizedBox(
                           width: 30,
@@ -117,7 +122,10 @@ class FacilityBookingScreen extends ConsumerWidget {
                                     : () => context.read(currentStep).state++,
                             style: ElevatedButton.styleFrom(
                                 primary: Color.fromRGBO(0, 214, 236, 1)),
-                            child: Text('Next', style: TextStyle(color: Colors.black),),
+                            child: Text(
+                              'Next',
+                              style: TextStyle(color: Colors.black),
+                            ),
                           ),
                         )
                       ],
@@ -368,7 +376,8 @@ class FacilityBookingScreen extends ConsumerWidget {
                                           : context.read(selectedTime).state ==
                                                   TIME_SLOT.elementAt(index)
                                               ? Color.fromRGBO(202, 246, 251, 1)
-                                              : Color.fromRGBO(253, 204, 213, 1),
+                                              : Color.fromRGBO(
+                                                  253, 204, 213, 1),
                                   child: GridTile(
                                     child: Center(
                                       child: Column(
@@ -448,10 +457,13 @@ class FacilityBookingScreen extends ConsumerWidget {
         .state
         .reference
         .collection(
-        '${DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state)}')
+            '${DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state)}')
         .doc(context.read(selectedTimeSlot).state.toString());
 
-    DocumentReference userBooking = FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser.uid).collection('Booking_${FirebaseAuth.instance.currentUser.uid}')
+    DocumentReference userBooking = FirebaseFirestore.instance
+        .collection('Users')
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .collection('Booking_${FirebaseAuth.instance.currentUser.uid}')
         .doc();
 
     // Set for batch
@@ -472,31 +484,30 @@ class FacilityBookingScreen extends ConsumerWidget {
 
       //Create Event
 
-      final event = Event(
-          title: 'Facility Booking',
-          description: 'Facility Booking ${context.read(selectedTime).state} - '
-              '${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}',
-          location: '${context.read(selectedFacility).state.address}',
-          startDate: DateTime(
-              context.read(selectedDate).state.year,
-              context.read(selectedDate).state.month,
-              context.read(selectedDate).state.day,
-              hour,
-              minutes),
-          endDate: DateTime(
-              context.read(selectedDate).state.year,
-              context.read(selectedDate).state.month,
-              context.read(selectedDate).state.day,
-              hour,
-              minutes + 60),
-          iosParams: IOSParams(reminder: Duration(minutes: 60)),
-          androidParams: AndroidParams(emailInvites: []));
-
-      Add2Calendar.addEvent2Cal(event).then((value) {});
-
+      // final event = Event(
+      //     title: 'Facility Booking',
+      //     description: 'Facility Booking ${context.read(selectedTime).state} - '
+      //         '${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}',
+      //     location: '${context.read(selectedFacility).state.address}',
+      //     startDate: DateTime(
+      //         context.read(selectedDate).state.year,
+      //         context.read(selectedDate).state.month,
+      //         context.read(selectedDate).state.day,
+      //         hour,
+      //         minutes),
+      //     endDate: DateTime(
+      //         context.read(selectedDate).state.year,
+      //         context.read(selectedDate).state.month,
+      //         context.read(selectedDate).state.day,
+      //         hour,
+      //         minutes + 60),
+      //     iosParams: IOSParams(reminder: Duration(minutes: 60)),
+      //     androidParams: AndroidParams(emailInvites: []));
+      //
+      // Add2Calendar.addEvent2Cal(event).then((value) {});
     });
 
-      // Navigator.of(context).pop();
+    // Navigator.of(context).pop();
   }
 
   displayConfirm(BuildContext context) {
@@ -575,10 +586,13 @@ class FacilityBookingScreen extends ConsumerWidget {
                     ),
                     ElevatedButton(
                       onPressed: () => confirmBooking(context),
-                      child: Text('Confirm', style: TextStyle(color: Colors.black),),
+                      child: Text(
+                        'Confirm',
+                        style: TextStyle(color: Colors.black),
+                      ),
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Color.fromRGBO(253, 204, 213, 1))),
+                          backgroundColor: MaterialStateProperty.all(
+                              Color.fromRGBO(253, 204, 213, 1))),
                     )
                   ],
                 ),

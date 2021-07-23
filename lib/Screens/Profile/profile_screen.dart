@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/EditProfile/DisplayProfile.dart';
 import 'package:flutter_firebase_login/Screens/Help/Help.dart';
 import 'package:flutter_firebase_login/Screens/Opening/OpeningScreen.dart';
@@ -29,12 +29,12 @@ Future<void> _showMyDialog(BuildContext context) async {
               style: TextButton.styleFrom(
                   primary: Colors.white,
                   backgroundColor: Color.fromRGBO(237, 148, 99, 1),
-                  side: BorderSide(color: Colors.black)
-              ),
+                  side: BorderSide(color: Colors.black)),
               onPressed: () async {
                 print('Confirmed');
                 await FirebaseAuth.instance.signOut();
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => OpeningView()));
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => OpeningView()));
                 // Navigator.of(context).pop();
               },
             ),
@@ -47,8 +47,7 @@ Future<void> _showMyDialog(BuildContext context) async {
               style: TextButton.styleFrom(
                   primary: Colors.white,
                   backgroundColor: Color.fromRGBO(237, 148, 99, 1),
-                  side: BorderSide(color: Colors.black)
-              ),
+                  side: BorderSide(color: Colors.black)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -66,15 +65,14 @@ class ProfileScreen extends StatefulWidget {
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
-class _ProfileScreenState extends State<ProfileScreen> {
 
+class _ProfileScreenState extends State<ProfileScreen> {
   void showAlertDialog(BuildContext context) {
     final mq = MediaQuery.of(context);
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          TextEditingController _emailControllerField =
-          TextEditingController();
+          TextEditingController _emailControllerField = TextEditingController();
           return CustomAlertDialog(
             content: Container(
               width: MediaQuery.of(context).size.width / 1.2,
@@ -158,9 +156,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "Display Profile",
               icon: "assets/images/user.png",
               press: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DisplayProfile())
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DisplayProfile()));
               },
             ),
             IconItemBox(
@@ -175,8 +172,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               icon: "assets/images/question.png",
               press: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Help())
-                );
+                    context, MaterialPageRoute(builder: (context) => Help()));
               },
             ),
             IconItemBox(

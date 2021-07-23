@@ -1,10 +1,10 @@
 // @dart=2.9
-class HallModel{
+class HallModel {
   String name;
 
   HallModel({this.name});
 
-  HallModel.fromJson(Map<String, dynamic> json){
+  HallModel.fromJson(Map<String, dynamic> json) {
     name = json['name'];
   }
 
@@ -13,5 +13,4 @@ class HallModel{
     data['name'] = this.name;
     return data;
   }
-
 }

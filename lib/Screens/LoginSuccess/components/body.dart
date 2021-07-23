@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/components/default_button.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
-import 'package:flutter_firebase_login/size_config.dart';
 
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -14,22 +11,18 @@ class Body extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: ElevatedButton(
             style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18.0),
-                  side: BorderSide(color: Colors.blue)
-                )
-              )
-            ),
+                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.blue)))),
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => Homepage()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Homepage()));
             },
             child: Text("Back to Home"),
           ),
         )
       ],
-
-
     );
     // return Column(
     //   children: [
@@ -61,13 +54,10 @@ class Body extends StatelessWidget {
     //   ],
     // );
 
-
     // return Container(
     //   child: Center(
     //     child: Text("Back to Home"),
     //   ),
     // );
-
-
   }
 }

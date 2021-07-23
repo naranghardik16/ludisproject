@@ -1,9 +1,9 @@
 // @dart=2.9
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/src/Screens/BookingScreen.dart';
 import 'package:flutter_firebase_login/models/bookings.dart';
 import 'package:flutter_firebase_login/providers/booking_provider.dart';
+import 'package:flutter_firebase_login/src/Screens/BookingScreen.dart';
 import 'package:provider/provider.dart';
 
 class Review extends StatefulWidget {
@@ -37,19 +37,20 @@ class _ReviewState extends State<Review> {
                   color: Colors.pinkAccent,
                 ),
                 title: RichText(
-                  text: TextSpan(text: snapshot.data[index].booking,
+                  text: TextSpan(
+                      text: snapshot.data[index].booking,
                       style: TextStyle(fontWeight: FontWeight.bold),
                       children: [
                         TextSpan(
                           text: ": ",
                         ),
-                    TextSpan(
-                      text: formatDate(
-                          DateTime.parse(snapshot.data[index].date),
-                          [MM, ' ', d, ', ', yyyy]),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ]),
+                        TextSpan(
+                          text: formatDate(
+                              DateTime.parse(snapshot.data[index].date),
+                              [MM, ' ', d, ', ', yyyy]),
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ]),
                 ),
                 // title: Text(
                 //   formatDate(DateTime.parse(snapshot.data[index].date), [MM, ' ', d, ', ', yyyy]),

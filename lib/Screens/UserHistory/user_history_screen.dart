@@ -1,21 +1,13 @@
 // @dart=2.9
-import 'package:add_2_calendar/add_2_calendar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_firebase_login/cloud_firestore/all_facility_ref.dart';
 import 'package:flutter_firebase_login/cloud_firestore/user_ref.dart';
 import 'package:flutter_firebase_login/model/booking_model.dart';
-import 'package:flutter_firebase_login/model/court_model.dart';
-import 'package:flutter_firebase_login/model/facility_model.dart';
-import 'package:flutter_firebase_login/model/hall_model.dart';
 import 'package:flutter_firebase_login/state/state_management.dart';
 import 'package:flutter_firebase_login/utils/utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:im_stepper/stepper.dart';
 import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
@@ -29,13 +21,16 @@ class UserHistory extends ConsumerWidget {
         child: Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("User History", style: TextStyle(color: Colors.black),),
+        title: Text(
+          "User History",
+          style: TextStyle(color: Colors.black),
+        ),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(223, 228, 254, 1),
         automaticallyImplyLeading: false,
       ),
       resizeToAvoidBottomInset: true,
-          backgroundColor: Color.fromRGBO(202, 246, 251, 1),
+      backgroundColor: Color.fromRGBO(202, 246, 251, 1),
       // backgroundColor: Color.fromRGBO(255, 255, 255, 1),
 
       body: Padding(
@@ -253,7 +248,8 @@ class UserHistory extends ConsumerWidget {
         .doc(bookingModel.facilityId)
         .collection('Court')
         .doc(bookingModel.courtId)
-        .collection(DateFormat('dd_MM_yyyy').format(DateTime.fromMillisecondsSinceEpoch(bookingModel.timeStamp)))
+        .collection(DateFormat('dd_MM_yyyy').format(
+            DateTime.fromMillisecondsSinceEpoch(bookingModel.timeStamp)))
         .doc(bookingModel.slot.toString());
     var userBooking = bookingModel.reference;
 
@@ -263,7 +259,8 @@ class UserHistory extends ConsumerWidget {
 
     batch.commit().then((value) {
       //Refresh Data
-      context.read(deleteFlagRefresh).state = !context.read(deleteFlagRefresh).state;
+      context.read(deleteFlagRefresh).state =
+          !context.read(deleteFlagRefresh).state;
     });
   }
 }

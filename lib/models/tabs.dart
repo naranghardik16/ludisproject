@@ -5,7 +5,7 @@ class Tabs with ChangeNotifier {
 
   int get currentIndex => _currentIndex;
 
-  void changeIndex(i) async{
+  void changeIndex(i) async {
     _currentIndex = i;
     notifyListeners();
   }

@@ -31,19 +31,15 @@
 //   }
 // }
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_firebase_login/Screens/BookingPage/bookingpage.dart';
 import 'package:flutter_firebase_login/models/entry.dart';
 
 class FirestoreService {
   FirebaseFirestore _db = FirebaseFirestore.instance;
 
   //Get Entries
-  Stream<List<Entry>> getEntries(){
-    return _db
-        .collection('entries')
-        .snapshots()
-        .map((snapshot) => snapshot.docs.map((doc) => Entry.fromJson(doc.data()))
-        .toList());
+  Stream<List<Entry>> getEntries() {
+    return _db.collection('entries').snapshots().map((snapshot) =>
+        snapshot.docs.map((doc) => Entry.fromJson(doc.data())).toList());
   }
 
   // List<String> getAvailableTimes(String pdate) {
@@ -59,21 +55,17 @@ class FirestoreService {
   // }
 
   //Upsert
-  Future<void> setEntry(Entry entry){
-    var options = SetOptions(merge:true);
+  Future<void> setEntry(Entry entry) {
+    var options = SetOptions(merge: true);
 
     return _db
         .collection('entries')
         .doc(entry.entryId)
-        .set(entry.toMap(),options);
+        .set(entry.toMap(), options);
   }
 
   //Delete
-  Future<void> removeEntry(String entryId){
-    return _db
-        .collection('entries')
-        .doc(entryId)
-        .delete();
+  Future<void> removeEntry(String entryId) {
+    return _db.collection('entries').doc(entryId).delete();
   }
-
 }

@@ -3,7 +3,7 @@ import 'package:flutter_firebase_login/model/court_model.dart';
 import 'package:flutter_firebase_login/model/facility_model.dart';
 import 'package:flutter_firebase_login/model/hall_model.dart';
 
-Future<List<HallModel>> getHalls() async{
+Future<List<HallModel>> getHalls() async {
   var halls = new List<HallModel>.empty(growable: true);
   var hallRef = FirebaseFirestore.instance.collection('AllFacility');
   var snapshot = await hallRef.get();
@@ -13,9 +13,12 @@ Future<List<HallModel>> getHalls() async{
   return halls;
 }
 
-Future<List<FacilityModel>> getFacilityByHall(String hallName) async{
+Future<List<FacilityModel>> getFacilityByHall(String hallName) async {
   var facilities = new List<FacilityModel>.empty(growable: true);
-  var facilityRef = FirebaseFirestore.instance.collection('AllFacility').doc(hallName).collection('Branch');
+  var facilityRef = FirebaseFirestore.instance
+      .collection('AllFacility')
+      .doc(hallName)
+      .collection('Branch');
   var snapshot = await facilityRef.get();
   snapshot.docs.forEach((element) {
     var facility = FacilityModel.fromJson(element.data());
@@ -25,7 +28,6 @@ Future<List<FacilityModel>> getFacilityByHall(String hallName) async{
   });
   return facilities;
 }
-
 
 Future<List<CourtModel>> getCourtsByFacility(FacilityModel facility) async {
   var courts = new List<CourtModel>.empty(growable: true);
@@ -51,8 +53,3 @@ Future<List<int>> getTimeSlotOfCourt(CourtModel courtModel, String date) async {
   });
   return result;
 }
-
-
-
-
-

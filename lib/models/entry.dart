@@ -1,13 +1,14 @@
 // @dart=2.9
-import 'package:flutter/material.dart';
-class Entry {
 
+
+class Entry {
   final String entryId;
   final String date;
   final String entry;
+
   // final String timeSlot;
 
-  Entry({ this.date, this.entry, this.entryId});
+  Entry({this.date, this.entry, this.entryId});
 
   factory Entry.fromJson(Map<String, dynamic> json) {
     return Entry(
@@ -27,4 +28,3 @@ class Entry {
     };
   }
 }
-

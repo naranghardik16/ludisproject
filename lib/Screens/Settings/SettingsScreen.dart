@@ -15,8 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          TextEditingController _emailControllerField =
-          TextEditingController();
+          TextEditingController _emailControllerField = TextEditingController();
           return CustomAlertDialog(
             content: Container(
               width: MediaQuery.of(context).size.width / 1.2,
@@ -81,6 +80,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           );
         });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -141,8 +141,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)
-                  ),
+                      borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
                       ListTile(
@@ -150,7 +149,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Icons.lock_outline,
                           color: Colors.black,
                         ),
-                        title: Text("Change Password", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Change Password",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
                           showAlertDialog(context);
@@ -163,7 +165,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Icons.language,
                           color: Colors.black,
                         ),
-                        title: Text("Change Language", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Change Language",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
                           //open change language
@@ -175,7 +180,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           Icons.location_on,
                           color: Colors.black,
                         ),
-                        title: Text("Change Location", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Change Location",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         trailing: Icon(Icons.keyboard_arrow_right),
                         onTap: () {
                           //open change location
@@ -198,39 +206,54 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   elevation: 4.0,
                   margin: const EdgeInsets.fromLTRB(32.0, 8.0, 32.0, 16.0),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)
-                  ),
+                      borderRadius: BorderRadius.circular(10.0)),
                   child: Column(
                     children: <Widget>[
                       SwitchListTile(
                         activeColor: Color.fromRGBO(237, 148, 99, 1),
-                        contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: true,
-                        title: Text("Receive Notifications", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Receive Notifications",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         onChanged: (val) {},
                       ),
                       _buildDivider(),
                       SwitchListTile(
                         activeColor: Color.fromRGBO(237, 148, 99, 1),
-                        contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: false,
-                        title: Text("Receive Newsletter", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Receive Newsletter",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         onChanged: null,
                       ),
                       _buildDivider(),
                       SwitchListTile(
                         activeColor: Color.fromRGBO(237, 148, 99, 1),
-                        contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: true,
-                        title: Text("Receive Offers", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Receive Offers",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         onChanged: (val) {},
                       ),
                       _buildDivider(),
                       SwitchListTile(
                         activeColor: Color.fromRGBO(237, 148, 99, 1),
-                        contentPadding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 8.0),
                         value: false,
-                        title: Text("Receive App Updates", style: TextStyle(fontWeight: FontWeight.bold),),
+                        title: Text(
+                          "Receive App Updates",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
                         onChanged: null,
                       ),
                     ],

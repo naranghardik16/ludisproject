@@ -27,17 +27,24 @@ class _ContactSupportState extends State<ContactSupport> {
           alignment: Alignment.center,
           padding: EdgeInsets.only(top: 20, bottom: 20, left: 20, right: 20),
           decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15)
-          ),
+              color: Colors.white, borderRadius: BorderRadius.circular(15)),
           child: SingleChildScrollView(
-            child: Column(
-                children: [
-                  Text("Customer Service Enquiries\n", textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.black)),
-                  Text("Questions about how we work?\n\nEnquiries regarding your booking? \n\nWe're here to help!\n", textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.black)),
-                  Text("Contact Us On:\n\ntrailblazer@nusu.onmicrosoft.com\n or\n+65 83087184", textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black)),
-                ]
-            ),
+            child: Column(children: [
+              Text("Customer Service Enquiries\n",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.black)),
+              Text(
+                  "Questions about how we work?\n\nEnquiries regarding your booking? \n\nWe're here to help!\n",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 20, color: Colors.black)),
+              Text(
+                  "Contact Us On:\n\ntrailblazer@nusu.onmicrosoft.com\n or\n+65 83087184",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black)),
+            ]),
           ),
         ),
       ),

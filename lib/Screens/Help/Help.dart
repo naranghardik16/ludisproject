@@ -32,9 +32,8 @@ class _HelpState extends State<Help> {
                 text: "About Ludis",
                 icon: "assets/images/user.png",
                 press: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => AboutLudis())
-                  );
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AboutLudis()));
                 },
               ),
               IconItemBox(
@@ -42,8 +41,7 @@ class _HelpState extends State<Help> {
                 icon: "assets/images/settings.png",
                 press: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Faqs())
-                  );
+                      context, MaterialPageRoute(builder: (context) => Faqs()));
                 },
               ),
               IconItemBox(
@@ -51,14 +49,14 @@ class _HelpState extends State<Help> {
                 icon: "assets/images/question.png",
                 press: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => ContactSupport())
-                  );
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ContactSupport()));
                 },
               ),
             ],
           ),
-        )
-    );
+        ));
   }
 
   Container _buildDivider() {

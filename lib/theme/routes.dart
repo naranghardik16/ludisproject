@@ -12,7 +12,6 @@ class AppRoutes {
   static const String home = '/menu';
   static const String root = '/root';
 
-
   static Map<String, WidgetBuilder> define() {
     return {
       authLogin: (context) => Login(),

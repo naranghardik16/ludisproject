@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 typedef VoidCallback = void Function();
 
 class IconItemBox extends StatelessWidget {
@@ -24,8 +25,7 @@ class IconItemBox extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
               side: BorderSide(color: Colors.black),
-            )
-        ),
+            )),
         onPressed: press,
         child: Row(
           children: [
@@ -34,7 +34,11 @@ class IconItemBox extends StatelessWidget {
               width: 22,
             ),
             SizedBox(width: 20),
-            Expanded(child: Text(text, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15), )),
+            Expanded(
+                child: Text(
+              text,
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+            )),
             Icon(Icons.arrow_forward_ios),
           ],
         ),

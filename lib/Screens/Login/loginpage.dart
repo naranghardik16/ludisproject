@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/net/firebase.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
 class Loginpage extends StatefulWidget {
   // const Loginpage({Key key}) : super(key: key);
@@ -21,9 +19,9 @@ class _LoginpageState extends State<Loginpage> {
   late String _email;
   late String _password;
   var errorMessage;
+
   // final _auth = FirebaseAuth.instance;
   late BuildContext ctx;
-
 
   Future<void> _createUser() async {
     try {
@@ -32,7 +30,7 @@ class _LoginpageState extends State<Loginpage> {
       // userSetup(_usernameController.text);
     } on FirebaseAuthException catch (e) {
       var message = 'An error occurred, please check your credentials!';
-      if(e.message != null) {
+      if (e.message != null) {
         message = e.message!;
         setState(() {
           errorMessage = message;
@@ -57,7 +55,6 @@ class _LoginpageState extends State<Loginpage> {
           backgroundColor: Colors.red,
         ),
       );
-
     }
   }
 
@@ -68,7 +65,7 @@ class _LoginpageState extends State<Loginpage> {
       // userSetup(_usernameController.text);
     } on FirebaseAuthException catch (e) {
       var message = 'An error occurred, please check your credentials!';
-      if(e.message != null) {
+      if (e.message != null) {
         message = e.message!;
         setState(() {
           errorMessage = message;
@@ -93,7 +90,6 @@ class _LoginpageState extends State<Loginpage> {
           backgroundColor: Colors.red,
         ),
       );
-
     }
   }
 
@@ -113,7 +109,7 @@ class _LoginpageState extends State<Loginpage> {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
-              controller: _usernameController,
+                controller: _usernameController,
                 onChanged: (value) {
                   _email = value;
                 },
@@ -183,4 +179,3 @@ class _LoginpageState extends State<Loginpage> {
     );
   }
 }
-

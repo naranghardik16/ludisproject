@@ -2,8 +2,8 @@
 import 'dart:collection';
 
 import 'package:flutter_firebase_login/models/timeslot.dart';
-class BookingDate {
 
+class BookingDate {
   HashSet<timeslot> timeSlots;
   DateTime date;
 
@@ -16,13 +16,12 @@ class BookingDate {
     return BookingDate(json['date']);
   }
 
-
   bool isBooked(timeslot ts) {
     return timeSlots.contains(ts);
   }
 
   bool bookTimeSlot(timeslot ts) {
-    if(ts.startTime < 8 && ts.startTime > 21) {
+    if (ts.startTime < 8 && ts.startTime > 21) {
       return false;
     }
     if (timeSlots.contains(ts)) {

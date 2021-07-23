@@ -1,16 +1,11 @@
 // @dart=2.9
-import 'dart:collection';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/models/timeslot.dart';
 
 import 'bookingDate.dart';
-class Facility {
 
+class Facility {
   List<BookingDate> availableDates;
   String facilityName;
   String facilityId;
-
 
   Facility(String name) {
     // this.availableDates = [];
@@ -24,7 +19,6 @@ class Facility {
     }
   }
 
-
   // HashMap<Facility, HashMap<DateTime, HashMap<TimeSlot, bool>>> map = new HashMap();
 
   // HashMap<DateTime, HashMap<Facility, List<TimeSlot>>> newMap = new HashMap();
@@ -36,9 +30,6 @@ class Facility {
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'name': this.facilityName,
-      'facilityId': this.facilityId
-    };
+    return {'name': this.facilityName, 'facilityId': this.facilityId};
   }
 }
