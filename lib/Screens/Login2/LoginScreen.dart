@@ -100,6 +100,7 @@ class _LoginViewState extends State<Login> {
     );
 
     final emailField = TextFormField(
+      key: new Key('Email'),
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(
@@ -121,7 +122,7 @@ class _LoginViewState extends State<Login> {
           color: Colors.black,
         ),
         hintStyle: TextStyle(
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
     );
@@ -129,6 +130,7 @@ class _LoginViewState extends State<Login> {
     final passwordField = Column(
       children: <Widget>[
         TextFormField(
+          key: new Key("Password"),
           obscureText: hidePassword,
           controller: _passwordController,
           style: TextStyle(
@@ -224,6 +226,7 @@ class _LoginViewState extends State<Login> {
           color: Colors.transparent,
           shadowColor: Colors.transparent,
           child: MaterialButton(
+            key: new Key("LoginButton"),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(25.0)),
             minWidth: mq.size.width / 1.2,
@@ -261,7 +264,8 @@ class _LoginViewState extends State<Login> {
               }
             },
           ),
-        ));
+        )
+    );
 
     final bottom = Column(
       mainAxisAlignment: MainAxisAlignment.start,
