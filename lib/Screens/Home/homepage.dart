@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/BookingSecondAttempt/booking_screen.dart';
 import 'package:flutter_firebase_login/Screens/Profile/profile_screen.dart';
@@ -13,7 +14,6 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  @override
   int _index = 0;
 
   // List _pages = [FacilityBookingScreen(), BookingPage(), ReviewBookingsScreen(), FacilitiesDirectory(),ProfileScreen()];

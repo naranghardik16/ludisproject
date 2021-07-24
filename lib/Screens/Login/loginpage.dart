@@ -16,8 +16,6 @@ class _LoginpageState extends State<Loginpage> {
     colors: <Color>[Color(0xFFF44336), Color(0xFF4CAF50)],
   ).createShader(Rect.fromLTWH(130.0, 200.0, 125.0, 200.0));
 
-  late String _email;
-  late String _password;
   var errorMessage;
 
   // final _auth = FirebaseAuth.instance;
@@ -25,8 +23,8 @@ class _LoginpageState extends State<Loginpage> {
 
   Future<void> _createUser() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: _email, password: _password);
+      // UserCredential userCredential = await FirebaseAuth.instance
+      //     .createUserWithEmailAndPassword(email: _email, password: _password);
       // userSetup(_usernameController.text);
     } on FirebaseAuthException catch (e) {
       var message = 'An error occurred, please check your credentials!';
@@ -60,8 +58,8 @@ class _LoginpageState extends State<Loginpage> {
 
   Future<void> _login() async {
     try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: _email, password: _password);
+      // UserCredential userCredential = await FirebaseAuth.instance
+      //     .signInWithEmailAndPassword(email: _email, password: _password);
       // userSetup(_usernameController.text);
     } on FirebaseAuthException catch (e) {
       var message = 'An error occurred, please check your credentials!';
@@ -111,7 +109,7 @@ class _LoginpageState extends State<Loginpage> {
             child: TextField(
                 controller: _usernameController,
                 onChanged: (value) {
-                  _email = value;
+                  //_email = value;
                 },
                 enableSuggestions: false,
                 decoration: InputDecoration(
@@ -126,7 +124,7 @@ class _LoginpageState extends State<Loginpage> {
             child: TextField(
               obscureText: hidePassword,
               onChanged: (value) {
-                _password = value;
+                //_password = value;
               },
               decoration: InputDecoration(
                 hintText: "Password",

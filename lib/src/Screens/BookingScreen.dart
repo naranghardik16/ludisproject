@@ -72,8 +72,8 @@ class _BookingScreenState extends State<BookingScreen> {
                       bookingProvider.changeBooking = value,
                   controller: bookingController,
                 ),
-                RaisedButton(
-                  color: Colors.pinkAccent,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.pinkAccent),
                   child: Text('Save Booking',
                       style: TextStyle(color: Colors.white)),
                   onPressed: () {
@@ -82,8 +82,8 @@ class _BookingScreenState extends State<BookingScreen> {
                   },
                 ),
                 (widget.booking != null)
-                    ? RaisedButton(
-                        color: Colors.red,
+                    ? ElevatedButton(
+                        style: ElevatedButton.styleFrom(primary: Colors.red),
                         child: Text("Delete Booking",
                             style: TextStyle(color: Colors.white)),
                         onPressed: () {

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 Future<void> userSetup(BuildContext context, String userName, String nusnetId,
     String email) async {
   FirebaseAuth auth = FirebaseAuth.instance;
-  var firebaseUser = await auth.currentUser;
+  var firebaseUser = auth.currentUser;
   DocumentReference users =
       FirebaseFirestore.instance.collection('Users').doc(firebaseUser.uid);
   String uid = auth.currentUser.uid.toString();

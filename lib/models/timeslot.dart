@@ -1,12 +1,12 @@
 // @dart=2.9
 
 
-class timeslot {
+class TimeSlot {
   int startTime;
 
   // int endTime;
 
-  timeslot({this.startTime});
+  TimeSlot({this.startTime});
 
   // timeslot(int startTime, int endTime) {
   //
@@ -14,8 +14,8 @@ class timeslot {
   //   this.endTime = startTime + 1;
   // }
 
-  factory timeslot.fromJson(Map<String, dynamic> json) {
-    return timeslot(
+  factory TimeSlot.fromJson(Map<String, dynamic> json) {
+    return TimeSlot(
       startTime: json['startTime'],
       // endTime: json['endTime'],
     );

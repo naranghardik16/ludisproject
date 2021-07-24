@@ -17,6 +17,7 @@ class OpeningViewState extends State<OpeningView> {
 
   @override
   void initState() {
+    super.initState();
     getData();
   }
 
@@ -126,56 +127,6 @@ class OpeningViewState extends State<OpeningView> {
       ),
     );
 
-    final loginButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
-      // color: Color.fromRGBO(109, 216, 234, 1),
-      child: MaterialButton(
-        minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
-          "Login",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        onPressed: () {
-          // Navigator.of(context).pushNamed(AppRoutes.authLogin);
-          Navigator.push(
-              context, new MaterialPageRoute(builder: (context) => Login()));
-        },
-      ),
-    );
-
-    final registerButton = Material(
-      elevation: 5.0,
-      borderRadius: BorderRadius.circular(25.0),
-      color: Colors.white,
-      // color: Color.fromRGBO(251, 236, 1567, 0.8),
-      child: MaterialButton(
-        minWidth: mq.size.width / 1.2,
-        padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
-        child: Text(
-          "Register",
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        onPressed: () {
-          // Navigator.of(context).pushNamed(AppRoutes.authRegister);
-          Navigator.push(
-              context, new MaterialPageRoute(builder: (context) => Register()));
-        },
-      ),
-    );
-
     final buttons = Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -252,31 +203,5 @@ class OpeningViewState extends State<OpeningView> {
         ),
       ),
     );
-
-    // return Scaffold(
-    //   // backgroundColor: Color(0xff8c52ff),
-    //   // backgroundColor: Colors.orangeAccent,
-    //   backgroundColor: Color.fromRGBO(95, 106, 228, 1),
-    //   body: SingleChildScrollView(
-    //     padding: EdgeInsets.all(36),
-    //     child: Column(
-    //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    //       children: <Widget>[
-    //         Padding(
-    //           padding: EdgeInsets.only(top: 50),
-    //           child: logo,
-    //         ),
-    //         Padding(
-    //           padding: EdgeInsets.only(top: 50, bottom: 50),
-    //           child: display(),
-    //         ),
-    //         Padding(
-    //           padding: EdgeInsets.only(top: 50, bottom: 50),
-    //           child: buttons,
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // );
   }
 }

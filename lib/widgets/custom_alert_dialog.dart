@@ -199,7 +199,7 @@ class CustomAlertDialog extends StatelessWidget {
   /// The (optional) set of actions that are displayed at the bottom of the
   /// dialog.
   ///
-  /// Typically this is a list of [FlatButton] widgets.
+  /// Typically this is a list of [TextButton] widgets.
   ///
   /// These widgets will be wrapped in a [ButtonBar], which introduces 8 pixels
   /// of padding on each side.
@@ -233,7 +233,7 @@ class CustomAlertDialog extends StatelessWidget {
             new EdgeInsets.fromLTRB(
                 24.0, 24.0, 24.0, content == null ? 20.0 : 0.0),
         child: new DefaultTextStyle(
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline6,
           child: new Semantics(child: title, namesRoute: true),
         ),
       ));
@@ -254,7 +254,7 @@ class CustomAlertDialog extends StatelessWidget {
         child: new Padding(
           padding: contentPadding,
           child: new DefaultTextStyle(
-            style: Theme.of(context).textTheme.subhead,
+            style: Theme.of(context).textTheme.subtitle1,
             child: content,
           ),
         ),
@@ -312,7 +312,7 @@ class CustomAlertDialog extends StatelessWidget {
 ///
 ///  * [SimpleDialog], for a dialog in which to use this widget.
 ///  * [showDialog], which actually displays the dialog and returns its result.
-///  * [FlatButton], which are commonly used as actions in other kinds of
+///  * [TextButton], which are commonly used as actions in other kinds of
 ///    dialogs, such as [AlertDialog]s.
 ///  * <https://material.google.com/components/dialogs.html#dialogs-simple-dialogs>
 class SimpleDialogOption extends StatelessWidget {
@@ -489,7 +489,7 @@ class SimpleDialog extends StatelessWidget {
       body.add(new Padding(
           padding: titlePadding,
           child: new DefaultTextStyle(
-            style: Theme.of(context).textTheme.title,
+            style: Theme.of(context).textTheme.headline6,
             child: new Semantics(namesRoute: true, child: title),
           )));
     } else {

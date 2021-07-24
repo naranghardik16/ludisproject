@@ -20,7 +20,7 @@ class _RegisterViewState extends State<Register> {
   TextEditingController _nusnetIdController = TextEditingController();
 
   // This function is triggered when the user press the "Sign Up" button
-  void _trySubmitForm() {
+  bool _trySubmitForm() {
     final isValid = _formKey.currentState.validate();
     if (isValid) {
       print('Everything looks good!');
@@ -28,7 +28,9 @@ class _RegisterViewState extends State<Register> {
       print(_usernameController);
       print(_passwordController);
       print(_rePasswordController);
+      return true;
     }
+    return false;
   }
 
   @override
@@ -187,6 +189,7 @@ class _RegisterViewState extends State<Register> {
         return null;
       },
     );
+
     final nusnetIdField = TextFormField(
       controller: _nusnetIdController,
       style: TextStyle(
@@ -276,15 +279,15 @@ class _RegisterViewState extends State<Register> {
               ),
             ),
             onPressed: () async {
-              if (_formKey.currentState.validate()) {
+              if (_trySubmitForm()) {
                 try {
                   await Firebase.initializeApp();
-                  UserCredential user = await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                  );
-                  User updateUser = FirebaseAuth.instance.currentUser;
+                  // UserCredential user = await FirebaseAuth.instance
+                  //     .createUserWithEmailAndPassword(
+                  //   email: _emailController.text,
+                  //   password: _passwordController.text,
+                  // );
+                  // // User updateUser = FirebaseAuth.instance.currentUser;
                   // CollectionReference userRef = FirebaseFirestore.instance.collection('Users');
                   // DocumentSnapshot snapshot = await userRef.doc(updateUser.uid).get();
                   // var userModel = UserModel.fromJson(snapshot.data());
@@ -305,28 +308,6 @@ class _RegisterViewState extends State<Register> {
                   print(e.toString());
                 }
               }
-              // _trySubmitForm();
-              // try {
-              //   await Firebase.initializeApp();
-              //   UserCredential user =
-              //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              //     email: _emailController.text,
-              //     password: _passwordController.text,
-              //   );
-              //   User updateUser = FirebaseAuth.instance.currentUser;
-              //   // updateUser.updateDisplayName(_usernameController.text);
-              //   userSetup(_usernameController.text, _nusnetIdController.text);
-              //   // Navigator.of(context).pushNamed(AppRoutes.home);
-              //   Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
-              // } on FirebaseAuthException catch (e) {
-              //   if (e.code == 'weak-password') {
-              //     print('The password provided is too weak.');
-              //   } else if (e.code == 'email-already-in-use') {
-              //     print('The account already exists for that email.');
-              //   }
-              // } catch (e) {
-              //   print(e.toString());
-              // }
             },
           ),
         ));

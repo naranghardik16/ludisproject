@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   static String routeName = "/settings";

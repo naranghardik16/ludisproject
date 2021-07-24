@@ -2,7 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+//import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_firebase_login/cloud_firestore/user_ref.dart';
 import 'package:flutter_firebase_login/model/booking_model.dart';
 import 'package:flutter_firebase_login/state/state_management.dart';
@@ -12,11 +12,10 @@ import 'package:intl/intl.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class UserHistory extends ConsumerWidget {
-  GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
+  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    var watchRefresh = watch(deleteFlagRefresh).state;
     return SafeArea(
         child: Scaffold(
       key: scaffoldKey,

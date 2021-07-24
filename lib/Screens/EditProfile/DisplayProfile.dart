@@ -26,7 +26,7 @@ class _DisplayProfileState extends State<DisplayProfile> {
   }
 
   fetchUserInfo() async {
-    User getUser = await FirebaseAuth.instance.currentUser;
+    User getUser = FirebaseAuth.instance.currentUser;
     userID = getUser.uid;
   }
 

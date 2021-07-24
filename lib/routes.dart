@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_firebase_login/Screens/Settings/SettingsScreen.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';

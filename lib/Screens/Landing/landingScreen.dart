@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -28,7 +29,7 @@ class LandingScreen extends StatelessWidget {
             stream: FirebaseAuth.instance.authStateChanges(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.active) {
-                Object? user = snapshot.data;
+                Object user = snapshot.data;
 
                 if (user == null) {
                   return Loginpage();

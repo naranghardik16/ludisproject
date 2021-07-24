@@ -18,8 +18,8 @@ dependencies:
   cloud_firestore: ^2.2.2
 
   # Firebase
-  firebase_auth: ^1.2.0
-  uuid: ^2.2.2
+  firebase_auth: ^3.0.1
+  uuid: ^3.0.4
   date_format: ^2.0.2
   dropdown_search: ^0.6.3
   http: ^0.13.3
@@ -40,7 +40,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: 0.8.0
+  flutter_launcher_icons: ^0.9.0
   flutter_vector_icons: 1.0.0
 
 flutter_icons:

@@ -4,7 +4,7 @@ import 'dart:collection';
 import 'package:flutter_firebase_login/models/timeslot.dart';
 
 class BookingDate {
-  HashSet<timeslot> timeSlots;
+  HashSet<TimeSlot> timeSlots;
   DateTime date;
 
   BookingDate(DateTime date) {
@@ -16,11 +16,11 @@ class BookingDate {
     return BookingDate(json['date']);
   }
 
-  bool isBooked(timeslot ts) {
+  bool isBooked(TimeSlot ts) {
     return timeSlots.contains(ts);
   }
 
-  bool bookTimeSlot(timeslot ts) {
+  bool bookTimeSlot(TimeSlot ts) {
     if (ts.startTime < 8 && ts.startTime > 21) {
       return false;
     }
@@ -31,13 +31,8 @@ class BookingDate {
     return true;
   }
 
-  bool removeTimeSlot(timeslot ts) {
+  bool removeTimeSlot(TimeSlot ts) {
     return timeSlots.remove(ts);
-    if (timeSlots.isEmpty) {
-      return false;
-    }
-    timeSlots.remove(ts);
-    return true;
   }
 
   void add(Duration d) {
