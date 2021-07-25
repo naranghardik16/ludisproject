@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
-import 'package:flutter_firebase_login/Screens/Login2/LoginScreen.dart';
+import 'package:flutter_firebase_login/Screens/Login/LoginScreen.dart';
 import 'package:flutter_firebase_login/Screens/Opening/OpeningScreen.dart';
 import 'package:flutter_firebase_login/Screens/Register/RegisterScreen.dart';
 
