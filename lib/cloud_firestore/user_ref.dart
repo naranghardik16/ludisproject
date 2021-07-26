@@ -1,7 +1,5 @@
 // @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_firebase_login/model/user_model.dart';
 import 'package:flutter_firebase_login/state/state_management.dart';
