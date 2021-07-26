@@ -1,7 +1,7 @@
 // @dart=2.9
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
-import 'package:flutter_firebase_login/Screens/Login2/LoginScreen.dart';
+import 'package:flutter_firebase_login/Screens/Login/LoginScreen.dart';
 import 'package:flutter_firebase_login/model/user_model.dart';
 import 'package:flutter_firebase_login/net/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';

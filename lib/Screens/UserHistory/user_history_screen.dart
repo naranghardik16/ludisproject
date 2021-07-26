@@ -29,7 +29,7 @@ class UserHistory extends ConsumerWidget {
         child: Scaffold(
       key: scaffoldKey,
       appBar: AppBar(
-        title: Text("User History", style: TextStyle(color: Colors.black),),
+        title: Text("Your Booking History", style: TextStyle(color: Colors.black),),
         centerTitle: true,
         backgroundColor: Color.fromRGBO(223, 228, 254, 1),
         automaticallyImplyLeading: false,

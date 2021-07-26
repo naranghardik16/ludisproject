@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+// @dart=2.9
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_firebase_login/Screens/EditProfile/DisplayProfile.dart';
-import 'package:flutter_firebase_login/Screens/Help/Help.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_firebase_login/Screens/DisplayProfile/DisplayProfile.dart';
+import 'package:flutter_firebase_login/Screens/Help/help.dart';
 import 'package:flutter_firebase_login/Screens/Opening/OpeningScreen.dart';
 import 'package:flutter_firebase_login/components/icon_item_box.dart';
 import 'package:flutter_firebase_login/widgets/custom_alert_dialog.dart';
@@ -27,14 +28,14 @@ Future<void> _showMyDialog(BuildContext context) async {
             child: TextButton(
               child: Text('Log out'),
               style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Color.fromRGBO(237, 148, 99, 1),
-                  side: BorderSide(color: Colors.black)
-              ),
+                  primary: Colors.black,
+                  backgroundColor: Color.fromRGBO(254, 241, 170, 1),
+                  side: BorderSide(color: Colors.black)),
               onPressed: () async {
                 print('Confirmed');
                 await FirebaseAuth.instance.signOut();
-                Navigator.push(context, new MaterialPageRoute(builder: (context) => OpeningView()));
+                Navigator.push(context,
+                    new MaterialPageRoute(builder: (context) => OpeningView()));
                 // Navigator.of(context).pop();
               },
             ),
@@ -45,10 +46,9 @@ Future<void> _showMyDialog(BuildContext context) async {
             child: TextButton(
               child: Text('Cancel'),
               style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Color.fromRGBO(237, 148, 99, 1),
-                  side: BorderSide(color: Colors.black)
-              ),
+                  primary: Colors.black,
+                  backgroundColor: Color.fromRGBO(254, 241, 170, 1),
+                  side: BorderSide(color: Colors.black)),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -60,21 +60,20 @@ Future<void> _showMyDialog(BuildContext context) async {
   );
 }
 
-class ProfileScreen extends StatefulWidget {
+class Profile extends StatefulWidget {
   static String routeName = "/profile";
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  _ProfileState createState() => _ProfileState();
 }
-class _ProfileScreenState extends State<ProfileScreen> {
 
+class _ProfileState extends State<Profile> {
   void showAlertDialog(BuildContext context) {
     final mq = MediaQuery.of(context);
     showDialog(
         context: context,
         builder: (BuildContext context) {
-          TextEditingController _emailControllerField =
-          TextEditingController();
+          TextEditingController _emailControllerField = TextEditingController();
           return CustomAlertDialog(
             content: Container(
               width: MediaQuery.of(context).size.width / 1.2,
@@ -106,7 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Material(
                       elevation: 5.0,
                       borderRadius: BorderRadius.circular(25.0),
-                      color: Color.fromRGBO(237, 148, 99, 1),
+                      color: Color.fromRGBO(254, 241, 170, 1),
                       // color: Color(0xff8c52ff),
                       child: MaterialButton(
                         minWidth: mq.size.width / 2,
@@ -116,7 +115,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 20.0,
-                            color: Colors.white,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -144,12 +143,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: Text("Profile", style: TextStyle(color: Colors.black),),
         centerTitle: true,
         automaticallyImplyLeading: false,
-        backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+        backgroundColor: Color.fromRGBO(223, 228, 254, 1),
       ),
-      backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+      backgroundColor: Color.fromRGBO(255, 255, 255, 1),
       body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(vertical: 20),
         child: Column(
@@ -158,9 +157,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "Display Profile",
               icon: "assets/images/user.png",
               press: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => DisplayProfile())
-                );
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DisplayProfile()));
               },
             ),
             IconItemBox(
@@ -175,8 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               icon: "assets/images/question.png",
               press: () {
                 Navigator.push(
-                    context, MaterialPageRoute(builder: (context) => Help())
-                );
+                    context, MaterialPageRoute(builder: (context) => Help()));
               },
             ),
             IconItemBox(
@@ -192,3 +189,4 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
+
