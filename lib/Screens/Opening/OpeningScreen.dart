@@ -1,6 +1,6 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/Login2/LoginScreen.dart';
+import 'package:flutter_firebase_login/Screens/Login/LoginScreen.dart';
 import 'package:flutter_firebase_login/Screens/Register/RegisterScreen.dart';
 import 'package:flutter_firebase_login/theme/routes.dart';
 
