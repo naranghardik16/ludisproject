@@ -1,5 +1,4 @@
 // @dart=2.9
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +14,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:im_stepper/stepper.dart';
 import 'package:intl/intl.dart';
 
-class FacilityBookingScreen extends ConsumerWidget {
+class Bookings extends ConsumerWidget {
   GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey();
 
   @override

@@ -29,6 +29,7 @@ class _HelpState extends State<Help> {
         child: Column(
           children: [
             IconItemBox(
+              key: new Key("About Ludis"),
               text: "About Ludis",
               icon: "assets/images/user.png",
               press: () {
@@ -38,6 +39,7 @@ class _HelpState extends State<Help> {
               },
             ),
             IconItemBox(
+              key: new Key("FAQS"),
               text: "FAQS",
               icon: "assets/images/settings.png",
               press: () {
@@ -47,6 +49,7 @@ class _HelpState extends State<Help> {
               },
             ),
             IconItemBox(
+              key: new Key("Contact Support"),
               text: "Contact Support",
               icon: "assets/images/question.png",
               press: () {

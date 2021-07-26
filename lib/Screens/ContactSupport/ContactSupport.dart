@@ -33,9 +33,9 @@ class _ContactSupportState extends State<ContactSupport> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Text("Customer Service Enquiries\n", textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.black)),
-                Text("Questions about how we work?\n\nEnquiries regarding your booking? \n\nWe're here to help!\n", textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.black)),
-                Text("Contact Us On:\n\ntrailblazer@nusu.onmicrosoft.com\n or\n+65 83087184", textAlign: TextAlign.center, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black)),
+                Text("Customer Service Enquiries\n", key: new Key("Customer Service Enquiries"), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.black)),
+                Text("Questions about how we work?\n\nEnquiries regarding your booking? \n\nWe're here to help!\n", key: new Key("Details"), textAlign: TextAlign.center, style: TextStyle(fontSize: 20, color: Colors.black)),
+                Text("Contact Us On:\n\ntrailblazer@nusu.onmicrosoft.com\n or\n+65 83087184", key: new Key("Contact Details"), textAlign: TextAlign.center, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black)),
               ]
             ),
           ),
