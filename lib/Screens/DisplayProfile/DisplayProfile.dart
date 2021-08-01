@@ -50,11 +50,16 @@ class _DisplayProfileState extends State<DisplayProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
+        backgroundColor: Color.fromRGBO(202, 246, 251, 1),
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
+          backgroundColor: Color.fromRGBO(223, 228, 254, 1),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+          centerTitle: true,
           automaticallyImplyLeading: true,
-          title: Text("Profile Details"),
+          title: Text("Profile Details", style: TextStyle(color: Colors.black),),
         ),
         body: Center(
             child: FutureBuilder(
@@ -79,8 +84,8 @@ class _DisplayProfileState extends State<DisplayProfile> {
                               onPressed: () {
                                 openDialogueBox(context);
                               },
-                              child: Text("Edit Profile"),
-                              style: ElevatedButton.styleFrom(primary: Color.fromRGBO(237, 148, 99, 1)),
+                              child: Text("Edit Profile", style: TextStyle(color: Colors.black),),
+                              style: ElevatedButton.styleFrom(primary: Color.fromRGBO(253, 204, 213, 1)),
                             ),
                           )
                         ],
