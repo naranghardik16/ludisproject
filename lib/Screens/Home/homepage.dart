@@ -19,7 +19,7 @@ class _HomepageState extends State<Homepage> {
       backgroundColor: Color.fromRGBO(255, 255, 255, 1),
       body: _pages[_index],
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.black,
+        selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.black,
         showUnselectedLabels: true,
         backgroundColor: Color.fromRGBO(240, 240, 240, 1),
@@ -38,7 +38,7 @@ class _HomepageState extends State<Homepage> {
             label: "Booking",
             activeIcon: Icon(
               Icons.dashboard,
-              color: Colors.black,
+              color: Colors.blue,
             ),
           ),
           BottomNavigationBarItem(
@@ -51,7 +51,7 @@ class _HomepageState extends State<Homepage> {
             label: "History",
             activeIcon: Icon(
               Icons.history,
-              color: Colors.black,
+              color: Colors.blue,
             ),
           ),
           BottomNavigationBarItem(
@@ -64,7 +64,7 @@ class _HomepageState extends State<Homepage> {
             label: "Profile",
             activeIcon: Icon(
               Icons.verified_user,
-              color: Colors.black,
+              color: Colors.blue,
             ),
           ),
         ],
