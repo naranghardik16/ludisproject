@@ -3,10 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
 import 'package:flutter_firebase_login/Screens/Register/RegisterScreen.dart';
-import 'package:flutter_firebase_login/theme/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_firebase_login/widgets/custom_alert_dialog.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -23,12 +21,51 @@ class _LoginViewState extends State<Login> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
 
+    final emailField = TextFormField(
+      key: new Key("EmailField"),
+      controller: _emailController,
+      keyboardType: TextInputType.emailAddress,
+      style: TextStyle(
+        color: Colors.black,
+      ),
+      cursorColor: Colors.black,
+      decoration: InputDecoration(
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Colors.black,
+          ),
+        ),
+        hintText: "example@domain.com",
+        labelText: "Email",
+        prefixIcon: Icon(Icons.mail),
+        filled: true,
+        fillColor: Color.fromRGBO(223, 248, 250, 1),
+        labelStyle: TextStyle(
+          color: Colors.black,
+        ),
+        hintStyle: TextStyle(
+          color: Colors.black,
+        ),
+      ),
+      validator: (value) {
+        if (value.trim().isEmpty) {
+          return 'Please enter your Email Address';
+        }
+        // Check if the entered email has the right format
+        if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+          return 'Please enter a valid Email Address';
+        }
+        // Return null if the entered email is valid
+        return null;
+      },
+    );
+
     void showAlertDialog(BuildContext context) {
       showDialog(
           context: context,
           builder: (BuildContext context) {
             TextEditingController _emailControllerField =
-                TextEditingController();
+            TextEditingController();
             return CustomAlertDialog(
               content: Container(
                 width: MediaQuery.of(context).size.width / 1.2,
@@ -37,24 +74,8 @@ class _LoginViewState extends State<Login> {
                 child: Column(
                   children: <Widget>[
                     Text("Insert Reset Email:"),
-                    TextField(
-                      controller: _emailControllerField,
-                      decoration: InputDecoration(
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
-                          ),
-                        ),
-                        hintText: "something@example.com",
-                        labelText: "Email",
-                        labelStyle: TextStyle(
-                          color: Colors.black,
-                        ),
-                        hintStyle: TextStyle(
-                          color: Colors.black,
-                        ),
-                      ),
-                    ),
+                    Padding(padding: EdgeInsets.all(10)),
+                    emailField,
                     Padding(
                       padding: EdgeInsets.all(15),
                       child: Material(
@@ -69,7 +90,7 @@ class _LoginViewState extends State<Login> {
                             "Send Reset Email",
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                              fontSize: 20.0,
+                              fontSize: 15.0,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
@@ -99,38 +120,10 @@ class _LoginViewState extends State<Login> {
       height: mq.size.height / 4,
     );
 
-    final emailField = TextFormField(
-      key: new Key('Email'),
-      controller: _emailController,
-      keyboardType: TextInputType.emailAddress,
-      style: TextStyle(
-        color: Colors.black,
-      ),
-      cursorColor: Colors.black,
-      decoration: InputDecoration(
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.black,
-          ),
-        ),
-        hintText: "example@domain.com",
-        labelText: "Email",
-        prefixIcon: Icon(Icons.mail),
-        filled: true,
-        fillColor: Color.fromRGBO(223, 248, 250, 1),
-        labelStyle: TextStyle(
-          color: Colors.black,
-        ),
-        hintStyle: TextStyle(
-          color: Colors.white,
-        ),
-      ),
-    );
-
     final passwordField = Column(
       children: <Widget>[
         TextFormField(
-          key: new Key("Password"),
+          key: new Key("PasswordField"),
           obscureText: hidePassword,
           controller: _passwordController,
           style: TextStyle(
@@ -148,7 +141,7 @@ class _LoginViewState extends State<Login> {
             prefixIcon: Icon(Icons.vpn_key),
             suffixIcon: IconButton(
               icon:
-                  Icon(hidePassword ? Icons.visibility_off : Icons.visibility),
+              Icon(hidePassword ? Icons.visibility_off : Icons.visibility),
               onPressed: () {
                 setState(() {
                   hidePassword = !hidePassword;
@@ -165,6 +158,18 @@ class _LoginViewState extends State<Login> {
               color: Colors.black,
             ),
           ),
+          validator: (value) {
+            if (value.trim().isEmpty) {
+              return 'Please enter you Password';
+            }
+
+            if (value.trim().length < 8) {
+              return 'Password must be at least 8 characters in length';
+            }
+
+            // Return null if the entered password is valid
+            return null;
+          },
         ),
         Padding(
           padding: EdgeInsets.all(2.0),
@@ -219,7 +224,9 @@ class _LoginViewState extends State<Login> {
                   Color.fromRGBO(251, 229, 119, 1),
                   Color.fromRGBO(245, 214, 82, 1),
                   Color.fromRGBO(235, 196, 48, 1),
-                ])),
+                ]
+            )
+        ),
         child: Material(
           elevation: 5.0,
           borderRadius: BorderRadius.circular(25.0),
@@ -241,31 +248,30 @@ class _LoginViewState extends State<Login> {
               ),
             ),
             onPressed: () async {
-              try {
-                await Firebase.initializeApp();
-                UserCredential user =
-                    await FirebaseAuth.instance.signInWithEmailAndPassword(
-                  email: _emailController.text,
-                  password: _passwordController.text,
-                );
-                // SharedPreferences prefs = await SharedPreferences.getInstance();
-                // prefs.setString('displayName', user.user.displayName);
-                // Navigator.of(context).pushNamed(AppRoutes.home);
-                Navigator.push(context,
-                    new MaterialPageRoute(builder: (context) => Homepage()));
-              } on FirebaseAuthException catch (e) {
-                if (e.code == 'weak-password') {
-                  print('The password provided is too weak.');
-                } else if (e.code == 'email-already-in-use') {
-                  print('The account already exists for that email.');
+              if (_formKey.currentState.validate()) {
+                try {
+                  await Firebase.initializeApp();
+                  UserCredential user =
+                  await FirebaseAuth.instance.signInWithEmailAndPassword(
+                    email: _emailController.text,
+                    password: _passwordController.text,
+                  );
+                  // SharedPreferences prefs = await SharedPreferences.getInstance();
+                  // prefs.setString('displayName', user.user.displayName);
+                  // Navigator.of(context).pushNamed(AppRoutes.home);
+                  Navigator.push(context,
+                      new MaterialPageRoute(builder: (context) => Homepage()));
+                } on FirebaseAuthException catch (e) {
+                  if (e.code == 'weak-password') {
+                    print('The password provided is too weak.');
+                  } else if (e.code == 'email-already-in-use') {
+                    print('The account already exists for that email.');
+                  }
                 }
-              } catch (e) {
-                print(e.toString());
               }
             },
           ),
-        )
-    );
+        ));
 
     final bottom = Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -281,8 +287,8 @@ class _LoginViewState extends State<Login> {
             Text(
               "Not a member?",
               style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    color: Colors.black,
-                  ),
+                color: Colors.black,
+              ),
             ),
             MaterialButton(
               onPressed: () {
@@ -293,9 +299,9 @@ class _LoginViewState extends State<Login> {
               child: Text(
                 "Sign Up",
                 style: Theme.of(context).textTheme.subtitle1.copyWith(
-                      color: Colors.black,
-                      decoration: TextDecoration.underline,
-                    ),
+                  color: Colors.black,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
           ],
@@ -309,21 +315,21 @@ class _LoginViewState extends State<Login> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               stops: [
-            0.15,
-            0.30,
-            0.40,
-            0.7
-          ],
+                0.15,
+                0.30,
+                0.40,
+                0.7
+              ],
               colors: [
-            // Color.fromRGBO(100, 189, 231, 1),
-            Color.fromRGBO(49, 124, 230, 1),
-            Color.fromRGBO(105, 209, 233, 1),
-            Color.fromRGBO(109, 216, 234, 1),
-            Colors.white,
-          ])),
+                // Color.fromRGBO(100, 189, 231, 1),
+                Color.fromRGBO(49, 124, 230, 1),
+                Color.fromRGBO(105, 209, 233, 1),
+                Color.fromRGBO(109, 216, 234, 1),
+                Colors.white,
+              ]
+          )
+      ),
       child: Scaffold(
-        // backgroundColor: Color(0xff8c52ff),
-        // backgroundColor: Colors.orangeAccent,
         backgroundColor: Colors.transparent,
         body: Form(
           key: _formKey,

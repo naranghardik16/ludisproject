@@ -26,6 +26,7 @@ Future<void> _showMyDialog(BuildContext context) async {
           Padding(
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: TextButton(
+              key: new Key("Log Out Button"),
               child: Text('Log out'),
               style: TextButton.styleFrom(
                   primary: Colors.black,
@@ -44,6 +45,7 @@ Future<void> _showMyDialog(BuildContext context) async {
             padding: const EdgeInsets.fromLTRB(40, 0, 40, 0),
             // padding: const EdgeInsets.all(40.0),
             child: TextButton(
+              key: new Key("Cancel Button"),
               child: Text('Cancel'),
               style: TextButton.styleFrom(
                   primary: Colors.black,
@@ -83,6 +85,7 @@ class _ProfileState extends State<Profile> {
                 children: <Widget>[
                   Text("Insert Reset Email:"),
                   TextField(
+                    key: new Key("EmailField"),
                     controller: _emailControllerField,
                     decoration: InputDecoration(
                       focusedBorder: UnderlineInputBorder(
@@ -108,6 +111,7 @@ class _ProfileState extends State<Profile> {
                       color: Color.fromRGBO(254, 241, 170, 1),
                       // color: Color(0xff8c52ff),
                       child: MaterialButton(
+                        key: new Key("Send Reset Email"),
                         minWidth: mq.size.width / 2,
                         padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
                         child: Text(
@@ -154,6 +158,7 @@ class _ProfileState extends State<Profile> {
         child: Column(
           children: [
             IconItemBox(
+              key: new Key("Display Profile"),
               text: "Display Profile",
               icon: "assets/images/user.png",
               press: () {
@@ -162,6 +167,7 @@ class _ProfileState extends State<Profile> {
               },
             ),
             IconItemBox(
+              key: new Key("Change Password"),
               text: "Change Password",
               icon: "assets/images/settings.png",
               press: () {
@@ -169,6 +175,7 @@ class _ProfileState extends State<Profile> {
               },
             ),
             IconItemBox(
+              key: new Key("Help Center"),
               text: "Help Center",
               icon: "assets/images/question.png",
               press: () {
@@ -177,6 +184,7 @@ class _ProfileState extends State<Profile> {
               },
             ),
             IconItemBox(
+              key: new Key("Log Out"),
               text: "Log out",
               icon: "assets/images/power-button-off.png",
               press: () {

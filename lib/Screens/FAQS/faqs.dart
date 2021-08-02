@@ -33,6 +33,7 @@ class _FaqsState extends State<Faqs> {
             children: [
               if (state != 1)
                 ItemBox(
+                  key: new Key("FAQ Short Item 1"),
                   text: "How Many Days In Advance Can You Book?",
                   press: () {
                     setState(() {
@@ -44,6 +45,7 @@ class _FaqsState extends State<Faqs> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: TextButton(
+                    key: new Key("FAQ Expanded Item 1"),
                     style: TextButton.styleFrom(
                         padding: EdgeInsets.all(20),
                         primary: Colors.black,
@@ -64,6 +66,7 @@ class _FaqsState extends State<Faqs> {
                           Expanded(
                               child: Text(
                                 "How Many Days In Advance Can You Book?",
+                                key: new Key("FAQ 1 QS Text"),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                                 textAlign: TextAlign.center,
@@ -75,6 +78,7 @@ class _FaqsState extends State<Faqs> {
                           Expanded(
                               child: Text(
                                 "One Can Book the facility a week in advance",
+                                key: new Key("FAQ 1 ANS Text"),
                                 style: TextStyle(
                                     fontSize: 15, color: Colors.black),
                                 textAlign: TextAlign.center,
@@ -86,6 +90,7 @@ class _FaqsState extends State<Faqs> {
                 ),
               if (state != 2)
                 ItemBox(
+                  key: new Key("FAQ Short Item 2"),
                   text: "What Time Are The Facilities Open?",
                   press: () {
                     setState(() {
@@ -97,6 +102,7 @@ class _FaqsState extends State<Faqs> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   child: TextButton(
+                    key: new Key("FAQ Expanded Item 2"),
                     style: TextButton.styleFrom(
                         padding: EdgeInsets.all(20),
                         primary: Colors.black,
@@ -116,6 +122,7 @@ class _FaqsState extends State<Faqs> {
                           Expanded(
                               child: Text(
                                 "What Time Are The Facilities Open?",
+                                key: new Key("FAQ 2 QS Text"),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                                 textAlign: TextAlign.center,
@@ -127,6 +134,7 @@ class _FaqsState extends State<Faqs> {
                           Expanded(
                               child: Text(
                                 "Facility Opening Time Differs from Hall to Hall however most Facilities Open at 8:00 AM and Close at 10:00 PM",
+                                key: new Key("FAQ 2 ANS Text"),
                                 style: TextStyle(
                                     fontSize: 15, color: Colors.black),
                                 textAlign: TextAlign.center,

@@ -1,15 +1,10 @@
 // @dart=2.9
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_firebase_login/Screens/Home/homepage.dart';
-import 'package:flutter_firebase_login/Screens/Login/LoginScreen.dart';
-import 'package:flutter_firebase_login/model/user_model.dart';
+import 'package:flutter_firebase_login/Screens/Login/login.dart';
 import 'package:flutter_firebase_login/net/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/state/state_management.dart';
-import 'package:flutter_firebase_login/theme/routes.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:provider/provider.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -24,18 +19,6 @@ class _RegisterViewState extends State<Register> {
   TextEditingController _rePasswordController = TextEditingController();
   TextEditingController _nusnetIdController = TextEditingController();
 
-  // This function is triggered when the user press the "Sign Up" button
-  void _trySubmitForm() {
-    final isValid = _formKey.currentState.validate();
-    if (isValid) {
-      print('Everything looks good!');
-      print(_emailController);
-      print(_usernameController);
-      print(_passwordController);
-      print(_rePasswordController);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context);
@@ -46,6 +29,7 @@ class _RegisterViewState extends State<Register> {
     );
 
     final usernameField = TextFormField(
+      key: new Key("UserName"),
       controller: _usernameController,
       style: TextStyle(
         color: Colors.black,
@@ -57,7 +41,6 @@ class _RegisterViewState extends State<Register> {
             color: Colors.black,
           ),
         ),
-        // hintText: "Hardik Narang",
         labelText: "Username",
         prefixIcon: Icon(Icons.verified_user),
         filled: true,
@@ -71,17 +54,20 @@ class _RegisterViewState extends State<Register> {
       ),
       validator: (value) {
         if (value.trim().isEmpty) {
-          return 'This field is required';
+          return 'Please enter your Username';
         }
+
         if (value.trim().length < 4) {
           return 'Username must be at least 4 characters in length';
         }
+
         // Return null if the entered username is valid
         return null;
       },
     );
 
     final emailField = TextFormField(
+      key: new Key("EmailField"),
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       style: TextStyle(
@@ -108,18 +94,21 @@ class _RegisterViewState extends State<Register> {
       ),
       validator: (value) {
         if (value.trim().isEmpty) {
-          return 'Please enter your email address';
+          return 'Please enter your Email Address';
         }
+
         // Check if the entered email has the right format
         if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
-          return 'Please enter a valid email address';
+          return 'Please enter a valid Email Address';
         }
+
         // Return null if the entered email is valid
         return null;
       },
     );
 
     final passwordField = TextFormField(
+      key: new Key("PasswordField"),
       obscureText: true,
       controller: _passwordController,
       style: TextStyle(
@@ -146,17 +135,20 @@ class _RegisterViewState extends State<Register> {
       ),
       validator: (value) {
         if (value.trim().isEmpty) {
-          return 'This field is required';
+          return 'Please enter your Password';
         }
+
         if (value.trim().length < 8) {
           return 'Password must be at least 8 characters in length';
         }
+
         // Return null if the entered password is valid
         return null;
       },
     );
 
     final repasswordField = TextFormField(
+      key: new Key("Re-EnterPasswordField"),
       obscureText: true,
       controller: _rePasswordController,
       style: TextStyle(
@@ -182,17 +174,20 @@ class _RegisterViewState extends State<Register> {
         ),
       ),
       validator: (value) {
-        if (value.isEmpty) {
-          return 'This field is required';
+        if (value.trim().isEmpty) {
+          return 'Please re-enter your Password';
         }
-
         if (value != _passwordController.text) {
           return 'Confirmation password does not match the entered password';
         }
+
+        // Return null if the entered password is valid
         return null;
       },
     );
+
     final nusnetIdField = TextFormField(
+      key: new Key("NUSNET ID"),
       controller: _nusnetIdController,
       style: TextStyle(
         color: Colors.black,
@@ -216,6 +211,20 @@ class _RegisterViewState extends State<Register> {
           color: Colors.black,
         ),
       ),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'Please enter your NUSNET ID';
+        }
+
+        if (((value[0] == "E") || (value[0] == "e")) && (value.length == 8)) {
+          // Return null if the entered NUSNET ID is valid
+          return null;
+        } else {
+          return 'Please enter a valid NUSNET ID';
+        }
+
+        return null;
+      },
     );
 
     final fields = Padding(
@@ -264,11 +273,11 @@ class _RegisterViewState extends State<Register> {
                 ])),
         child: Material(
           elevation: 5.0,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22.0)),
           color: Colors.transparent,
           shadowColor: Colors.transparent,
           child: MaterialButton(
+            key: new Key("RegisterButton"),
             minWidth: mq.size.width / 1.2,
             padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
             child: Text(
@@ -290,11 +299,6 @@ class _RegisterViewState extends State<Register> {
                     password: _passwordController.text,
                   );
                   User updateUser = FirebaseAuth.instance.currentUser;
-                  // CollectionReference userRef = FirebaseFirestore.instance.collection('Users');
-                  // DocumentSnapshot snapshot = await userRef.doc(updateUser.uid).get();
-                  // var userModel = UserModel.fromJson(snapshot.data());
-                  // context.read<userInformation>().state = userModel;
-                  // updateUser.updateDisplayName(_usernameController.text);
                   userSetup(context, _usernameController.text,
                       _nusnetIdController.text, _emailController.text);
                   // Navigator.of(context).pushNamed(AppRoutes.home);
@@ -310,31 +314,10 @@ class _RegisterViewState extends State<Register> {
                   print(e.toString());
                 }
               }
-              // _trySubmitForm();
-              // try {
-              //   await Firebase.initializeApp();
-              //   UserCredential user =
-              //   await FirebaseAuth.instance.createUserWithEmailAndPassword(
-              //     email: _emailController.text,
-              //     password: _passwordController.text,
-              //   );
-              //   User updateUser = FirebaseAuth.instance.currentUser;
-              //   // updateUser.updateDisplayName(_usernameController.text);
-              //   userSetup(_usernameController.text, _nusnetIdController.text);
-              //   // Navigator.of(context).pushNamed(AppRoutes.home);
-              //   Navigator.push(context, new MaterialPageRoute(builder: (context) => Homepage()));
-              // } on FirebaseAuthException catch (e) {
-              //   if (e.code == 'weak-password') {
-              //     print('The password provided is too weak.');
-              //   } else if (e.code == 'email-already-in-use') {
-              //     print('The account already exists for that email.');
-              //   }
-              // } catch (e) {
-              //   print(e.toString());
-              // }
             },
           ),
-        ));
+        )
+    );
 
     final bottom = Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -350,8 +333,8 @@ class _RegisterViewState extends State<Register> {
             Text(
               "Already have an account?",
               style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    color: Colors.black,
-                  ),
+                color: Colors.black,
+              ),
             ),
             MaterialButton(
               onPressed: () {
@@ -362,9 +345,9 @@ class _RegisterViewState extends State<Register> {
               child: Text(
                 "Login",
                 style: Theme.of(context).textTheme.subtitle1.copyWith(
-                      color: Colors.black,
-                      decoration: TextDecoration.underline,
-                    ),
+                  color: Colors.black,
+                  decoration: TextDecoration.underline,
+                ),
               ),
             ),
           ],
@@ -378,18 +361,18 @@ class _RegisterViewState extends State<Register> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               stops: [
-            0.15,
-            0.30,
-            0.40,
-            0.7
-          ],
+                0.15,
+                0.30,
+                0.40,
+                0.7
+              ],
               colors: [
-            // Color.fromRGBO(100, 189, 231, 1),
-            Color.fromRGBO(49, 124, 230, 1),
-            Color.fromRGBO(105, 209, 233, 1),
-            Color.fromRGBO(109, 216, 234, 1),
-            Colors.white,
-          ])),
+                // Color.fromRGBO(100, 189, 231, 1),
+                Color.fromRGBO(49, 124, 230, 1),
+                Color.fromRGBO(105, 209, 233, 1),
+                Color.fromRGBO(109, 216, 234, 1),
+                Colors.white,
+              ])),
       child: Scaffold(
         // backgroundColor: Color(0xff8c52ff),
         // backgroundColor: Colors.orangeAccent,
@@ -399,7 +382,6 @@ class _RegisterViewState extends State<Register> {
           child: SingleChildScrollView(
             padding: EdgeInsets.all(20),
             child: Container(
-              height: mq.size.height,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[

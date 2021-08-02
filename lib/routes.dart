@@ -1,3 +1,4 @@
+// @dart=2.9
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_firebase_login/Screens/profile/profile_screen.dart';
 import 'Screens/Home/homepage.dart';
@@ -5,7 +6,7 @@ import 'Screens/Home/homepage.dart';
 // All our routes will be available here
 
 final Map<String, WidgetBuilder> routes = {
-  ProfileScreen.routeName: (context) => ProfileScreen(),
+  Profile.routeName: (context) => Profile(),
   Homepage.routeName: (context) => Homepage()
 };
 

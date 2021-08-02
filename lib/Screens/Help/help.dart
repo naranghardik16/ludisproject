@@ -15,17 +15,13 @@ class _HelpState extends State<Help> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromRGBO(202, 246, 251, 1),
+        backgroundColor: Color.fromRGBO(95, 106, 228, 1),
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(223, 228, 254, 1),
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black,),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
+          backgroundColor: Color.fromRGBO(237, 148, 99, 1),
           centerTitle: true,
           title: Text(
             "Help Center",
-            style: TextStyle(color: Colors.black),
+            style: TextStyle(color: Colors.white),
           ),
         ),
         body: SingleChildScrollView(
@@ -33,33 +29,49 @@ class _HelpState extends State<Help> {
           child: Column(
             children: [
               IconItemBox(
+                key: new Key("About Ludis"),
                 text: "About Ludis",
                 icon: "assets/images/user.png",
                 press: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => AboutLudis()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => AboutLudis())
+                  );
                 },
               ),
               IconItemBox(
+                key: new Key("FAQS"),
                 text: "FAQS",
                 icon: "assets/images/settings.png",
                 press: () {
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => Faqs()));
+                      context, MaterialPageRoute(builder: (context) => Faqs())
+                  );
                 },
               ),
               IconItemBox(
+                key: new Key("Contact Support"),
                 text: "Contact Support",
                 icon: "assets/images/question.png",
                 press: () {
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ContactSupport()));
+                      context, MaterialPageRoute(builder: (context) => ContactSupport())
+                  );
                 },
               ),
             ],
           ),
-        ));
+        )
+    );
+  }
+
+  Container _buildDivider() {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 8.0,
+      ),
+      width: double.infinity,
+      height: 1.0,
+      color: Colors.grey.shade400,
+    );
   }
 }

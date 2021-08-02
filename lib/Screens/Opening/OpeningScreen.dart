@@ -1,10 +1,7 @@
 // @dart=2.9
 import 'package:flutter/material.dart';
-import 'package:flutter_firebase_login/Screens/Login/LoginScreen.dart';
+import 'package:flutter_firebase_login/Screens/Login/login.dart';
 import 'package:flutter_firebase_login/Screens/Register/RegisterScreen.dart';
-import 'package:flutter_firebase_login/theme/routes.dart';
-
-// import 'package:bleyl_dev/theme/routes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class OpeningView extends StatefulWidget {
@@ -19,6 +16,7 @@ class OpeningViewState extends State<OpeningView> {
 
   @override
   void initState() {
+    super.initState();
     getData();
   }
 
@@ -60,6 +58,7 @@ class OpeningViewState extends State<OpeningView> {
         color: Colors.transparent,
         // color: Color.fromRGBO(109, 216, 234, 1),
         child: MaterialButton(
+          key: new Key("LoginButton"),
           minWidth: mq.size.width / 1.2,
           padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
           child: Text(
@@ -103,6 +102,7 @@ class OpeningViewState extends State<OpeningView> {
         color: Colors.transparent,
         // color: Color.fromRGBO(109, 216, 234, 1),
         child: MaterialButton(
+          key: new Key("RegisterButton"),
           minWidth: mq.size.width / 1.2,
           padding: EdgeInsets.fromLTRB(10.0, 15.0, 10.0, 15.0),
           child: Text(
