@@ -5,6 +5,7 @@ import 'package:flutter_firebase_login/net/firebase.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_firebase_login/components/AuthHelper.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -253,6 +254,21 @@ class _RegisterViewState extends State<Register> {
       ),
     );
 
+    _showAlertDialog(errorMsg) {
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: Text(
+                'Login Failed',
+                style: TextStyle(color: Colors.black),
+              ),
+              content: Text(errorMsg),
+            );
+          }
+      );
+    }
+
     final registerButton = Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25.0),
@@ -305,11 +321,12 @@ class _RegisterViewState extends State<Register> {
                   Navigator.push(context,
                       new MaterialPageRoute(builder: (context) => Homepage()));
                 } on FirebaseAuthException catch (e) {
-                  if (e.code == 'weak-password') {
-                    print('The password provided is too weak.');
-                  } else if (e.code == 'email-already-in-use') {
-                    print('The account already exists for that email.');
-                  }
+                  _showAlertDialog(AuthExceptionHandler.generateExceptionMessage(AuthExceptionHandler.handleException(e)));
+                  // if (e.code == 'weak-password') {
+                  //   print('The password provided is too weak.');
+                  // } else if (e.code == 'email-already-in-use') {
+                  //   print('The account already exists for that email.');
+                  // }
                 } catch (e) {
                   print(e.toString());
                 }
