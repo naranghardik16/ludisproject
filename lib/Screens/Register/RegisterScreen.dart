@@ -216,31 +216,42 @@ class _RegisterViewState extends State<Register> {
           color: Colors.black,
         ),
       ),
+      validator: (value) {
+        if (value.isEmpty) {
+          return 'This field is required';
+        }
+        if (!RegExp(r'^e\d{7}$').hasMatch(value)) {
+          return 'Please enter a valid NUSNET ID';
+        }
+        return null;
+      },
     );
 
     final fields = Padding(
       padding: EdgeInsets.only(top: 10.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          usernameField,
-          SizedBox(
-            height: 5,
-          ),
-          emailField,
-          SizedBox(
-            height: 5,
-          ),
-          passwordField,
-          SizedBox(
-            height: 5,
-          ),
-          repasswordField,
-          SizedBox(
-            height: 5,
-          ),
-          nusnetIdField,
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            usernameField,
+            SizedBox(
+              height: 5,
+            ),
+            emailField,
+            SizedBox(
+              height: 5,
+            ),
+            passwordField,
+            SizedBox(
+              height: 5,
+            ),
+            repasswordField,
+            SizedBox(
+              height: 5,
+            ),
+            nusnetIdField,
+          ],
+        ),
       ),
     );
 
@@ -400,17 +411,19 @@ class _RegisterViewState extends State<Register> {
             padding: EdgeInsets.all(20),
             child: Container(
               height: mq.size.height,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: <Widget>[
-                  logo,
-                  fields,
-                  const SizedBox(height: 8.0),
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 30),
-                    child: bottom,
-                  ),
-                ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    logo,
+                    fields,
+                    const SizedBox(height: 8.0),
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 30),
+                      child: bottom,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

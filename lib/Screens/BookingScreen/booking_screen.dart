@@ -33,7 +33,10 @@ class FacilityBookingScreen extends ConsumerWidget {
         child: Scaffold(
             key: scaffoldKey,
             appBar: AppBar(
-              title: Text("Booking", style: TextStyle(color: Colors.black),),
+              title: Text(
+                "Booking",
+                style: TextStyle(color: Colors.black),
+              ),
               centerTitle: true,
               backgroundColor: Color.fromRGBO(223, 228, 254, 1),
               automaticallyImplyLeading: false,
@@ -45,15 +48,22 @@ class FacilityBookingScreen extends ConsumerWidget {
             body: Column(
               children: [
                 //Step
-                NumberStepper(
+                IconStepper(
                   lineColor: Colors.black,
                   activeStep: step - 1,
                   direction: Axis.horizontal,
                   enableNextPreviousButtons: false,
-                  numbers: [1, 2, 3, 4, 5],
+                  icons: [
+                    Icon(Icons.home_work),
+                    Icon(Icons.sports_baseball_sharp),
+                    Icon(Icons.sports_tennis),
+                    Icon(Icons.calendar_today),
+                    Icon(Icons.check_box_rounded)
+                  ],
+                  // numbers: [1, 2, 3, 4, 5],
                   stepColor: Color.fromRGBO(254, 241, 170, 1),
                   activeStepColor: Color.fromRGBO(202, 246, 251, 1),
-                  numberStyle: TextStyle(color: Colors.black),
+                  // numberStyle: TextStyle(color: Colors.black),
                 ),
                 //Screen
                 Expanded(
@@ -85,8 +95,29 @@ class FacilityBookingScreen extends ConsumerWidget {
                               ? null
                               : () => context.read(currentStep).state--,
                           style: ElevatedButton.styleFrom(
-                              primary: Color.fromRGBO(0, 214, 236, 1)),
-                          child: Text('Previous', style: TextStyle(color: Colors.black),),
+                              primary: Color.fromRGBO(223, 228, 254, 1)),
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Icon(
+                                Icons.navigate_before,
+                                color: Colors.black,
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                "Previous",
+                                style: TextStyle(color: Colors.black),
+                              )
+                            ],
+                          ),
+                          // child: Text(
+                          //   'Previous',
+                          //   style: TextStyle(color: Colors.black),
+                          // ),
                         )),
                         SizedBox(
                           width: 30,
@@ -116,8 +147,29 @@ class FacilityBookingScreen extends ConsumerWidget {
                                     ? null
                                     : () => context.read(currentStep).state++,
                             style: ElevatedButton.styleFrom(
-                                primary: Color.fromRGBO(0, 214, 236, 1)),
-                            child: Text('Next', style: TextStyle(color: Colors.black),),
+                                primary: Color.fromRGBO(223, 228, 254, 1)),
+                            child: Row(
+                              children: <Widget>[
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                Text(
+                                  "Next",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Icon(
+                                  Icons.navigate_next,
+                                  color: Colors.black,
+                                ),
+                              ],
+                            ),
+                            // child: Text(
+                            //   'Next',
+                            //   style: TextStyle(color: Colors.black),
+                            // ),
                           ),
                         )
                       ],
@@ -149,19 +201,42 @@ class FacilityBookingScreen extends ConsumerWidget {
                     return GestureDetector(
                       onTap: () =>
                           context.read(selectedHall).state = halls[index],
-                      child: Card(
-                        color: Color.fromRGBO(253, 204, 213, 1),
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.home_work,
-                            color: Colors.black,
-                          ),
-                          trailing: context.read(selectedHall).state.name ==
-                                  halls[index].name
-                              ? Icon(Icons.check)
-                              : null,
-                          title: Text(
-                            '${halls[index].name}',
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 80,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          margin: EdgeInsets.all(5.0),
+                          elevation: 5,
+                          color: Color.fromRGBO(253, 204, 213, 1),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: Image.asset(
+                                  '${halls[index].imgPath}',
+                                  height: 60,
+                                  width: 60,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: ListTile(
+                                  trailing:
+                                      context.read(selectedHall).state.name ==
+                                              halls[index].name
+                                          ? Icon(Icons.check)
+                                          : null,
+                                  title: Text(
+                                    '${halls[index].name}',
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  subtitle: Text('${halls[index].address}'),
+                                  dense: true,
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
@@ -192,25 +267,46 @@ class FacilityBookingScreen extends ConsumerWidget {
                     return GestureDetector(
                       onTap: () => context.read(selectedFacility).state =
                           facilities[index],
-                      child: Card(
-                        color: Color.fromRGBO(253, 204, 213, 1),
-                        child: ListTile(
-                          leading: Icon(
-                            Icons.sports_baseball,
-                            color: Colors.black,
-                          ),
-                          trailing:
-                              context.read(selectedFacility).state.docId ==
-                                      facilities[index].docId
-                                  ? Icon(
-                                      Icons.check,
-                                    )
-                                  : null,
-                          title: Text(
-                            '${facilities[index].name}',
-                          ),
-                          subtitle: Text(
-                            '${facilities[index].address}',
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 80,
+                        child: Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10.0)),
+                          margin: EdgeInsets.all(5.0),
+                          elevation: 5.0,
+                          color: Color.fromRGBO(253, 204, 213, 1),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 1,
+                                child: Image.asset(
+                                  '${facilities[index].imgPath}',
+                                  height: 60,
+                                  width: 60,
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: ListTile(
+                                  trailing: context
+                                              .read(selectedFacility)
+                                              .state
+                                              .docId ==
+                                          facilities[index].docId
+                                      ? Icon(
+                                          Icons.check,
+                                        )
+                                      : null,
+                                  title: Text(
+                                    '${facilities[index].name}',
+                                  ),
+                                  subtitle: Text(
+                                    '${facilities[index].address}',
+                                  ),
+                                ),
+                              )
+                            ],
                           ),
                         ),
                       ),
@@ -368,7 +464,8 @@ class FacilityBookingScreen extends ConsumerWidget {
                                           : context.read(selectedTime).state ==
                                                   TIME_SLOT.elementAt(index)
                                               ? Color.fromRGBO(202, 246, 251, 1)
-                                              : Color.fromRGBO(253, 204, 213, 1),
+                                              : Color.fromRGBO(
+                                                  253, 204, 213, 1),
                                   child: GridTile(
                                     child: Center(
                                       child: Column(
@@ -448,10 +545,13 @@ class FacilityBookingScreen extends ConsumerWidget {
         .state
         .reference
         .collection(
-        '${DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state)}')
+            '${DateFormat('dd_MM_yyyy').format(context.read(selectedDate).state)}')
         .doc(context.read(selectedTimeSlot).state.toString());
 
-    DocumentReference userBooking = FirebaseFirestore.instance.collection('Users').doc(FirebaseAuth.instance.currentUser.uid).collection('Booking_${FirebaseAuth.instance.currentUser.uid}')
+    DocumentReference userBooking = FirebaseFirestore.instance
+        .collection('Users')
+        .doc(FirebaseAuth.instance.currentUser.uid)
+        .collection('Booking_${FirebaseAuth.instance.currentUser.uid}')
         .doc();
 
     // Set for batch
@@ -493,10 +593,9 @@ class FacilityBookingScreen extends ConsumerWidget {
           androidParams: AndroidParams(emailInvites: []));
 
       Add2Calendar.addEvent2Cal(event).then((value) {});
-
     });
 
-      // Navigator.of(context).pop();
+    // Navigator.of(context).pop();
   }
 
   displayConfirm(BuildContext context) {
@@ -511,76 +610,82 @@ class FacilityBookingScreen extends ConsumerWidget {
           ),
         ),
         Expanded(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            child: Card(
-              color: Color.fromRGBO(254, 241, 170, 1),
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  children: [
-                    Text(
-                      'Thank You for using our Booking Services'.toUpperCase(),
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Text('Booking Information'.toUpperCase()),
-                    Row(
-                      children: [
-                        Icon(Icons.calendar_today),
-                        SizedBox(
-                          width: 20,
+          child: SingleChildScrollView(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Card(
+                color: Color.fromRGBO(254, 241, 170, 1),
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Thanks for  choosing us!'.toUpperCase(),
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text('This is your Booking Information'.toUpperCase()),
+                      Row(
+                        children: [
+                          Icon(Icons.calendar_today),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                              '${context.read(selectedTime).state} - ${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}')
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.sports_baseball),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('${context.read(selectedCourt).state.name}')
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Divider(
+                        thickness: 1,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.sports_tennis_outlined),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text('${context.read(selectedFacility).state.name}')
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Icon(Icons.location_on),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text(
+                              '${context.read(selectedFacility).state.address}')
+                        ],
+                      ),
+                      ElevatedButton(
+                        onPressed: () => confirmBooking(context),
+                        child: Text(
+                          'Confirm Booking',
+                          style: TextStyle(color: Colors.black),
                         ),
-                        Text(
-                            '${context.read(selectedTime).state} - ${DateFormat('dd/MM/yyyy').format(context.read(selectedDate).state)}')
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.sports_baseball),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text('${context.read(selectedCourt).state.name}')
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Divider(
-                      thickness: 1,
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.sports_tennis_outlined),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text('${context.read(selectedFacility).state.name}')
-                      ],
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: [
-                        Icon(Icons.location_on),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Text('${context.read(selectedFacility).state.address}')
-                      ],
-                    ),
-                    ElevatedButton(
-                      onPressed: () => confirmBooking(context),
-                      child: Text('Confirm', style: TextStyle(color: Colors.black),),
-                      style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Color.fromRGBO(253, 204, 213, 1))),
-                    )
-                  ],
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromRGBO(253, 204, 213, 1))),
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -590,5 +695,3 @@ class FacilityBookingScreen extends ConsumerWidget {
     );
   }
 }
-
-
